@@ -717,15 +717,11 @@ function estimateCompletion() {
 
 function shareRound() {
 
-  var email = 'mailto:test@example.com?subject=subject&body=<div style="background-color:powderblue;color:red;">'
+  // var email = 'mailto:test@example.com?subject=subject&body=<div style="background-color:powderblue;color:red;">'
 
+  // var x = encodeURIComponent(email)
 
-  var x = encodeURIComponent(email)
-
-
-  
-
-  window.open(x)
+  // window.open(x)
 
 
 }
