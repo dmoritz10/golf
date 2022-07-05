@@ -721,11 +721,8 @@ function shareRound() {
 
   console.log(rsHtml)
 
-  navigator.clipboard.write(rsHtml).then(function() {
-    console.log('Async: Copying to clipboard was successful!');
-    toast('Copied to clipboard', 1000)
-  }, function(err) {
-    console.error('Async: Could not copy text: ', err);
-  });
+	const blobInput = new Blob([rsHtml], {type: 'text/html'});
+	const clipboardItemInput = new ClipboardItem({'text/html' : blobInput});
+	navigator.clipboard.write([clipboardItemInput]);
 
 }
