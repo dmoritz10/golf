@@ -1,0 +1,182 @@
+<style>
+  #hpTargetHandicap.form-control {
+    background-image: none;
+
+  }
+</style>
+<div class="overflow-hidden">
+  <div class="  sticky-top" style="background-color: #f9f9f9;">
+    <div class="row m-1 py-4">
+      <div class="col-1 px-1 mt-3">
+        <div id="hpGoTo" class="label  text-center h1 cursor-pointer" onclick="gotoTab('Home')"><i
+            class="material-icons">arrow_back_ios</i></div>
+      </div>
+      <div class="col px-1">
+        <div id="hpBanner" class="label text-center h1 divfullscreen">Play Round</div>
+
+        <div id="hpCourseNameAddr" class="d-none divfullscreen">
+          <div id="hpCourseName" class="label text-success text-center h2"></div>
+          <div class="label text-success text-center h2"><small>
+              <span id="hpCityState"></span></small></div>
+        </div>
+
+      </div>
+      <div class="col-1 px-1">
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class=clearfix></div>
+
+  <div id="hpDispHcp" class="row m-1 p-3 border-top border-bottom  bg-white">
+    <div class="col px-1">
+      <div id="hpCurrHandicap" class="text-success text-center h2 hpElem"></div>
+      <div class="label text-center">Handicap</div>
+    </div>
+    <div class="col px-1">
+      <div id="hpNbrRounds" class="text-success text-center h2 hpElem"></div>
+      <div class="label text-center">Rounds</div>
+    </div>
+  </div>
+
+  <!-- <div class=clearfix></div>
+
+  <div id="hpDispDialer" class="row m-1 p-3 border-top border-bottom  bg-white d-none">
+
+    <div class="col text-center">
+      <div class="btn-group" role="group">
+        <div class="mt-2 mr-6"><a href="" class="align-center" id="btnDialCourse"><i
+              class="material-icons">phone</i></a></div>
+      </div>
+    </div>
+
+    <div class="col text-center">
+      <div class="btn-group" role="group">
+        <div class="mt-2 mr-6"><a href="" class="align-center" id="btnHPWebSite" target="_blank"
+            rel="noopener noreferrer"><i class="material-icons" style="color:green;">web</i></a></div>
+      </div>
+    </div>
+
+    <div class="col text-center">
+      <div class="btn-group" role="group">
+        <div class="mt-2 mr-6"><a href="" class="align-center" id="btnHPWeather" target="_blank"
+            rel="noopener noreferrer"><i class="material-icons" style="color:#cccc00;">wb_sunny</i></a></div>
+      </div>
+    </div>
+
+    <div class="col text-center">
+      <div class="btn-group" role="group">
+        <div class="mt-2"><a href=# class="align-center" id="btnEnterTeeTime" rel="noopener noreferrer"><i
+              class="material-icons" style="color:red;">sports_golf</i></a></div>
+                    
+                <button class="btn btn-outline-primary btn-sm btn-raised py-2" id="btnEnterTeeTime">Add Tee Time</button>
+    
+      </div>
+    </div>
+
+  </div> 
+-->
+
+  <div class=clearfix></div>
+
+
+  <div id="hpDispSelectCourse" class="row m-1 mt-3 p-0 pt-3">
+    <div class="col-5 px-1" id="hpSelectCourseCol">
+      <div class="label text-center">Course</div>
+      <select id="hpSelectCourse" class="custom-select text-success text-center h5 hpElem"></select>
+    </div>
+    <div class="col px-1">
+      <div class="label text-center">Tees</div>
+      <select id="hpSelectTees" class="custom-select text-success text-center  h5  hpElem"></select>
+    </div>
+    <div class="col px-1">
+      <div class="label text-center">Target Hcp</div>
+      <input id="hpTargetHandicap"
+        style=" border: 1px solid rgba(0,0,0,.26);width: 100px;height: 41px;font-size:16px;background-color:white;"
+        class="pt-1 text-success text-left btn-success">
+    </div>
+  </div>
+  <div class=clearfix></div>
+
+  <div class="row m-1 p-3">
+    <div class="col px-1">
+      <div id="hpTargetScore" class="text-success text-center h3 hpElem"></div>
+      <div class="label text-center">Target Score</div>
+    </div>
+  </div>
+  <div class=clearfix></div>
+
+  <hr class="m-0">
+
+  <div class="row mx-1 px-0 pt-3 bg-white">
+    <div class="col px-0 m-0">
+      <div class="label text-center">Par</div>
+      <div id="hpPar" class="text-success text-center  h3  hpElem"></div>
+    </div>
+    <div class="col px-0 m-0">
+      <div class="label text-center">Crs Rating</div>
+      <div id="hpCourse_Rating" class="text-success text-center h3 hpElem"></div>
+    </div>
+    <div class="col px-0 m-0">
+      <div class="label text-center">Bgy Rating</div>
+      <div id="hpBogey_Rating" class="text-success text-center h3 hpElem"></div>
+    </div>
+    <div class="col px-0 m-0">
+      <div class="label text-center">Slope</div>
+      <div id="hpSlope_Rating" class="text-success text-center h3 hpElem"></div>
+    </div>
+  </div>
+  <div class=clearfix></div>
+
+  <div class="row mx-0 my-1 px-0 pt-3 bg-white">
+
+    <div class="col px-0 m-0">
+      <div class="label text-center">Front 9</div>
+      <div id="hpFront_9_Rating" class="text-success text-center h3 hpElem"></div>
+    </div>
+    <div class="col px-0">
+      <div class="label text-center">Back 9</div>
+      <div id="hpBack_9_Rating" class="text-success text-center h3 hpElem"></div>
+    </div>
+  </div>
+  <div class=clearfix></div>
+
+  <div class="row m-0 p-0 pt-3 bg-white">
+    <div class="col px-0">
+      <div class="label text-center">Yardage</div>
+      <div id="hpYardage" class="text-success text-center h3 hpElem"></div>
+    </div>
+    <div class="col px-0">
+      <div class="label text-center">Nbr Played</div>
+      <div id="hpNbr_Times_Played" class="text-success text-center h3 hpElem"></div>
+    </div>
+    <div class="col px-0">
+      <div class="label text-center">Avg Time</div>
+      <div id="hpAvg_Play_Time" class="text-success text-center h3 hpElem"></div>
+    </div>
+    <div class="col px-0">
+      <div class="label text-center">Crs Hcp</div>
+      <div id="hpCourseHandicap" class="text-success text-center h3 hpElem"></div>
+    </div>
+  </div>
+  <div class=clearfix></div>
+
+  <div id="hpHoleDetail" class="row fixed-bottom pb-3">
+    <div class="col text-center">
+      <button type="button" class="btn btn-blue btn-lg btn-raised py-2" id="btnHPHoleDetail" data-html=true
+        data-placement="bottom" data-toggle="popover" title="Hole Detail" data-content="">Hole Detail</button>
+    </div>
+  </div>
+
+  <div id="hpDispStartBtn" class="row fixed-bottom pb-3">
+    <div class="col text-center">
+      <div class="btn-group" role="group">
+        <button class="btn btn-blue btn-lg btn-raised py-2" id="btnStartRound">Start Round</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+</div>

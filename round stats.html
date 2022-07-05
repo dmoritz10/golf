@@ -1,0 +1,120 @@
+<style>
+  .rsSumTable td:nth-child(2) {
+    text-align: right
+  }
+
+  .rsSumTable>tbody>tr>td,
+  .rsSumTable>tbody>tr>th {
+    border-top: none;
+  }
+</style>
+<div class="container">
+  <div class="row m-1 pt-4 pb-3">
+    <div class="col-1 px-1 mt-3">
+      <div id="rsGoTo" class="label  text-center h1 cursor-pointer" onclick="gotoTab('Home')"><i
+          class="material-icons">arrow_back_ios</i></div>
+    </div>
+    <div class="col px-1">
+      <div id="rsCourseName" class="label text-success text-center h2 divfullscreen"></div>
+      <div id="rsStartDate" class="label text-success text-center h6 divfullscreen"></div>
+    </div>
+    <div class="col-1 px-1 mt-3">
+      &nbsp;
+    </div>
+
+  </div>
+  <div class=clearfix></div>
+
+
+  <hr class="m-0">
+
+  <div class="row mx-1 px-0 py-5 bg-white">
+    <div class="col-2 px-0">
+
+      <div class="text-success text-center h3 hpElem">
+        <a id="rsTees" class="text-success" href="#" data-html=true data-placement="bottom" data-toggle="popover"
+          title="Tee Summary" data-content="">
+        </a>
+      </div>
+      <div class="label text-center">Tees</div>
+
+    </div>
+    <div class="col px-0">
+      <div id="rsTargetScore" class="text-success text-center h3 hpElem"></div>
+      <div class="label text-center">Target Score</div>
+    </div>
+
+    <div class="col-2 px-0">
+      <div id="rsCourseHandicap" class="text-success text-center h3 hpElem"></div>
+      <div class="label text-center">Course</div>
+    </div>
+  </div>
+  <div class=clearfix></div>
+
+  <hr class="m-0 p-0">
+
+  <div class="row m-0 my-0 p-0">
+    <div class="col px-0 py-3">
+
+      <div class="text-success text-center h3 hpElem">
+        <a id="rsHoles" class="text-success" href="#" data-html=true sanitize=false data-placement="bottom"
+          data-toggle="popover" title="Hole Summary" data-content="">
+        </a>
+      </div>
+
+      <div class="label text-center">Holes</div>
+    </div>
+    <div class="col px-0 py-3">
+
+      <div class="text-success text-center h3 hpElem">
+        <a id="rsScore" class="text-success" href="#" data-html=true data-placement="bottom" data-toggle="popover"
+          title="Score Summary" data-content="">
+        </a>
+      </div>
+
+      <div class="label text-center">Score</div>
+    </div>
+    <div class="col px-0 py-3">
+
+      <div class="text-success text-center h3 hpElem">
+        <a id="rsPutts" class="text-success" href="#" data-html=true data-placement="bottom" data-toggle="popover"
+          title="Putting Summary" data-content="">
+        </a>
+      </div>
+
+      <div class="label text-center">Putts</div>
+    </div>
+    <div class="col px-0 py-3">
+
+      <div class="text-success text-center h3 hpElem">
+        <a id="rsFairways" class="text-success text-nowrap" href="#" data-html=true data-placement="bottom"
+          data-toggle="popover" title="Driving Summary" data-content="">
+        </a>
+      </div>
+
+      <div class="label text-center">Fairways</div>
+    </div>
+  </div>
+  <div class=clearfix></div>
+
+  <hr class="m-0 p-0">
+
+  <div id="tblRoundStats" class="row m-0 p-0 pt-3 text-center bg-white">
+
+  </div>
+  <div class=clearfix></div>
+
+  <div class="row fixed-bottom ">
+    <div class="col text-center py-2">
+      <div class="btn-group" role="group">
+        <!-- <button class="btn btn-outline-primary  btn-lg btn-raised py-2 mx-2" id="btnSSPrev" onclick="browseDocument('prev')">Prev</button> -->
+        <button type="button" class="btn btn-primary btn-lg btn-raised" id="btnRSScorecard" data-html=true
+          data-placement="bottom" data-toggle="popover" title="Scorecard" data-content="">Scorecard</button>
+        <button class="btn btn-outline-primary  btn-lg btn-raised py-2 mx-2" id="btnShareRound" onclick="shareRound()">Share Round</button>
+      </div>
+    </div>
+  </div>
+
+  <div class=clearfix></div>
+
+</div>

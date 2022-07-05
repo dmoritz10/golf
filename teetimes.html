@@ -1,0 +1,196 @@
+<div class="">
+  <div class="  sticky-top border-bottom" style="background-color: #f9f9f9;">
+    <div class="row m-0 px-2 py-3">
+      <div class="col-1 px-1 mt-2">
+        <div class="label  text-center h1 mt-2 cursor-pointer" onclick="goHome()"><i class="material-icons">arrow_back_ios</i></div>
+      </div>
+      <div class="col px-1">
+        <div class="label  text-center h1 divfullscreen">Tee times</div>
+        <div id="nbrTeetimes" class="text-success text-center h2 hpElem"></div>
+      </div>
+      <div class="col-1 px-1">
+        <div></div>
+      </div>
+    </div>
+
+    <div class=clearfix></div>
+
+  </div>
+
+
+  <div id="ttContainer" class=" mt-0 pt-3 pb-5 px-2">
+    <div class=" my-2 border d-none" style="border-radius: 25px;background: #cce6ff;">
+
+      <div class="row m-2 p-0 my-3  align-items-center">
+        <div class="col px-1">
+          <div id="ttCourseName" class="label  text-left h5 pb-0 my-1 align-middle font-weight-bold"></div>
+          <div id="ttTeetime" class="label  text-left h5 py-0 mt-2 mb-1 align-middle"></div>
+          <div id="ttGolfers" class="label  text-left h5 py-0 mt-2 mb-1 align-middle"></div>
+        </div>
+        <div class="col-1 px-1">
+          <div id="ttEditTeetime" class="label  text-right h2 text-muted align-middle cursor-pointer"><i
+              class="material-icons">arrow_forward_ios</i></div>
+        </div>
+
+      </div>
+
+      <div class="row mx-1 px-3">
+
+        <div class="col text-center px-1">         
+          <div><a href="" class="align-center" id="btnTTDialCourse" data-toggle="tooltip" title="Call Course"><i
+                class="material-icons">phone</i></a></div>        
+        </div>
+
+        <div class="col text-center px-1">       
+          <div><a href="" class="align-center" id="btnTTWebSite" target="_blank"
+              rel="noopener noreferrer"><i class="material-icons" style="color:black;" data-toggle="tooltip" title="Course Web Site">web</i></a></div>
+        </div>
+
+        <div class="col text-center px-1">         
+          <div><a href="" class="align-center" id="btnTTSwingU" target="_blank"
+              rel="noopener noreferrer"><i class="swingu-icon"></i></a></div>      
+        </div>
+
+        <div class="col text-center px-1">         
+          <div><a href="" class="align-center" id="btnTTWeather" target="_blank"
+              rel="noopener noreferrer" data-toggle="tooltip" title="Weather"><i class="material-icons" style="color:#cccc00;">wb_sunny</i></a></div>            
+        </div>
+
+        <div class="col text-center px-1">        
+          <div class="align-center cursor-pointer" id="btnTTGolfer" data-toggle="tooltip" data-toggle="tooltip" title="Add / Change Golfers">
+            <i class="golfer-icon"></i></div>
+        </div>
+
+        <div class="col text-center px-1">         
+          <div><a href="" class="align-center" id="btnTTSms" target="_blank"
+              rel="noopener noreferrer" data-toggle="tooltip" title="Weather"><i class="material-icons" style="color:DeepSkyBlue;">textsms</i></a></div>            
+        </div>
+
+      </div>
+
+      <div class=clearfix></div>
+
+
+
+      <hr class="m-2">
+
+      <div class="row m-1 ml-0 p-0  align-items-center">
+        <div class="col px-0">
+          <div id="ttTargetScore" class="label text-center align-middle h5"></div>
+          <div class="label text-center align-middle h6"><small>Target</small></div>
+        </div>
+        <div class="col px-0">
+          <div id="ttTees" class="label  text-center h5 align-middle h5"></div>
+          <div class="label text-center align-middle h6"><small>Tees</small></div>
+        </div>
+        <div class="col px-0">
+          <div id="ttCourseRating" class="label  text-center h5 align-middle h5"></div>
+          <div class="label text-center align-middle h6"><small>Ratng</small></div>
+        </div>
+        <div class="col px-0">
+          <div id="ttSlopeRating" class="label  text-center h5 align-middle h5"></div>
+          <div class="label text-center align-middle h6"><small>Slope</small></div>
+        </div>
+        <div class="col px-0">
+          <div id="ttCourseHandicap" class="label  text-center h5 align-middle h5"></div>
+          <div class="label text-center align-middle h6"><small>Crs Hcp</small></div>
+        </div>
+        <div class="col px-0">
+          <div id="ttAvgPlayTime" class="label  text-center h5 align-middle h5"></div>
+          <div class="label text-center align-middle h6"><small>Time</small></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row fixed-bottom pb-3">
+    <div class="col text-center">
+      <div class="btn-group" role="group">
+        <button class="btn btn-blue btn-lg btn-raised py-2" id="btnAddTeetime">Add Teetime</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+</div>
+
+
+<div class="modal fade" id="teetime-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title divfullscreen">Teetime Maintenance</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="teetime-form" method="get" action="#">
+
+          <fieldset>
+
+            <div class="form-group row d-none">
+              <label for="ttmIdx" class="col-form-label">Id</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="ttmIdx" name="ttmIdx">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-10">
+                <label for="ttmSelectCourse" class="col col-form-label">Course</label>
+                <select id="ttmSelectCourse" class="custom-select text-success text-left h5"></select>
+              </div>
+              <div class="col-2 mt-1">
+                <div class="align-left ml-0 pl-0"><a href="" class="btn align-left ml-0 pl-0" id="btnCallCourse"><i
+                      class="material-icons" style="color:blue;">phone</i></a></div>
+                <div class="align-left ml-0 pl-0"><a href="" class="btn align-left ml-0 pl-0" id="btnWebSite"
+                    target="_blank" rel="noopener noreferrer"><i class="material-icons" style="color:green;">web</i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col">
+                <label for="ttmDate" class="col col-form-label">Date</label>
+                <input type="date" class="form-control text-success" style="font-size:1.25rem" id="ttmDate"
+                  name="ttmDate" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col">
+                <label for="ttmTime" class="col col-form-label">Time</label>
+                <input type="time" class="form-control text-success" style="font-size:1.25rem" id="ttmTime"
+                  name="ttmTime" required>
+              </div>
+            </div>
+
+            <!-- <div class="form-group row">
+              <div class="col-10">
+                <label for="ttmGolfers" class="col col-form-label">Golfers</label>
+                <select id="ttmGolfers" class="custom-select text-success text-left h5" multiple></select>
+              </div>
+              <div class="col-2">
+                <label for="btnTextTeetime" class="col-form-label">&nbsp</label>
+                <div class="align-left ml-0 pl-0"><a href="" class="btn align-left ml-0 pl-0" id="btnTextTeetime"><i
+                      class="material-icons" style="vertical-align: bottom;color:DeepSkyBlue;">textsms</i></a></div>
+              </div>
+            </div> -->
+
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <input id="btnSubmitTeetime" class="btn btn-primary" type="submit" value="Submit">
+        <button id="btnDeleteTeetime" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

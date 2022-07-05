@@ -1,0 +1,135 @@
+<div class="">
+  <div class=" sticky-top border-bottom px-1" style="background-color: #f9f9f9;">
+    <div class="row m-0 px-2 py-3">
+      <div class="col-1 px-1 mt-3">
+        <div class="label  text-center h1 cursor-pointer" onclick="goHome()"><i class="material-icons">arrow_back_ios</i></div>
+      </div>
+      <div class="col px-1">
+        <div class="label  text-center h1 divfullscreen">Stats</div>
+        <div id="statHdrSelectCourse" class="text-success text-center h5 hpElem"></div>
+
+      </div>
+      <div class="col-1 px-1">
+        <div id="statSelectDropDown" class="dropdown">
+          <button class="btn dropdown-toggle pl-0" type="button" id="btnStatMoreVert" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="material-icons md-36" style="width:12px">more_vert</i>
+          </button>
+
+          <div class="dropdown-menu more-vert-menu pl-1 mb-2 overflow-hidden"
+            style="margin-left: -350px !important; margin-right: -30px !important;width: 350px !important;">
+            <form id="statSelectForm" class="px-3 pt-3 mb-4">
+              <div class="form-check px-4 mb-3">
+                <input type="checkbox" class="form-check-input" id="statExcludeSmall">
+                <label class="form-check-label" for="statExcludeSmall">
+                  Exclude small courses
+                </label>
+              </div>
+
+              <div>
+                <select class="form-select col-12 mt-2" id="statSelectCourse" style="background-color: white">
+                </select>
+              </div>
+
+              <div class="row py-0 mt-4">
+                <div class=" col-5 pl-1">
+                  <select class="form-selectmt-2 w-100" id="selectStatsRng1" style="background-color: white">
+                    <option>This Round</option>
+                    <option>Last 5 Rounds</option>
+                    <option>Last 10 Rounds</option>
+                    <option>Last 20 Rounds</option>
+                    <option>Last 25 Rounds</option>
+                    <option>Last 50 Rounds</option>
+                    <option>Last 100 Rounds</option>
+                    <option>Past Month</option>
+                    <option>Past Year</option>
+                    <option>Past 2 Years</option>
+                    <option>Past 5 Years</option>
+                    <option>All Time</option>
+                  </select>
+                </div>
+                <div class="col-5 text-center px-0">
+                  <div id="disStatsDate1" class='label'></div>
+                  <br>
+                </div>
+                <div class="col-2 text-right">
+                  <div id="disNbrRnds1" class='label'></div>
+                  <br>
+                </div>
+              </div>
+
+              <div class="row py-0">
+                <div class=" col-5 pl-1">
+                  <select class="form-selectmt-2 w-100" id="selectStatsRng2" style="background-color: white">
+                    <option>This Round</option>
+                    <option>Last 5 Rounds</option>
+                    <option>Last 10 Rounds</option>
+                    <option>Last 20 Rounds</option>
+                    <option>Last 25 Rounds</option>
+                    <option>Last 50 Rounds</option>
+                    <option>Last 100 Rounds</option>
+                    <option>Past Month</option>
+                    <option>Past Year</option>
+                    <option>Past 2 Years</option>
+                    <option>Past 5 Years</option>
+                    <option>All Time</option>
+                  </select>
+                </div>
+                <div class="col-5 text-center px-0">
+                  <div id="disStatsDate2" class='label'></div>
+                  <br>
+                </div>
+                <div class="col-2 text-right">
+                  <div id="disNbrRnds2" class='label'></div>
+                  <br>
+                </div>
+              </div>
+
+              <div class="row py-0">
+                <div class=" col-5 pl-1">
+                  <select class="form-selectmt-2 w-100" id="selectStatsRng3" style="background-color: white">
+                    <option>This Round</option>
+                    <option>Last 5 Rounds</option>
+                    <option>Last 10 Rounds</option>
+                    <option>Last 20 Rounds</option>
+                    <option>Last 25 Rounds</option>
+                    <option>Last 50 Rounds</option>
+                    <option>Last 100 Rounds</option>
+                    <option>Past Month</option>
+                    <option>Past Year</option>
+                    <option>Past 2 Years</option>
+                    <option>Past 5 Years</option>
+                    <option>All Time</option>
+                  </select>
+                </div>
+                <div class="col-5 text-center px-0">
+                  <div id="disStatsDate3" class='label'></div>
+                  <br>
+                </div>
+                <div class="col-2 text-right">
+                  <div id="disNbrRnds3" class='label'></div>
+                  <br>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-primary float-right my-2" id="btnStatSelect">Go</button>
+              <button type="button" class="btn btn-primary mt-2" id="btnStatReset">Reset</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class=clearfix></div>
+
+
+  <div id="casChartContainer" class='w-100 text-center'><canvas id="casChart" width="400" height="400"></canvas></div>
+  <div id="aspChartContainer" class='w-100 text-center'><canvas id="aspChart" width="400" height="400"></canvas></div>
+  <div id="ttgChartContainer" class='w-100 text-center'><canvas id="ttgChart" width="400" height="400"></canvas></div>
+
+  <div id="statsContainer" class=" mt-0 py-3 px-2" style="background-color: lightgoldenrodyellow;">
+    <div id="tblStats" class="row m-0 p-0 mt-3 align-items-center">
+  </div>
+
+</div>

@@ -1,0 +1,176 @@
+<div class="">
+      <div class="row m-0 px-2 py-3 sticky-top border-bottom" style="background-color: #f9f9f9;">
+        <div class="col-1 px-1 mt-2">
+          <div class="label  text-center h1 mt-2 cursor-pointer" onclick="goHome()"><i class="material-icons">arrow_back_ios</i></div>
+        </div>
+        <div class="col px-1">
+          <div class="label  text-center h1 divfullscreen">Clubs</div>
+          <div id="nbrClubs" class="text-success text-center h4 hpElem"></div>
+        </div>
+          <div class="col-1 px-1">
+            <div></div>
+          </div>
+      </div>  
+        
+      <div class=clearfix></div>
+        
+      <div id="clbContainer" class="mt-0 pt-3 pb-5 px-2"  style="background-color:lightblue;">
+        <div  class="my-2 border d-none" style="border-radius: 25px; background:lightgoldenrodyellow;">
+          
+          <div class="row m-2 p-0 my-3  align-items-center">
+            
+            <div class="col-2 px-1 ml-1">
+              <div id="clbClub"      class="label font-weight-bold text-center h2 align-middle"></div>
+            </div>
+            <div class="col px-1">
+              <div id="clbLong" class="label  text-center h4 pb-0 my-0"></div>
+              <div    class="label text-center h6"><small>Long</small></div>
+              <div id="clbLoft" class="label  text-center h4 pb-0 my-0"></div>
+              <div    class="label text-center h6"><small>Loft<br>&nbsp</small></div>
+            </div>          
+            <div class="col px-1">
+              <div id="clbAvg" class="label  text-center h4 pb-0 my-0"></div>
+              <div    class="label text-center h6"><small>Avg</small></div>
+              <div id="clbLaunchAngle" class="label  text-center h4 pb-0 my-0"></div>
+              <div    class="label text-center h6"><small>Launch Angle</small></div>
+            </div>          
+            <div class="col px-1">
+              <div id="clbShort" class="label  text-center h4 pb-0 my-0"></div>
+              <div    class="label text-center h6"><small>Short</small></div>
+              <div id="clbBallSpeed" class="label  text-center h4 pb-0 my-0"></div>
+              <div    class="label text-center h6"><small>Ball Speed</small></div>
+            </div>          
+            <div class="col px-1">
+              <div id="clbNbr" class="label  text-center h4 pb-0 my-0"></div>
+              <div    class="label text-center h6"><small>Nbr</small></div>
+              <div id="clbDistance" class="label  text-center h4 pb-0 my-0"></div>
+              <div    class="label text-center h6"><small>Distance<br>&nbsp</small></div>
+            </div>          
+              
+            
+            <div class="col-1 px-1">
+              <div id="clbEditClub" class="label  text-right h2 text-muted align-middle cursor-pointer"><i class="material-icons">arrow_forward_ios</i></div>
+            </div>
+            
+          </div>
+          
+        </div>          
+        
+      </div>  
+      
+      <div class="row fixed-bottom pb-3">
+        <div class="col text-center">
+          <div class="btn-group" role="group">            
+            <button class="btn btn-blue btn-lg btn-raised py-2" id="btnAddClub">Add Club</button>
+          </div>
+        </div>
+      </div>
+        
+      <div class="clearfix"></div>
+      
+</div>  
+
+
+<div class="modal fade" id="club-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title divfullscreen">Club Maintenance</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="club-form"  method="get" action="">
+  
+          <fieldset>
+            
+            <div class="form-group row d-none">
+              <label for="clbmIdx" class="col-sm-4 col-form-label">Id</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="clbmIdx" name="clbmIdx">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-3">
+                <label for="clbmClub" class="col col-form-label">Club</label>
+                <input type="text" class="form-control text-success h4" id="clbmClub" name="clbmClub" required>
+              </div>
+              <div class="col-6">
+                <label for="clbmDate" class="col col-form-label">Date</label>
+                <input type="date" class="form-control text-success h4" id="clbmDate" name="clbmDate" required>
+              </div>
+            </div>
+                    
+            <div class="form-group row">
+              <div class="col-5">
+                <label for="clbmMfg" class="col col-form-label">Mfg</label>
+                <input type="text" class="form-control text-success h4" id="clbmMfg" name="clbmMfg">
+              </div>
+              <div class="col">
+                <label for="clbmModel" class="col col-form-label">Model</label>
+                <input type="Model" class="form-control text-success h4" id="clbmModel" name="clbmModel">
+              </div>
+              <div class="col-3">
+                <label for="clbmLoft" class="col col-form-label">Loft</label>
+                <input type="number" class="form-control text-center text-success h4" id="clbmLoft" name="clbmLoft">
+              </div>
+            </div>
+                    
+                    
+            <div class="form-group row">
+              <div class="col-3">
+                <label for="clbmLong" class="col col-form-label">Long</label>
+                <input type="number" class="form-control text-center text-success h4" id="clbmLong" name="clbmLong">
+              </div>
+              <div class="col-3">
+                <label for="clbmAvg" class="col col-form-label">Avg</label>
+                <input type="number" class="form-control text-center text-success h4" id="clbmAvg" name="clbmAvg">
+              </div>
+              <div class="col-3">
+                <label for="clbmShort" class="col col-form-label">Short</label>
+                <input type="number" class="form-control text-center text-success h4" id="clbmShort" name="clbmShort">
+              </div>
+              <div class="col-3">
+                <label for="clbmNbr" class="col col-form-label">Nbr</label>
+                <input type="number" class="form-control text-center text-success h4" id="clbmNbr" name="clbmNbr">
+              </div>
+            </div>
+                    
+            <div class="form-group row">
+              <div class="col-3 ml-0 pl-0">
+                <div class="form-check mt-1">
+                  <label class="form-check-label text-center mt-1" for="clbmCalcDist">Recommend Club</label>
+                  <br>
+                  <input class="form-check-input ml-5 mt-3" type="checkbox" value="" id="clbmCalcDist">
+                </div>              
+              </div>
+              <div class="col-3 align-center">
+                <label for="clbmLaunch" class="col col-form-label text-center">Launch Angle</label>
+                <input type="number" class="form-control text-center text-success h4" id="clbmLaunch" name="clbmLaunch">
+              </div>
+              <div class="col-3 align-center">
+                <label for="clbmSpeed" class="col col-form-label text-center">Ball Speed</label>
+                <input type="number" class="form-control text-center text-success h4" id="clbmSpeed" name="clbmSpeed">
+              </div>
+              <div class="col-3 align-center">
+                <br>
+                <label for="clbmDistance" class="col col-form-label text-center ml-0 pl-0">Distance</label>
+                <input type="number" class="form-control text-center text-success h4" id="clbmDistance" name="clbmDistance">
+              </div>
+            </div>
+                    
+          </fieldset>
+        </form>      
+      </div>
+      
+      <div class="modal-footer">
+          <input id="btnSubmitClub" class="btn btn-primary" type="submit" value="Submit">
+          <button id = "btnDeleteClub" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>

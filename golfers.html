@@ -1,0 +1,113 @@
+<div class="">
+
+  <div class=" row m-0 px-2 py-3 sticky-top border-bottom" style="background-color: #f9f9f9;">
+    <div class="col-1 px-1 mt-2">
+      <div class="label  text-center h1 mt-2 cursor-pointer" onclick="goHome()"><i class="material-icons">arrow_back_ios</i></div>
+    </div>
+    <div class="col px-1">
+      <div class="label  text-center h1 divfullscreen">Golfers</div>
+      <div id="nbrGolfers" class="text-success text-center h4 hpElem"></div>
+    </div>
+    <div class="col-1 px-1">
+      <div></div>
+    </div>
+  </div>
+
+  <div class=clearfix></div>
+
+  <div id="glfContainer" class=" mt-0 pt-3 pb-5 px-2" style="background-color:lightblue;">
+    <div class=" my-2 border d-none" style="border-radius: 25px; background:lightgoldenrodyellow;">
+
+      <div class="row m-2 p-0 my-3  align-items-center">
+        <div class="col px-1">
+          <div id="glfName" class="label  text-left h5 pb-0 align-middle font-weight-bold"></div>
+        </div>
+
+        <div class="col-2 px-1 mr-2">
+          <div id="glfNbr" class="label  text-center h5 pb-0 align-middle font-weight-bold"></div>
+        </div>
+
+      <div class="col-2 px-1 align-right">
+          <div class=""><a href="" class="align-right" id="btnGlfCallCourse"><i class="material-icons">phone</i></a>
+          </div>
+        </div>
+
+      <div class="col-2 px-1 align-right">
+          <div class=" align-right"><a href="" class="align-center" id="btnGlfTextTeetime"><i class="material-icons"
+                style="color:DeepSkyBlue;">textsms</i></a></div>
+        </div>
+
+        <div class="col-1 px-2">
+          <div id="glfEditGolfer" class="label  text-right h2 text-muted align-middle cursor-pointer"><i
+              class="material-icons">arrow_forward_ios</i></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row fixed-bottom pb-3">
+    <div class="col text-center">
+      <div class="btn-group" role="group">
+        <button class="btn btn-blue btn-lg btn-raised py-2" id="btnAddGolfer">Add Golfer</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+
+
+
+
+  <div class="modal fade" id="golfer-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Golfer Maintenance</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="golfer-form" method="get" action="">
+
+            <fieldset>
+
+              <div class="form-group row d-none">
+                <label for="glfmIdx" class="col-sm-4 col-form-label">Id</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="glfmIdx" name="glfmIdx">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col">
+                  <label for="glfmName" class="col col-form-label">Name</label>
+                  <input type="text" class="form-control text-success h4" id="glfmName" name="glfmName" required>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col">
+                  <label for="glfmCell" class="col col-form-label">Cell</label>
+                  <input type="number" class="form-control text-success h4" id="glfmCell" name="glfmCell">
+                </div>
+              </div>
+
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <input id="btnSubmitGolfer" class="btn btn-primary" type="submit" value="Submit">
+          <button id="btnDeleteGolfer" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
