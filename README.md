@@ -1,6 +1,6 @@
-# golfscorecard-v3
+# golf
  
-https://dmoritz10.github.io/golfscorecard-v3/
+https://dmoritz10.github.io/golf/
 
 
 x Fix WGS Handicap

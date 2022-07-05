@@ -9,7 +9,7 @@
                 "type": "pwa-chrome",
                 "request": "launch",
                 "name": "Open index.html",
-                "file": "c:\\Users\\dmori\\Documents\\GitHub\\golfscorecard-v3\\index.html",
+                "file": "c:\\Users\\dmori\\Documents\\GitHub\\golf\\index.html",
                 "runtimeArgs": ["--disable-web-security"]
             }
            
