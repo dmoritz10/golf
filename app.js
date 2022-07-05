@@ -408,9 +408,9 @@ jQuery(function ($) {
             $('#btnAddGolfer')            .click(btnAddGolferHtml);
           
             // All tabs
-            $('.divfullscreen').click(function(){
-              document.documentElement.requestFullscreen();
-            });
+            // $('.divfullscreen').click(function(){
+            //   document.documentElement.requestFullscreen();
+            // });
           
             var whiteList = $.fn.tooltip.Constructor.Default.whiteList
           
