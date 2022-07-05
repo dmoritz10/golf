@@ -4,7 +4,7 @@
 	"description" : 	"Golf scoring and stats",
 	"theme_color" : 	"#f9f9f9",
 	"background_color": "#62db77",
-	"start_url" : 		"https://dmoritz10.github.io/golf",
+	"start_url" : 		"https://dmoritz10.github.io/golf/",
 	"display" : 		"standalone",
 	"splash_pages": 	null,
     "icons": [{
