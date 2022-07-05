@@ -717,7 +717,9 @@ function estimateCompletion() {
 
 function shareRound() {
 
-  var rsHtml = $('#rsContainer')[0].innerHTML
+  // var rsHtml = $('#rsContainer')[0].innerHTML
+
+  var rsHtml = document.getElementById("rsContainer").innerHTML;
 
   console.log(rsHtml)
 
