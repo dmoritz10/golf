@@ -723,5 +723,4 @@ function shareRound() {
 
   // window.open(x)
 
-
 }
