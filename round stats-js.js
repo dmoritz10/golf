@@ -717,10 +717,15 @@ function estimateCompletion() {
 
 function shareRound() {
 
-  // var email = 'mailto:test@example.com?subject=subject&body=<div style="background-color:powderblue;color:red;">'
+  var rsHtml = $('#rsContainer').html ()
 
-  // var x = encodeURIComponent(email)
+  console.log(rsHtml)
 
-  // window.open(x)
+  navigator.clipboard.write(rsHtml).then(function() {
+    console.log('Async: Copying to clipboard was successful!');
+    toast('Copied to clipboard', 1000)
+  }, function(err) {
+    console.error('Async: Could not copy text: ', err);
+  });
 
 }
