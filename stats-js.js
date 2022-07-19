@@ -59,10 +59,24 @@ async function btnShowStatsHtml() {
 
     var title = "Driving Accuracy"
     var rtn = driveAccuracy            (title, rounds, myStatsRng, endRow)        
-  rptArr.push(rtn)    
+  rptArr.push(rtn)   
+  
+  if (endRow > 0) {
 
     var title = "Lifetime"
     var rtn = lifeTime                  (title, rounds, endRow)        
+  rptArr.push(rtn.rounds)
+
+    var title = null 
+  rptArr.push(rtn.holes)
+
+    var title = null    
+  rptArr.push(rtn.strokes)
+
+  }
+
+ var title = "Lifetime"
+    var rtn = lifeTime                  (title, rounds, 0)        
   rptArr.push(rtn.rounds)
 
   var title = null 
@@ -991,10 +1005,6 @@ function lifeTime               (title, rnds, endRow) {
 
     var difdtInYrs = difdt / (1000*60*60*24*365)
 
-console.log(difdtInYrs)
-console.log(Math.floor(difdtInYrs))
-console.log('0')
-
     if (Math.round(difdtInYrs) - difdtInYrs )
 
     var years = Math.floor(difdtInYrs)
@@ -1008,7 +1018,7 @@ console.log('0')
     var days = Math.round((difdt - years * (1000*60*60*24*365) - months * (1000*60*60*24*365/12)) / (1000*60*60*24))
     if (days < 0) days = 0
   
-  var totTime =  years + "Y " + months + "M " + days + "D"
+    var totTime =  years + "Y " + months + "M " + days + "D"
 
     var totPlayTime = 0
     rounds.forEach((rnd) => {
@@ -1024,16 +1034,16 @@ console.log('0')
     var days = Math.floor(totPlayTime / (1000*60*60*24))
     var hours = Math.floor((totPlayTime - days * (1000*60*60*24)) / (1000*60*60))
     var minutes = Math.round((totPlayTime - days * (1000*60*60*24) - hours * (1000*60*60)) / (1000*60))
-  var playTime =  days + "D " + hours + "H " + minutes + "M"
-  
-  
-  var roundsPerYr = Math.round(nbrRounds / difdtInYrs)
-  
-  var holes = 0
-  var strokes = 0
-  var putts = 0
-  var penaltyStrokes = 0
-  var bunkers = 0
+    var playTime =  days + "D " + hours + "H " + minutes + "M"
+    
+    
+    var roundsPerYr = Math.round(nbrRounds / difdtInYrs)
+    
+    var holes = 0
+    var strokes = 0
+    var putts = 0
+    var penaltyStrokes = 0
+    var bunkers = 0
     rounds.forEach((rnd) => {
       var scorecard = JSON.parse(rnd.scoreCard)
       scorecard.scores.forEach( (val) => {
