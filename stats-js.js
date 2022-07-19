@@ -61,7 +61,7 @@ async function btnShowStatsHtml() {
     var rtn = driveAccuracy            (title, rounds, myStatsRng, endRow)        
   rptArr.push(rtn)   
   
-  if (endRow > 0) {
+  if (endRow.row3 > 0) {
 
     var title = "Summary"
     var rtn = lifeTime                  (title, rounds, endRow)        
