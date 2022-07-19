@@ -88,6 +88,7 @@ async function btnShowStatsHtml() {
   var title = null    
   rptArr.push(rtn.strokes)
 
+console.log(rptArr)
 
   var x = $("#tblStats").clone();
   $("#statsContainer").empty()
