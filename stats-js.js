@@ -63,7 +63,7 @@ async function btnShowStatsHtml() {
   
   if (endRow > 0) {
 
-    var title = "Lifetime"
+    var title = "Summary"
     var rtn = lifeTime                  (title, rounds, endRow)        
   rptArr.push(rtn.rounds)
 
