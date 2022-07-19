@@ -76,7 +76,10 @@ async function btnShowStatsHtml() {
   }
 
  var title = "Lifetime"
-    var rtn = lifeTime                  (title, rounds, 0)        
+
+    var allRows = {}
+    allRows['row3'] = 0
+    var rtn = lifeTime                  (title, rounds, allRows)        
   rptArr.push(rtn.rounds)
 
   var title = null 
