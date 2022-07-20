@@ -290,16 +290,16 @@ jQuery(function ($) {
             // Round Stats tab
             $('#btnRSScorecard')         .button().click(btnRSScorecard);
           
-            // $('[data-toggle="popover"]').popover({
+            $('[data-toggle="popover"]').popover({
           
-            //     html: true,
-            //     sanitize: false,
-            //     container: 'body',
-            //     template: '<div class="popover" role="tooltip"><div class="arrow"></div>' +
-            //     '<h4 class="popover-header"></h4>' +
-            //     '<h5 class="popover-body"></h5>' +
-            //     '</div>'
-            // });
+                html: true,
+                sanitize: false,
+                container: 'body',
+                template: '<div class="popover" role="tooltip"><div class="arrow"></div>' +
+                '<h4 class="popover-header"></h4>' +
+                '<h5 class="popover-body"></h5>' +
+                '</div>'
+            });
           
             // Show Rounds tab
             $('#btnShowRounds')           .click(btnShowRoundsHtml);
@@ -412,15 +412,15 @@ jQuery(function ($) {
             //   document.documentElement.requestFullscreen();
             // });
           
-            var whiteList = $.fn.tooltip.Constructor.Default.whiteList
+            // var whiteList = $.fn.tooltip.Constructor.Default.whiteList
           
-                whiteList.table = []
-                whiteList.td = []
-                whiteList.th = []
-                whiteList.thead = []
-                whiteList.tr = []
-                whiteList.tbody = []
-                whiteList.button = []
+            //     whiteList.table = []
+            //     whiteList.td = []
+            //     whiteList.th = []
+            //     whiteList.thead = []
+            //     whiteList.tr = []
+            //     whiteList.tbody = []
+            //     whiteList.button = []
           
             setupFormValidation()
           
