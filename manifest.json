@@ -1,6 +1,6 @@
 {
-	"name" : 			"Golf Scorecard",
-	"short_name" : 		"Dan's Golf",
+	"name" : 			"Golfer's Companion",
+	"short_name" : 		"Golf",
 	"description" : 	"Golf scoring and stats",
 	"theme_color" : 	"#f9f9f9",
 	"background_color": "#62db77",
