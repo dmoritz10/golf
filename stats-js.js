@@ -1269,7 +1269,7 @@ function graphRounds(rounds) {
     parent.innerHTML ='<canvas id="casChart" width="400" height="300" ></canvas>'; 
   } catch(e) {console.log(e)}
   
-  // var chart = new Chart(document.getElementById("casChart"), {
+  var chart = new Chart(document.getElementById("casChart"), {
    
     data: {
       labels: datePlayedArr,
