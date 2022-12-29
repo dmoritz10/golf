@@ -428,9 +428,7 @@ async function updateTeetimesOption() {
     var teetimes = readOption('teetimes', null)
     
     if (teetimes) {
-
       teetimes.sort(dateCompare);
-      
     }
 
     await updateOption('teetimes', teetimes)
