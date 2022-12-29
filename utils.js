@@ -1153,3 +1153,13 @@ function msToHHMMSS(ms) {
   return hhmmss.join(':');
 
 }
+
+function modal(state) {
+  if (state) {
+    $("#overlay").fadeIn("slow");;
+
+    // $("#overlay").css({"display":"block"});
+  } else {
+    $("#overlay").fadeOut("slow");;
+  }
+}

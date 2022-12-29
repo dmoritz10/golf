@@ -497,9 +497,13 @@ async function editGolfers(idx) {
         className: 'btn-primary',
         callback: async function(result){
 
+          modal(true)
+
           var response = $($.parseHTML(golferPrompt[0].innerHTML));
           
           await updateGolfers(response, idx)
+
+          modal(false)
 
         }
       }
