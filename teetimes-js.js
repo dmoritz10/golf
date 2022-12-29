@@ -433,7 +433,7 @@ async function updateTeetimesOption() {
       
     }
 
-  updateOption('teetimes', teetimes)
+    await updateOption('teetimes', teetimes)
 
 }
 
