@@ -194,3 +194,8 @@ body::-webkit-scrollbar { /* WebKit */
   background-color:#000;
   opacity:0.5;
 }
+
+body
+{
+  overscroll-behavior-y: contain;
+}
