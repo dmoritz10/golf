@@ -165,7 +165,6 @@ var openShts = async function (shts) {
 
 }
 
-
 function loadCoursesPlayedDropDown(selectCourse) {
 
     removeOldTeetimes()
@@ -379,7 +378,6 @@ function stdDev(arr){
   
 }
  
-
 function toast(e) {
     /*
    
@@ -398,7 +396,6 @@ function toast(e) {
   $("#myToast").toast('show');
 
 }
-
 
 function promiseRun (func) {
 
@@ -433,7 +430,6 @@ function gotoTab(tabName) {
   $tab.addClass( 'active show' );
 
 }
-
 
 function setupFormValidation() {
 
@@ -653,8 +649,6 @@ async function setSmsHref(d) {
   }
 
 }
-
-
 
 function setWebSiteHref(d) {
 
@@ -1078,9 +1072,6 @@ function findCourseIdx(courseName) {
   return arrShts['My Courses'].vals.findIndex(row => row[keyCol] === courseKey);
 
 }
-
-
-
 
 function parseUweather(wRptHtml) {
 
