@@ -80,7 +80,7 @@ async function runApp() {
 
   user = Goth.user()
 
-  var rtn = await getSSId('Travel Companion');
+  var rtn = await getSSId("Golfer's Companion");
 
   if (rtn.fileId) {spreadsheetId = rtn.fileId}
   else {
