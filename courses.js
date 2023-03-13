@@ -762,9 +762,9 @@ async function updateCourse(arrCourse, idx) {
   })
 
   if (idx > -1)  
-    await updateSheetRow(arrCourse, idx * 1 + 2, "Courses")
+    await updateSheetRow(arrCourse, idx * 1 + 2, "My Courses")
   else  {
-    await appendSheetRow(arrCourse, "Courses")
+    await appendSheetRow(arrCourse, "My Courses")
 
     var shtProps = await getCoursesSheetId()
     var grdProps = shtProps.gridProperties
@@ -784,7 +784,7 @@ async function updateCourse(arrCourse, idx) {
       }] 
     }
 
-    await sortSheet(sortSpec, "Courses")
+    await sortSheet(sortSpec, "My Courses")
 
   }
 
