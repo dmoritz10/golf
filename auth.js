@@ -98,7 +98,8 @@ async function initialUI() {
 
     arrShts = await openShts(
       [
-        { title: 'Settings', type: "all" }
+        { title: 'Settings', type: "all" },
+        { title: 'My Courses', type: "all" },
       ])
     
 
