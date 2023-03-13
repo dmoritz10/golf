@@ -108,11 +108,6 @@ async function initialUI() {
   arrOptions    = toObject(arrShts.Settings.vals)
   optionsIdx    = toObjectIdx(arrShts.Settings.vals)
 
-  // disable add/change/delete for Trips and Trip Detail
-
-  if (user['email'] != 'dmoritz10@gmail.com') {
-
-    
-  }
+  loadCoursesPlayedDropDown('hpSelectCourse')
 
 };
