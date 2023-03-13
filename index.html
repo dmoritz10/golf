@@ -8,8 +8,6 @@
 
 <!-- <link rel="icon" href="https://dmoritz10.github.io/golf/images/icons/golf-icon-144.png"> -->
 
-<script src="https://apis.google.com/js/platform.js"></script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <!-- <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
@@ -39,16 +37,14 @@
 
 <script>
 
-  // try { canUseGeo = document.featurePolicy.allowsFeature("geolocation") }
-  // catch(err) {console.log(err)}
-  // try { canUseGeo = document.featurePolicy.allowedFeatures("geolocation") }
-  // catch(err) {console.log(err)}
-  // try { canUseGeo = document.permissionsPolicy.allowsFeature("geolocation") }
-  // catch(err) {console.log(err)}
-    
   $(async function () {
 
     console.log('start code load')
+
+    // load gis
+
+    var g = await import('../common/gothic.js');
+    Goth = g.default
 
     // load html files
     
@@ -105,7 +101,15 @@
     
     
   
-  <div id="main-panel" class="m-0 p-0 container-fluid">
+  <div id="main-panel" class="min-vh-100 m-0 p-0 container-fluid">
+
+    <div class="toast-container position-absolute p-3 bottom-0 end-0" >
+      <div class="toast text-white bg-primary " id="myToast">
+        <div class="toast-body ">
+            <h5 id="toast-content" class="d-flex justify-content-center text-center "></h5>
+        </div>
+      </div>
+    </div>
   
     <div class="container" style="display: flex;justify-content: center;align-items: center ">
       <div class="toast d-none modal-body" id="myToast">
@@ -115,53 +119,13 @@
       </div>
     </div>
   
-    <!-- <ul data-role="navbar" class="nav nav-pills nav-fill" role="tablist" hidden >
-      <li class="nav-item">
-        <a class="nav-link p-2"        data-toggle="tab" href="#Auth"      role="tab">Authorize</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link p-2"        data-toggle="tab" href="#Home"      role="tab">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link p-2"        data-toggle="tab" href="#PlayRound" role="tab">Play Round</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link p-2"        data-toggle="tab" href="#Scorecard" role="tab">Play Round</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link p-2"        data-toggle="tab" href="#RoundStats" role="tab">Round Stats</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link p-2"        data-toggle="tab" href="#ShowRounds" role="tab">Show Rounds</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link p-2"        data-toggle="tab" href="#ShowHCP" role="tab">Round Detail</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link p-2"        data-toggle="tab" href="#Clubs" role="tab">Clubs</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link p-2"        data-toggle="tab" href="#Stats" role="tab">Stats</a>
-      </li>
-      <li class="nav-item bg-white">
-        <a class="nav-link p-2"        data-toggle="tab" href="#Teetimes" role="tab">Tee Times</a>
-      </li>
-      <li class="nav-item bg-white">
-        <a class="nav-link p-2"        data-toggle="tab" href="#Courses" role="tab">Courses</a>
-      </li>
-      <li class="nav-item bg-white">
-        <a class="nav-link p-2"        data-toggle="tab" href="#Golfers" role="tab">Golfers</a>
-      </li>
-    </ul> -->
-    
     <div id="overlay" style="z-index: 9999;" ></div>
 
     <div class="tab-content">
   
-      <div class="m-0 p-0 tab-pane fade show active disable-scrollbars" id="Auth">
+      <div class="m-0 p-0 tab-pane fade show active disable-scrollbars" id="Auth" >
 
         <div class="load-html" data-source="auth"></div>
-        <div class="load-script d-none" data-source="auth-js.js"></div>
                
       </div> 
 
@@ -244,20 +208,20 @@
 
         <div class="load-html" data-source="golfers"></div>
         <div class="load-script d-none" data-source="golfers-js.js"></div>
-                
 
       </div>        
     </div>  
   </div> 
 
-  <div class="load-script d-none" data-source="table-builder.js"></div>
+  <div class="load-script d-none" data-source="../common/table-builder.js"></div>
   <div class="load-script d-none" data-source="get rounds-js.js"></div>
   <div class="load-script d-none" data-source="update summary info.js"></div>
-  <div class="load-script d-none" data-source="xhr.js"></div>
-  <div class="load-script d-none" data-source="utils.js"></div>
+  <div class="load-script d-none" data-source="../common/xhr.js"></div>
+  <div class="load-script d-none" data-source="../common/utils.js"></div>
+  <div class="load-script d-none" data-source="../common/db.js"></div>
+  <div class="load-script d-none" data-source="auth.js"></div>
   <div class="load-script d-none" data-source="app.js"></div>
   
-  <!-- <button id="test_button" class="d-none">Test</button> -->
   
 </body>
 </html>
