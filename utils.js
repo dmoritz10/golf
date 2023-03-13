@@ -15,156 +15,6 @@ function dupIds () {
     if (!found) console.log('No duplicate IDs found');
 }
 
-async function getSSId(currUser) {
-
-  console.log(currUser)
-
-
-  var q = "name = 'Dan Golf - " + currUser.emailName +
-      "' AND " + "mimeType='application/vnd.google-apps.spreadsheet'" +
-      " AND " + "trashed = false"
-
-  console.log(q)
-
-  var ssId = await gapi.client.drive.files.list({
-      q: q,
-      fields: 'nextPageToken, files(id, name, ownedByMe)',
-      spaces: 'drive'
-  }).then(function (response) {
-
-      var files = response.result.files
-
-      // files = files.filter(item => item.ownedByMe);    // remove files that are shared with me
-      if (!files || files.length == 0)
-          return { fileId: null, msg: "'Dan Golf' not found" }
-
-      if (files.length > 1)
-          return { fileId: null, msg: "'Dan Golf' not unique" }
-
-      return { fileId: files[0].id, msg: 'ok' }
-
-  })
-
-  return ssId
-
-}
-
-async function initialUI() {
-  timerStart = new Date()
-
-    arrShts = await openShts(
-      [
-        { title: 'My Courses', type: "all" },
-        { title: 'Settings', type: "all" }
-      ])
-    
-// alert((new Date() - timerStart)/1000)
-  console.log((new Date() - timerStart)/1000)
-
-  console.log(arrShts)
-
-  arrOptions    = toObject(arrShts.Settings.vals)
-  optionsIdx    = toObjectIdx(arrShts.Settings.vals)
-
-  loadCoursesPlayedDropDown('hpSelectCourse')
-
-};
-
-var confirm = function (msg) {
-
-  return new Promise(resolve => {
-
-    bootbox.confirm({
-
-      size: "small",
-      message: '<b>' + msg + '</b>',
-      centerVertical: true,
-
-
-      callback: function (result) { /* result is a boolean; true = OK, false = Cancel*/
-
-        if (result) {
-
-          resolve(true)
-
-        } else {
-
-          resolve(false)
-
-        }
-      }
-    });
-  });
-}
-
-var openShts = async function (shts) {
-
-
-  return new Promise(async resolve => {
-
-    shtRngs = []
-    
-    for (s in shts) {
-
-      var sheet = shts[s]
-
-      switch (sheet.type) {
-
-        case "headers":
-          shtRngs.push("'" + sheet.title + "'!1:1")
-          break;
-
-        case "all"  :
-          shtRngs.push("'" + sheet.title + "'!A1:ZZ10000")
-          break;
-
-      }
-
-    }
-
-  await checkAuth()
-
-  gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: spreadsheetId, ranges: shtRngs})
-
-  .then(async function(response) {
-    
-    var allShts = response.result.valueRanges
-
-    var arr = []
-
-    for (s in allShts) {
-    
-      var shtVals = allShts[s].values
-
-      var colHdrs = shtVals[0]
-      var vals = shtVals.slice(1)
-      var rowCnt = vals ? vals.length : 0
-
-      var shtTitle = allShts[s].range.split('!')[0].replace(/'/g,"")
-
-      arr[shtTitle] =  {  
-        colHdrs:      colHdrs,
-        vals:         shtVals.slice(1),
-        columnCount:  colHdrs.length,
-        rowCount:     rowCnt
-      }
-      
-    }
-
-    resolve(arr)
-      
-  },
-
-    function(response) {
-
-      console.log('Error: ' + response.result.error.message);
-          
-    });
-
-  })
-
-}
-
 function loadCoursesPlayedDropDown(selectCourse) {
 
     removeOldTeetimes()
@@ -233,12 +83,6 @@ function removeOldTeetimes() {
 
 }
 
-function parseDateISOString(s) {
-  let ds = s.split(/\D/).map(s => parseInt(s));
-  ds[1] = ds[1] - 1; // adjust month
-  return new Date(...ds);
-}
-
 function calcTS(targetHandCapDiff) {
 
   var courseRating = $('#hpCourse_Rating').html()
@@ -267,92 +111,6 @@ function shortCourseName(longName) {
   return wrk
 }
 
-
-function calcRngA1(r, c, nbrRows, nbrCols) {
-
-  var rngA1 = colNbrToLtr(c) + r + ':' + colNbrToLtr(c + nbrCols - 1) + (r + nbrRows - 1)
-
-  return rngA1
- 
-}
-
-function colNbrToLtr(n){
-   if (n < 27){
-      return String.fromCharCode(64 + n);
-   }
-  else {
-      var first = Math.round(n / 26);
-  var second = n % 26;
-  return String.fromCharCode(64 + first) + String.fromCharCode(64 + second);
-   }
-}
-
-function toObject(arr) {
-  var rv = { };
-  for (var i = 0; i < arr.length; ++i)
-  if (arr[i] !== undefined) rv[arr[i][0]] = arr[i][1];
-  return rv;
-}
-
-function toObjectIdx(arr) {
-  var rv = { };
-  for (var i = 0; i < arr.length; ++i)
-  if (arr[i] !== undefined) rv[arr[i][0]] = i;
-  return rv;
-}
-
-function makeObj(courseInfo, cols) {
-
-  var rtnObj = { }
-  for (var i = 0; i < courseInfo.length; ++i)
-  if (courseInfo[i] !== undefined) rtnObj[cols[i]] = courseInfo[i];
-
-  return rtnObj;
-
-}
-
-function formatDate(d) {
-
-  return d.getMonth()+1 + '/' + d.getDate() + '/' + d.getFullYear()
-
-}
-
-function formattime(dte){
-
-   if (isNaN(Date.parse(dte))) return
-
-
-  var zero = '0', hours, minutes, seconds, time;
-  time = new Date(dte);
-
-  var hh = (zero + time.getHours()).slice( - 2);
-  var mm = (zero + time.getMinutes()).slice( - 2);
-  var ss = (zero + time.getSeconds()).slice( - 2);
-  return hh +':' + mm +':' + ss;
-}
-
-function formatNumber (str) { 
-
-    if (!str) {return}
-  var x = str.toString().split('.');
-  var x1 = x[0]; 
-    var x2 = x.length > 1 ? '.' + x[1] : '';
-  var rgx = /(\d+)(\d{3})/;
-  while (rgx.test(x1)) {
-    x1 = x1.replace(rgx, '$1' + ',' + '$2'); 
-    }
-  return x1 + x2; 
-
-};
-
-function formatPercent (str, nbrDec) {
-
-  if (!str) {return}
-
-  return Number((str* 100).toFixed(nbrDec))  + "%";
-
-}
-
 function stdDev(arr){
   // Creating the mean with Array.reduce
   let mean = arr.reduce((acc, curr)=>{
@@ -376,121 +134,6 @@ function stdDev(arr){
     stdDev: Math.round(Math.sqrt(sum / arr.length) * 10) / 10
   }
   
-}
- 
-function toast(e) {
-    /*
-   
-   bootbox.alert({
-       message: '<b>' + e + '</b>',
-       centerVertical: true,
-       size: 'small'
-   });
-   return
-    */
-
-  $("#toast-content").html(e)
-
-  $("#myToast").toast({delay: 5000});
-
-  $("#myToast").toast('show');
-
-}
-
-function promiseRun (func) {
-
-// this is a trick to convert the arguments array into an array, and drop the first one
-  var runArgs = Array.prototype.slice.call(arguments).slice(1);
-
-  return new Promise (function (resolve, reject) {
-
-    google.script.run
-      .withSuccessHandler(function (result) {
-        resolve(result);
-      })
-      .withFailureHandler(function (error) {
-        reject(error);
-      })
-
-    [func].apply(this, runArgs) ;
-        
-  })
-}
-
-function gotoTab(tabName) {
-
-  // var $tab = $('[href="#' + tabName + '"]')
-
-  // $tab.trigger('click');
-
-  var $tab = $('#' + tabName )
-
-  $( '.tab-content > div.active' ).removeClass( 'active show' );
-  
-  $tab.addClass( 'active show' );
-
-}
-
-function setupFormValidation() {
-
-    $.validator.setDefaults({
-      highlight: function (element) {
-        $(element).parent().addClass('text-danger');
-      },
-      unhighlight: function (element) {
-        $(element).parent().removeClass('text-danger');
-      },
-      errorElement: 'bold',
-      errorClass: 'form-control-feedback d-block',
-      errorPlacement: function (error, element) {
-        if (element.parent('.input-group').length) {
-          error.insertAfter(element.parent());
-        } else if (element.prop('type') === 'checkbox') {
-          error.appendTo(element.parent().parent().parent());
-        } else if (element.prop('type') === 'radio') {
-          error.appendTo(element.parent().parent().parent());
-        } else {
-          error.insertAfter(element);
-        }
-      },
-    });
-
-    $.validator.addMethod("editFrntRating", function (value, element) {
-      if (/^\d*\.?\d \/ \d+/.test(value)) {
-          return true;
-      } else {
-          return false;
-      };
-    }, "Format is 'nn.n / mmm' where n is front rating and m is front slope");
-
-    $.validator.addMethod("editGender", function (value, element) {
-      if (/^[MF]$/.test(value)) {
-          return true;
-      } else {
-          return false;
-      };
-    }, "Must be M or F");
-
-    $('#course-form').validate({
-      rules: {
-        scmFront: {
-              editFrntRating: true,
-              required: true
-          },
-        scmGender: {
-          editGender: true,
-            required: true
-        }
-
-      }
-    });    
-
-  // scmGender
-
-  $("#teetime-form").validate();
-  $("#golfer-form").validate();
-  // $("#course-form").validate();
-
 }
 
 function setupSumFunctions() {
@@ -664,7 +307,6 @@ function setWebSiteHref(d) {
 
 }
 
-
 function setSwingUHref(d) {
 
   if (d.url) {
@@ -707,89 +349,6 @@ function parseWeatherText(wRptHtml) {
   if (str < 0 || end < 0) console.log("Can't parse uweather report")  
 
   return wText
-
-}
-
-
-function readOption(key, defaultReturn = '') {
-
-  if (!arrOptions[key]) return defaultReturn
-  if (arrOptions[key] == 'null') return defaultReturn
-
-  try { var rtn = JSON.parse(arrOptions[key]) }
-  catch (err) { var rtn = arrOptions[key] }
-
-  return rtn
-
-}
-
-async function updateOption(key, val) {
-
-  if (typeof val === "object") {
-    var strVal = JSON.stringify(val)
-  } else {
-    var strVal = val
-  }
-
-  arrOptions[key] = strVal
-
-  var resource = {
-    "majorDimension": "ROWS",
-    "values": [[
-      key,
-      strVal
-    ]]
-  }
-
-  var row = optionsIdx[key] + 2
-
-  var params = {
-    spreadsheetId: spreadsheetId,
-    range: "'Settings'!A" + row + ":B" + row,
-    valueInputOption: 'RAW'
-  };
-
-  await checkAuth()
-
-  var gapiResult = await gapi.client.sheets.spreadsheets.values.update(params, resource)
-
-    .then(
-      async response => {
-        return response
-      },
-
-      async reason => {
-
-        console.log('updateOption')
-        console.log(reason)
-
-        bootbox.alert('error updating option "' + key + '": ' + reason.result.error.message);
-
-        return null
-
-      }
-    );
-
-}
-
-async function checkAuth() {
-
-  var signinStatus = await gapi.auth2.getAuthInstance().isSignedIn.get()
- 
-   if (!signinStatus) {
-     gotoTab('Auth')
-     return
-   }
-  
-
-  var minAuthRemaining = (new Date(gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().expires_at) - new Date()) / (1000 * 60)
-  if (minAuthRemaining < 10) {
-    console.log('auth reload - ' + Math.round(minAuthRemaining));
-    // alert('auth reload - ' + Math.round(minAuthRemaining));
-    await gapi.auth2.getAuthInstance().currentUser.get().reloadAuthResponse()
-  } else {
-    console.log('auth ok - ' + minAuthRemaining);
-  }
 
 }
 
@@ -864,6 +423,7 @@ async function getBearing(){
   })
 
 }
+
 function getPosition() {
   // Simple wrapper
   return new Promise((res, rej) => {
@@ -1119,38 +679,4 @@ function parseUweather(wRptHtml) {
 
   }
 
-}
-
-function msToHHMMSS(ms) {
-
-  ms = Math.abs(ms)
-
-  let seconds = Math.floor((ms / 1000) % 60);
-  let minutes = Math.floor((ms / 1000 / 60) % 60);
-  let hours = Math.floor((ms / 1000 / 3600) % 24)
-
-  if (hours) hours = (hours < 10) ? "0" + hours : hours
-  else hours = false
-  if (hours) minutes = (minutes < 10) ? "0" + minutes : minutes
-  else minutes;
-  seconds = (seconds < 10) ? "0" + seconds : seconds;
-
-  var hhmmss = []
-
-  if (hours) hhmmss.push(hours)
-  hhmmss.push(minutes)
-  hhmmss.push(seconds)
-
-  return hhmmss.join(':');
-
-}
-
-function modal(state) {
-  if (state) {
-    $("#overlay").fadeIn("slow");;
-
-    // $("#overlay").css({"display":"block"});
-  } else {
-    $("#overlay").fadeOut("slow");;
-  }
 }
