@@ -572,6 +572,8 @@ async function btnSCMSubmitCourseHtml() {
 
   // var c = JSON.parse(JSON.stringify(course))
 
+  console.log('idx', idx, course)
+
   if (idx) {                                                       // update existing course
 
     course[cols.indexOf("Phone")] = $('#scmPhone').val()
@@ -760,6 +762,8 @@ async function updateCourse(arrCourse, idx) {
     }
 
   })
+
+  console.log('arrCourse', arrCourse, idx)
 
   if (idx > -1)  
     await updateSheetRow(arrCourse, idx * 1 + 2, "My Courses")
