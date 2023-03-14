@@ -249,14 +249,15 @@ async function btnSubmitTeetimeHtml() {
   
   if (idx) {                                                       // update existing teetime
 
-    await checkAuth()
-    var request = await gapi.client.calendar.events.update({
-        'calendarId': 'primary',
-        'eventId': (arrTeetimes[idx].eventId ? arrTeetimes[idx].eventId : null),
-        'resource': event
-    });
+    // var request = await gapi.client.calendar.events.update({
+    //     'calendarId': 'primary',
+    //     'eventId': (arrTeetimes[idx].eventId ? arrTeetimes[idx].eventId : null),
+    //     'resource': event
+    // });
 
-    var eventId = request.result.id
+    var response = await updateCalendarEvent(arrTeetimes[idx].eventId ? arrTeetimes[idx].eventId : null, event)
+
+    var eventId = response.result.id
 
     arrTeetimes[idx].courseName = $( "#ttmSelectCourse option:selected" ).text(),
     arrTeetimes[idx].date = $('#ttmDate').val()
@@ -269,13 +270,13 @@ async function btnSubmitTeetimeHtml() {
   
   } else {                                                         // add new teetime
 
-    await checkAuth()
-    var request = await gapi.client.calendar.events.insert({
-        'calendarId': 'primary',
-        'resource': event
-    });
+    // var request = await gapi.client.calendar.events.insert({
+    //     'calendarId': 'primary',
+    //     'resource': event
+    // });
 
-    var eventId = request.result.id
+    var response = await insertCalendarEvent(event)
+    var eventId = response.result.id
 
     arrTeetimes.push({
       courseName: $( "#ttmSelectCourse option:selected" ).text(),
@@ -309,11 +310,11 @@ async function btnDeleteTeetimeHtml() {
     var idx = $('#ttmIdx').val()
 
 
-    var request = await gapi.client.calendar.events.delete({
-        'calendarId': 'primary',
-        'eventId': arrTeetimes[idx].eventId
-    })      
-    .then(async function(response) {
+    // var request = await gapi.client.calendar.events.delete({
+    //     'calendarId': 'primary',
+    //     'eventId': arrTeetimes[idx].eventId
+    // })      
+    // .then(async function(response) {
 
       arrTeetimes.splice(idx, 1)
 
@@ -321,14 +322,14 @@ async function btnDeleteTeetimeHtml() {
              
       console.log('teetime deleted')
       // console.log(response.result.updates.updatedRange)
-    }, 
+    // }, 
     
-    function(reason) {
+    // function(reason) {
       
-      console.error('error deleting course "' + prScore.courseName + '": ' + reason.result.error.message);      
-      // bootbox.alert('error deleting course "' + prScore.courseName + '": ' + reason.result.error.message);
+    //   console.error('error deleting course "' + prScore.courseName + '": ' + reason.result.error.message);      
+    //   // bootbox.alert('error deleting course "' + prScore.courseName + '": ' + reason.result.error.message);
     
-    });
+    // });
 
   } else {
   
