@@ -790,6 +790,9 @@ async function btnEndRoundHtml() {
   
   toast('Round saved.  Calculating new Handicap.')
 
+  var rounds = await getRounds()
+
+  courseSummary(rounds)
 
   btnShowHandicapHtml()
   
@@ -1678,5 +1681,5 @@ async function courseSummary(rounds) {
   await batchUpdateSheet(resource)
     
   return rounds
-  
+
 }
