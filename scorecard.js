@@ -742,7 +742,7 @@ async function btnEndRoundHtml() {
     prScore.finalScore,
     JSON.stringify(prScore),
     JSON.stringify(prCourse)
-]
+  ]
 
   await appendSheetRow(vals, 'Scorecard Upload')
   
@@ -1675,22 +1675,8 @@ async function courseSummary(rounds) {
     data
   }
 
-  await gapi.client.sheets.spreadsheets.values.batchUpdate({
-    spreadsheetId: spreadsheetId,
-    resource: resource
-  })
-    .then(function(response) { 
-      console.log('My Courses update successful')
-      console.log('gapiResult batchUpdate')
-      console.log(response)
-
-
-    }, function(reason) {
-      console.error('error updating courses "Nbr Times Played" : ' + reason.result.error.message);
-      alert('error updating courses "Nbr Times Played" : ' + reason.result.error.message);
-      return null
-    });
-  
+  await batchUpdateSheet(resource)
     
-    return rounds
+  return rounds
+  
 }
