@@ -1675,7 +1675,7 @@ async function courseSummary(rounds) {
 
   var resource = {
     valueInputOption: 'USER_ENTERED',
-    data
+    data: data
   }
 
   await batchUpdateSheet(resource)
