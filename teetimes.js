@@ -309,7 +309,9 @@ async function btnDeleteTeetimeHtml() {
 
     var idx = $('#ttmIdx').val()
 
-    await deleteCalendarEvent(arrTeetimes[idx].eventId)
+    var response = await deleteCalendarEvent(arrTeetimes[idx].eventId)
+
+    console.log('cal delete', response)
 
 
     // var request = await gapi.client.calendar.events.delete({
