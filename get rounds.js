@@ -318,56 +318,56 @@ function calcNbrToUse(mostRecent20) {
     return nbrToUse
 }
 
-async function updateTarScr(objRounds, cols) {
+// async function updateTarScr(objRounds, cols) {
 
-var arrCi = []
+// var arrCi = []
 
-for (var j = 0; j < objRounds.length; j++) {
+// for (var j = 0; j < objRounds.length; j++) {
   
-    var roundObj = objRounds[j]
+//     var roundObj = objRounds[j]
 
-    var ts = roundObj.objHandicap.targetScore
-    var targetScore = ts.score + ' ... ' + ts.front + ' / ' + ts.back
-    var ci = JSON.parse(roundObj.courseInfo)
+//     var ts = roundObj.objHandicap.targetScore
+//     var targetScore = ts.score + ' ... ' + ts.front + ' / ' + ts.back
+//     var ci = JSON.parse(roundObj.courseInfo)
 
-    console.log(JSON.parse(JSON.stringify(ci.courseInfo)))
+//     console.log(JSON.parse(JSON.stringify(ci.courseInfo)))
 
-    ci.courseInfo['Target Score'] = targetScore
-    ci.courseInfo['Course Handicap'] = Math.round(roundObj.objHandicap.courseHandicap)
-    ci.courseInfo['Course Equivalent Score'] = Math.round(roundObj.objHandicap.courseAdjustedScore)
+//     ci.courseInfo['Target Score'] = targetScore
+//     ci.courseInfo['Course Handicap'] = Math.round(roundObj.objHandicap.courseHandicap)
+//     ci.courseInfo['Course Equivalent Score'] = Math.round(roundObj.objHandicap.courseAdjustedScore)
 
-    console.log(roundObj.objHandicap.courseAdjustedScore)
-    console.log( Math.round(roundObj.objHandicap.courseAdjustedScore))
-    console.log(ci.courseInfo['Course Equivalent Score'])
-    console.log(ci.courseInfo)
+//     console.log(roundObj.objHandicap.courseAdjustedScore)
+//     console.log( Math.round(roundObj.objHandicap.courseAdjustedScore))
+//     console.log(ci.courseInfo['Course Equivalent Score'])
+//     console.log(ci.courseInfo)
 
-    arrCi.push([JSON.stringify(ci)])
-}
+//     arrCi.push([JSON.stringify(ci)])
+// }
   
-  console.log(arrCi)
+//   console.log(arrCi)
   
-  var ciCol = cols.indexOf('courseInfo') 
-  var rng = calcRngA1(2, ciCol + 1, arrCi.length, 1)  
+//   var ciCol = cols.indexOf('courseInfo') 
+//   var rng = calcRngA1(2, ciCol + 1, arrCi.length, 1)  
   
-  var params = {
-  spreadsheetId: spreadsheetId,
-  resource: { data: [
-                {
-        range: "'Scorecard Upload'!" + rng,
-        values: arrCi
+//   var params = {
+//   spreadsheetId: spreadsheetId,
+//   resource: { data: [
+//                 {
+//         range: "'Scorecard Upload'!" + rng,
+//         values: arrCi
                     
-                }
-            ], 
-  valueInputOption: "RAW"
-        }
-    };
+//                 }
+//             ], 
+//   valueInputOption: "RAW"
+//         }
+//     };
 
-  await checkAuth()
-  await gapi.client.sheets.spreadsheets.values.batchUpdate(params)
-    .then(function(response) { console.log('"Scorecard Upload Test" update successful')
-    console.log(response)
-    }, function(reason) {
-      console.error('error updating option "' + '' + '": ' + reason.result.error.message);
-      alert('error updating option "' + '' + '": ' + reason.result.error.message);
-    });
-}
+//   await checkAuth()
+//   await gapi.client.sheets.spreadsheets.values.batchUpdate(params)
+//     .then(function(response) { console.log('"Scorecard Upload Test" update successful')
+//     console.log(response)
+//     }, function(reason) {
+//       console.error('error updating option "' + '' + '": ' + reason.result.error.message);
+//       alert('error updating option "' + '' + '": ' + reason.result.error.message);
+//     });
+// }

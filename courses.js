@@ -770,7 +770,6 @@ async function updateCourse(arrCourse, idx) {
   else  {
     await appendSheetRow(arrCourse, "My Courses")
 
-    var shtProps = await getCoursesSheetId()
     var grdProps = shtProps.gridProperties
 
     var sortSpec = { "requests": 
@@ -791,120 +790,6 @@ async function updateCourse(arrCourse, idx) {
     await sortSheet(sortSpec, "My Courses")
 
   }
-
-  // await checkAuth()
-  // var resource = {
-  //   "majorDimension": "ROWS",
-  //   "values": [arrCourse]
-  // }
-
-  // if (idx) {
-
-    // var row = idx * 1 + 2
-    // var rng = calcRngA1(row, 1, 1, arrShts['My Courses'].colHdrs.length + 1)
-
-    // var params = {
-    //   spreadsheetId: spreadsheetId,
-    //   range: "'My Courses'!" + rng,
-    //   valueInputOption: 'RAW'
-    // };
-
-
-    // await gapi.client.sheets.spreadsheets.values.update(params, resource)
-    //   .then(function (response) {
-    //     console.log('My Courses update successful')
-    //     console.log(response)
-    //   }, function (reason) {
-    //     console.error('error updating option "' + row + '": ' + reason.result.error.message);
-    //     alert('error updating option "' + row + '": ' + reason.result.error.message);
-    //   });
-
-  // } else {
-
-  //   var row = 2
-  //   var rng = calcRngA1(row, 1, 1, arrShts['My Courses'].colHdrs.length + 1)
-
-  //   var params = {
-  //     spreadsheetId: spreadsheetId,
-  //     range: "'My Courses'!" + rng,
-  //     valueInputOption: 'RAW',
-  //     insertDataOption: 'INSERT_ROWS'
-  //   };
-
-  //   await gapi.client.sheets.spreadsheets.values.append(params, resource)
-  //     .then(async function (response) {
-
-  //       var shtProps = await getCoursesSheetId()
-  //       var grdProps = shtProps.gridProperties
-
-  //       var request = { "requests": 
-  //         [{ "sortRange": 
-  //           { "range": { 
-  //             "sheetId": shtProps.sheetId, 
-  //             "startRowIndex": 1, 
-  //             "endRowIndex": grdProps.rowCount, 
-  //             "startColumnIndex": 0, 
-  //             "endColumnIndex": grdProps.columnCount-1 
-  //           }, 
-  //           "sortSpecs": 
-  //           [{ "sortOrder": "ASCENDING", "dimensionIndex": 0 }] 
-  //           } 
-  //         }] 
-  //       }
-
-        // await gapi.client.sheets.spreadsheets.batchUpdate({
-        //   spreadsheetId: spreadsheetId,
-        //   resource: request
-        // }).then(response => {
-
-  //         console.log('sort complete')
-  //         console.log(response)
-
-  //       })
-
-  //     },
-
-  //       function (reason) {
-
-  //         console.error('error appending course "' + prScore.courseName + '": ' + reason.result.error.message);
-  //         bootbox.alert('error appending course "' + prScore.courseName + '": ' + reason.result.error.message);
-
-  //       });
-
-  // }
-
-}
-
-async function getCoursesSheetId() {
-
-  return new Promise(async resolve => {
-
-    await gapi.client.sheets.spreadsheets.get({spreadsheetId})
-
-    .then(async function(response) {
-
-      var shtProps = response.result.sheets
-
-      console.log(shtProps)
-
-      for (let i = 0 ; i < shtProps.length; i++) {
-
-        var sht = shtProps[i].properties
-
-        console.log(sht)
-
-        if (sht.title === "My Courses") {
-
-          resolve( sht)
-
-          break;
-
-        }
-      }
-
-    })
-
-  })
 
 }
 
