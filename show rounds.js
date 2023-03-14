@@ -186,7 +186,7 @@ async function showRoundDetail (rowIdx) {
   var response = await getSheetRange(calcRngA1(rowIdx + 2, 1, 1, 100), 'Scorecard Upload')
   
     var cols = suSht['Scorecard Upload'].colHdrs
-    var round = response.result.values[0]
+    var round = response.result.valueRanges[0].values[0]
     var roundObj = makeObj(round, cols)
     
     prCourse = JSON.parse(roundObj.courseInfo)
