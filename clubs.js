@@ -117,8 +117,6 @@ async function btnSubmitClubHtml() {
 
   if (!$('#club-form').valid()) return
   
-  await checkAuth()
-
   var arrClubs = readOption('Clubs', [])
   
   var idx = $('#clbmIdx').val()

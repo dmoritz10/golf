@@ -178,10 +178,12 @@ async function showRoundDetail (rowIdx) {
 
   var range = "'Scorecard Upload'!" + calcRngA1(rowIdx + 2, 1, 1, 100)
   
-  await checkAuth()
+  // await checkAuth()
   
-  await gapi.client.sheets.spreadsheets.values.get({spreadsheetId: spreadsheetId, range: range})
-  .then(function(response) {
+  // await gapi.client.sheets.spreadsheets.values.get({spreadsheetId: spreadsheetId, range: range})
+  // .then(function(response) {
+
+  var response = await getSheetRange(calcRngA1(rowIdx + 2, 1, 1, 100), 'Scorecard Upload')
   
     var cols = suSht['Scorecard Upload'].colHdrs
     var round = response.result.values[0]
@@ -192,7 +194,7 @@ async function showRoundDetail (rowIdx) {
 
     btnRoundStatsHtml()
 
-  })
+  // })
 
 }
 
