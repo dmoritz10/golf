@@ -140,11 +140,11 @@ async function btnShowRoundsHtml() {
     
    if (nbrRounds == rndCntr) 
   
-    {$ ('#srNbrRounds').html(nbrRounds)}
+    {$ ('#srNbrRounds').html(formatNumber(nbrRounds))}
     
   else 
   
-    { $ ('#srNbrRounds').html(rndCntr + ' of ' + nbrRounds)}
+    { $ ('#srNbrRounds').html(formatNumber(rndCntr) + ' of ' + formatNumber(nbrRounds))}
   
     $('#rsGoTo')[0].setAttribute("onclick", `gotoTab('ShowRounds')`);
   
@@ -165,7 +165,7 @@ async function btnShowRoundsHtml() {
 
   var nbr = $("#srContainer").children().not(":hidden").length
 
-  $("#srNbrRounds").text(nbr)
+  $("#srNbrRounds").text(formatNumber(nbr))
 
   $('#srContainer > div').click(function(e){         // highlight clicked row
     $('#srContainer > div').removeClass('sheet-focus');

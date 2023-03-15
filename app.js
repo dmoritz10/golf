@@ -199,7 +199,7 @@ jQuery(function ($) {
 
                 var nbr = $("#srContainer").children().not(":hidden").length
 
-                $("#srNbrRounds").text(nbr)
+                $("#srNbrRounds").text(formatNumber(nbr))
 
             });
 
