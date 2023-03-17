@@ -258,7 +258,7 @@ jQuery(function ($) {
             // Courses
             $('#btnShowCourses')         .click(btnShowCoursesHtml);
             $('#btnSCSelect')            .click(btnSCSelectHtml);
-            $('#btnHPHoleDetail')         .button().click(btnHPHoleDetailHtml);
+            // $('#btnHPHoleDetail')         .button().click(btnHPHoleDetailHtml);
             $('#btnSCMFetchSxs')         .click(btnSCMFetchSxsHtml);
             $('#btnSCMSubmitCourse')         .click(btnSCMSubmitCourseHtml);
             $('#btnAddCourse')            .click(btnAddCourseHtml);        
