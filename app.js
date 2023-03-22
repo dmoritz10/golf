@@ -172,6 +172,8 @@ jQuery(function ($) {
           
             $('[data-bs-toggle="popover"]').popover()
 
+            console.log('data-bs-toggle', $('[data-bs-toggle="popover"]'))
+
             // $('[data-toggle="popover"]').popover({
           // 
             //     html: true,
