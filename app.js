@@ -170,7 +170,7 @@ jQuery(function ($) {
             // Round Stats tab
             $('#btnRSScorecard')         .button().click(btnRSScorecard);
           
-            $('[data-bs-toggle="popover"]').popover()
+            $('#prHole').popover()
 
             console.log('popover', $('[data-bs-toggle="popover"]'))
 
