@@ -170,7 +170,7 @@ jQuery(function ($) {
             // Round Stats tab
             $('#btnRSScorecard')         .button().click(btnRSScorecard);
           
-            $('#prHole').popover()
+            $('#prHole xxx').popover()
 
             console.log('popover', $('[data-bs-toggle="popover"]'))
 
@@ -250,13 +250,13 @@ jQuery(function ($) {
             console.log('puttsOriginalState')
             console.log(puttsOriginalState)
           
-            $('body').on('click', function (e) {
-              $('[data-bs-toggle="popover"]').each(function () {
-                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-                  $(this).popover('hide');
-                }
-              });
-            });
+            // $('body').on('click', function (e) {
+            //   $('[data-bs-toggle="popover"]').each(function () {
+            //     if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            //       $(this).popover('hide');
+            //     }
+            //   });
+            // });
           
           
             // Courses
