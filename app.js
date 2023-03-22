@@ -183,8 +183,8 @@ jQuery(function ($) {
           
             // Show Rounds tab
             $('#btnShowRounds')           .click(btnShowRoundsHtml);
-            $('#btnSRSelect')            .click(btnSRSelectHtml);
-            $('#btnSRReset')            .click(btnSRResetHtml);
+            $('#btnSRSelect')             .click(btnSRSelectHtml);
+            $('#btnSRReset')              .click(btnSRResetHtml);
             
             $('#srSelectDropDown').on('show.bs.dropdown', function () {
                 btnSRMoreVertHtml()
@@ -208,7 +208,7 @@ jQuery(function ($) {
             // Show Handicap
             $('#btnShowHandicap')         .click(btnShowHandicapHtml);
             $('#btnHCPSelect')            .click(btnHCPSelectHtml);
-            $('#btnHCPReset')            .click(btnHCPResetHtml);
+            $('#btnHCPReset')             .click(btnHCPResetHtml);
             $('#hcpSelectDropDown').on('show.bs.dropdown', function () {
                 btnHCPMoreVertHtml()
             })
@@ -225,17 +225,17 @@ jQuery(function ($) {
             // Show Stats
             $('#btnShowStats')          .click(btnShowStatsHtml);
             $('#btnStatSelect')         .click(btnStatSelectHtml);
-            $('#btnStatReset')              .click(btnStatResetHtml);
+            $('#btnStatReset')          .click(btnStatResetHtml);
             $('#statSelectDropDown').on('show.bs.dropdown', function () {
               btnStatsMoreVertHtml()
             })
           
             // Show Teetimes
-            $('#btnTeetimes')          .click(btnTeetimesHtml);
-            $('#btnAddTeetime')        .click(btnAddTeetimeHtml);
-            $('#btnSubmitTeetime')     .click(btnSubmitTeetimeHtml);
-            $('#btnDeleteTeetime')     .click(btnDeleteTeetimeHtml);
-            $('#ttmSelectCourse')      .change(ttmSelectCourseChangeHtml);
+            $('#btnTeetimes')           .click(btnTeetimesHtml);
+            $('#btnAddTeetime')         .click(btnAddTeetimeHtml);
+            $('#btnSubmitTeetime')      .click(btnSubmitTeetimeHtml);
+            $('#btnDeleteTeetime')      .click(btnDeleteTeetimeHtml);
+            $('#ttmSelectCourse')       .change(ttmSelectCourseChangeHtml);
           
                    
             puttsOriginalState = $("#divPutts").clone(true);
