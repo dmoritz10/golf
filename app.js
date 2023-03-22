@@ -170,16 +170,18 @@ jQuery(function ($) {
             // Round Stats tab
             $('#btnRSScorecard')         .button().click(btnRSScorecard);
           
-            $('[data-bs-toggle="popover"]').popover({
+            $('[data-bs-toggle="popover"]').popover()
+
+            //   $('[data-bs-toggle="popover"]').popover({
           
-                html: true,
-                sanitize: false,
-                container: 'body',
-                template: '<div class="popover" role="tooltip"><div class="arrow"></div>' +
-                '<h4 class="popover-header"></h4>' +
-                '<h5 class="popover-body"></h5>' +
-                '</div>'
-            });
+            //     html: true,
+            //     sanitize: false,
+            //     container: 'body',
+            //     template: '<div class="popover" role="tooltip"><div class="arrow"></div>' +
+            //     '<h4 class="popover-header"></h4>' +
+            //     '<h5 class="popover-body"></h5>' +
+            //     '</div>'
+            // });
           
             // Show Rounds tab
             $('#btnShowRounds')           .click(btnShowRoundsHtml);
