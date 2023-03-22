@@ -170,20 +170,16 @@ jQuery(function ($) {
             // Round Stats tab
             $('#btnRSScorecard')         .button().click(btnRSScorecard);
           
-            $('[data-bs-toggle="popover"]').popover()
-
-            console.log('data-bs-toggle', $('[data-bs-toggle="popover"]'))
-
-            // $('[data-toggle="popover"]').popover({
-          // 
-            //     html: true,
-            //     sanitize: false,
-            //     container: 'body',
-            //     template: '<div class="popover" role="tooltip"><div class="arrow"></div>' +
-            //     '<h4 class="popover-header"></h4>' +
-            //     '<h5 class="popover-body"></h5>' +
-            //     '</div>'
-            // });
+            $('[data-toggle="popover"]').popover({
+          
+                html: true,
+                sanitize: false,
+                container: 'body',
+                template: '<div class="popover" role="tooltip"><div class="arrow"></div>' +
+                '<h4 class="popover-header"></h4>' +
+                '<h5 class="popover-body"></h5>' +
+                '</div>'
+            });
           
             // Show Rounds tab
             $('#btnShowRounds')           .click(btnShowRoundsHtml);
@@ -250,13 +246,13 @@ jQuery(function ($) {
             console.log('puttsOriginalState')
             console.log(puttsOriginalState)
           
-            // $('body').on('click', function (e) {
-            //   $('[data-toggle="popover"]').each(function () {
-            //     if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-            //       $(this).popover('hide');
-            //     }
-            //   });
-            // });
+            $('body').on('click', function (e) {
+              $('[data-toggle="popover"]').each(function () {
+                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                  $(this).popover('hide');
+                }
+              });
+            });
           
           
             // Courses
