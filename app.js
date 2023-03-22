@@ -170,7 +170,7 @@ jQuery(function ($) {
             // Round Stats tab
             $('#btnRSScorecard')         .button().click(btnRSScorecard);
           
-            $('[data-toggle="popover"]').popover({
+            $('[data-bs-toggle="popover"]').popover({
           
                 html: true,
                 sanitize: false,
@@ -247,7 +247,7 @@ jQuery(function ($) {
             console.log(puttsOriginalState)
           
             $('body').on('click', function (e) {
-              $('[data-toggle="popover"]').each(function () {
+              $('[data-bs-toggle="popover"]').each(function () {
                 if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
                   $(this).popover('hide');
                 }
