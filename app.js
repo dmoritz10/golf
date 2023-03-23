@@ -260,11 +260,11 @@ jQuery(function ($) {
           
           
             // Courses
-            $('#btnShowCourses')         .click(btnShowCoursesHtml);
-            $('#btnSCSelect')            .click(btnSCSelectHtml);
+            $('#btnShowCourses')          .click(btnShowCoursesHtml);
+            $('#btnSCSelect')             .click(btnSCSelectHtml);
             // $('#btnHPHoleDetail')         .button().click(btnHPHoleDetailHtml);
-            $('#btnSCMFetchSxs')         .click(btnSCMFetchSxsHtml);
-            $('#btnSCMSubmitCourse')         .click(btnSCMSubmitCourseHtml);
+            $('#btnSCMFetchSxs')          .click(btnSCMFetchSxsHtml);
+            $('#btnSCMSubmitCourse')      .click(btnSCMSubmitCourseHtml);
             $('#btnAddCourse')            .click(btnAddCourseHtml);        
             $('#scSelectDropDown').on('show.bs.dropdown', function () {
                 btnSCMoreVertHtml()
