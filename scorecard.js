@@ -207,7 +207,7 @@ function loadHoleDetail(offset) {
   $('#prDistanceBack').html('Back').css('opacity', .5)
   
   
-  $('#prHole')   .attr('data-bs-content', scorecard());  
+  $('#prHole')   .attr('data-content', scorecard());  
   
   setScoreDescriptions(prCourse.holeDetail[hole].par)
   
@@ -837,13 +837,13 @@ function gotoHole() {
     
   btnChangeHoleHtml(e)
   
-  $('[data-bs-original-title]').popover('hide');  
+  $('[data-original-title]').popover('hide');  
 
 }
 
 function btnTrackClubHtml() {
   
-  if (canUseGeo) $('#btnTrackClub')   .attr('data-bs-content', clubList());  
+  if (canUseGeo) $('#btnTrackClub')   .attr('data-content', clubList());  
 
 }
 
@@ -911,7 +911,7 @@ function updateClub() {
   
   }
   
-  $('[data-bs-original-title]').popover('hide'); 
+  $('[data-original-title]').popover('hide'); 
   
   
 //  google.script.run.logRound('currClubs', JSON.stringify(prClubs))
@@ -1072,11 +1072,11 @@ async function showPosition(position, pinLocn, strTimer) {
   if (cr) {
   
     disp += '  ' + (-(cr.club1Distance - cr.club1Dist.distance) > 0 ? '&#43;' : '' ) +  (-cr.club1Distance + cr.club1Dist.distance)
-    $('#prClubRec').attr('data-bs-content', calcDistDetails(rtn, distToPin, altitude));
+    $('#prClubRec').attr('data-content', calcDistDetails(rtn, distToPin, altitude));
   
   } else {
   
-    $('#prClubRec').attr('data-bs-content', 'A club could not be selected');
+    $('#prClubRec').attr('data-content', 'A club could not be selected');
   
   }
   

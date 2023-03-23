@@ -565,7 +565,7 @@ async function updateGolfers(response, idx){
 
 function getTTGolfers(idx) {
 
-  var html = `<div class="btn-group btn-group-toggle col p-0 m-0" data-bs-toggle="buttons">
+  var html = `<div class="btn-group btn-group-toggle col p-0 m-0" data-toggle="buttons">
   <label class="btn btn-light m-0 p-0 yesState">
       <input class="toggles" type="radio">yes
   </label>

@@ -371,7 +371,7 @@ async function btnHPHoleDetailHtml() {
 
   $("#btnHPHoleDetail").popover('hide');            // have to wait to fetch hole detail from server
 
-  $('#btnHPHoleDetail').attr('data-bs-content', await holeDetail());
+  $('#btnHPHoleDetail').attr('data-content', await holeDetail());
 
   $("#btnHPHoleDetail").popover('show');
 

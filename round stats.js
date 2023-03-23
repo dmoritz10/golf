@@ -21,15 +21,15 @@ function btnRoundStatsHtml() {
   $('#rsPutts')   .html ( $.sum (prScore.scores, 'putts'))
   $('#rsFairways').html ( $.fairwaysHit(prScore.scores))
 
-  // $('#rsHoles')   .attr('data-bs-content', calcHoleSummary(RSCalledFrom));
-  $('#rsHoles')   .attr('data-bs-content', calcHoleSummary());
-  $('#rsScore')   .attr('data-bs-content', calcScoreSummary());
-  $('#rsPutts')   .attr('data-bs-content', calcPuttSummary());
-  $('#rsFairways').attr('data-bs-content', calcDriveSummary());
+  // $('#rsHoles')   .attr('data-content', calcHoleSummary(RSCalledFrom));
+  $('#rsHoles')   .attr('data-content', calcHoleSummary());
+  $('#rsScore')   .attr('data-content', calcScoreSummary());
+  $('#rsPutts')   .attr('data-content', calcPuttSummary());
+  $('#rsFairways').attr('data-content', calcDriveSummary());
   
   console.log(calcScoreSummary())
   
-  $('#rsTees').attr('data-bs-content', calcCourseSummary());
+  $('#rsTees').attr('data-content', calcCourseSummary());
 
   var scoreAnal = []
   
@@ -63,7 +63,7 @@ function btnRoundStatsHtml() {
 
 function btnRSScorecard() {
   
-  $('#btnRSScorecard')   .attr('data-bs-content', scorecard('RoundStats'));  
+  $('#btnRSScorecard')   .attr('data-content', scorecard('RoundStats'));  
 
 }
 

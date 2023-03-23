@@ -170,20 +170,20 @@ jQuery(function ($) {
             // Round Stats tab
             $('#btnRSScorecard')         .button().click(btnRSScorecard);
           
-            $('#prHole').popover()
+            // $('#prHole').popover()
 
-            console.log('popover xxx', $('[data-bs-toggle="popover"]'))
+            // console.log('popover xxx', $('[data-toggle="popover"]'))
 
-            //   $('[data-bs-toggle="popover"]').popover({
+              $('[data-toggle="popover"]').popover({
           
-            //     html: true,
-            //     sanitize: false,
-            //     container: 'body',
-            //     template: '<div class="popover" role="tooltip"><div class="arrow"></div>' +
-            //     '<h4 class="popover-header"></h4>' +
-            //     '<h5 class="popover-body"></h5>' +
-            //     '</div>'
-            // });
+                html: true,
+                sanitize: false,
+                container: 'body',
+                template: '<div class="popover" role="tooltip"><div class="arrow"></div>' +
+                '<h4 class="popover-header"></h4>' +
+                '<h5 class="popover-body"></h5>' +
+                '</div>'
+            });
           
             // Show Rounds tab
             $('#btnShowRounds')           .click(btnShowRoundsHtml);
@@ -251,7 +251,7 @@ jQuery(function ($) {
             console.log(puttsOriginalState)
           
             $('body').on('click', function (e) {
-              $('[data-bs-toggle="popover"]').each(function () {
+              $('[data-toggle="popover"]').each(function () {
                 if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
                   $(this).popover('hide');
                 }
