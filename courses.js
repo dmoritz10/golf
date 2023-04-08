@@ -756,7 +756,7 @@ async function updateCourse(arrCourse, idx) {
     catch (e) { var isDate = false }
 
     if (isDate) {
-      arr[idx] = new Date(val)                                // this actually creates an invalid date format that is not updated by gapi.  Perfect !!
+      arr[idx] = new Date(val)    // this actually creates an invalid date format that is not updated by gapi.  Perfect !!
     } else {
       isNaN(val) || val == '' ? val : arr[idx] = Number(val)
     }
