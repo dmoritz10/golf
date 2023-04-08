@@ -777,9 +777,9 @@ async function updateCourse(arrCourse, idx) {
         { "range": { 
           "sheetId": null, 
           "startRowIndex": 1, 
-          "endRowIndex": grdProps.rowCount, 
+          "endRowIndex": arrCourse.length, 
           "startColumnIndex": 0, 
-          "endColumnIndex": grdProps.columnCount-1 
+          "endColumnIndex": arrCourse[0].length 
         }, 
         "sortSpecs": 
         [{ "sortOrder": "ASCENDING", "dimensionIndex": 0 }] 
