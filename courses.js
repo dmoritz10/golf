@@ -611,12 +611,15 @@ async function btnSCMSubmitCourseHtml() {
     course[cols.indexOf("SxS Hole Detail")] = $('#scmHoleDetail').val()
 
   }
-
+  , endRowIndex, 
   arrShts['My Courses'].vals[idx] = course
 
-  console.log('idx', arrShts['My Courses'].vals[idx], course)
+  var endRowIndex     = arrShts['My Courses'].vals.length
+  var endColumnIndex  = course.length - 1
 
-  await updateCourse(course, idx)
+  console.log('idxs', endRowIndex, endColumnIndex)
+
+  await updateCourse(course, idx, endRowIndex, endColumnIndex)
 
 
   // To update only the SxS Hole Detail column
@@ -751,7 +754,7 @@ function scmCalcBogeyBack9(idx) {
 
 }
 
-async function updateCourse(arrCourse, idx) {
+async function updateCourse(arrCourse, idx, endRowIndex, endColumnIndex) {
 
   arrCourse.forEach((val, idx, arr) => {
 
@@ -773,14 +776,16 @@ async function updateCourse(arrCourse, idx) {
   else  {
     await appendSheetRow(arrCourse, "My Courses")
 
+    endRowIndex++
+
     var sortSpec = { "requests": 
       [{ "sortRange": 
         { "range": { 
           "sheetId": null, 
           "startRowIndex": 1, 
-          "endRowIndex": arrCourse.length, 
+          "endRowIndex": endRowIndex, 
           "startColumnIndex": 0, 
-          "endColumnIndex": arrCourse[0].length 
+          "endColumnIndex": endColumnIndex 
         }, 
         "sortSpecs": 
         [{ "sortOrder": "ASCENDING", "dimensionIndex": 0 }] 
