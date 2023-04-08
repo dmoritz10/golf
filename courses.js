@@ -611,7 +611,7 @@ async function btnSCMSubmitCourseHtml() {
     course[cols.indexOf("SxS Hole Detail")] = $('#scmHoleDetail').val()
 
   }
-  , endRowIndex, 
+ 
   arrShts['My Courses'].vals[idx] = course
 
   var endRowIndex     = arrShts['My Courses'].vals.length
