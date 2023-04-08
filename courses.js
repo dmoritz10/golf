@@ -615,7 +615,7 @@ async function btnSCMSubmitCourseHtml() {
   arrShts['My Courses'].vals[idx] = course
 
   var endRowIndex     = arrShts['My Courses'].vals.length
-  var endColumnIndex  = course.length
+  var endColumnIndex  = course.length - 1
 
   console.log('idxs', endRowIndex, endColumnIndex)
 
@@ -777,6 +777,9 @@ async function updateCourse(arrCourse, idx, endRowIndex, endColumnIndex) {
     await appendSheetRow(arrCourse, "My Courses")
 
     endRowIndex++
+
+  console.log('idxs', endRowIndex, endColumnIndex)
+
 
     var sortSpec = { "requests": 
       [{ "sortRange": 
