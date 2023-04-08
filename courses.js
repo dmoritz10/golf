@@ -615,7 +615,7 @@ async function btnSCMSubmitCourseHtml() {
   arrShts['My Courses'].vals[idx] = course
 
   var endRowIndex     = arrShts['My Courses'].vals.length
-  var endColumnIndex  = course.length - 1
+  var endColumnIndex  = course.length
 
   console.log('idxs', endRowIndex, endColumnIndex)
 
