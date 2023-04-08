@@ -770,8 +770,6 @@ async function updateCourse(arrCourse, idx) {
   else  {
     await appendSheetRow(arrCourse, "My Courses")
 
-    var grdProps = shtProps.gridProperties
-
     var sortSpec = { "requests": 
       [{ "sortRange": 
         { "range": { 
