@@ -572,7 +572,7 @@ async function btnSCMSubmitCourseHtml() {
 
   // var c = JSON.parse(JSON.stringify(course))
 
-  console.log('idx', idx == null, course)
+  console.log('idx', idx == null, idx)
 
   if (idx) {                                                       // update existing course
 
@@ -613,6 +613,9 @@ async function btnSCMSubmitCourseHtml() {
   }
 
   arrShts['My Courses'].vals[idx] = course
+
+  console.log('idx', arrShts['My Courses'].vals[idx], course)
+
   await updateCourse(course, idx)
 
 
