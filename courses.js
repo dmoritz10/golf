@@ -786,9 +786,9 @@ async function updateCourse(arrCourse, idx, endRowIndex, endColumnIndex) {
         { "range": { 
           "sheetId": null, 
           "startRowIndex": 1, 
-          "endRowIndex": endRowIndex+1, 
+          "endRowIndex": endRowIndex+1,       // the end index is exclusive -- [startIndex, endIndex)
           "startColumnIndex": 0, 
-          "endColumnIndex": endColumnIndex+1 
+          "endColumnIndex": endColumnIndex+1  // the end index is exclusive -- [startIndex, endIndex)
         }, 
         "sortSpecs": 
         [{ "sortOrder": "ASCENDING", "dimensionIndex": 0 }] 
