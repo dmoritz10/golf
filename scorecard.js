@@ -731,7 +731,7 @@ async function btnEndRoundHtml() {
 
   $('#btnEndRound').prop('disabled', false)
 
-  if (postScoreStatus.status != 200) {
+  if (postScoreStatus.status == 200) {
 
     var msg = "Error posting scorecard<br><br>" +
                 'Status: ' + postScoreStatus.status + '<br>' +  
