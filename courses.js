@@ -778,8 +778,7 @@ async function updateCourse(arrCourse, idx, endRowIndex, endColumnIndex) {
 
     endRowIndex++
 
-  console.log('idxs', endRowIndex, endColumnIndex)
-
+    console.log('idxs', endRowIndex, endColumnIndex)
 
     var sortSpec = { "requests": 
       [{ "sortRange": 
