@@ -713,23 +713,6 @@ async function btnEndRoundHtml() {
 
   await updateOption('currScoreCard', JSON.stringify(prScore))                  
 
-  // var resource = {
-  //   "majorDimension": "ROWS",
-  //   "values": [[
-  //       prScore.courseName,
-  //       prScore.startTime,
-  //       prScore.endTime,
-  //       'downloaded',
-  //       new Date(),
-  //       prScore.gender,
-  //       prScore.tee,
-  //       prScore.par,
-  //       prScore.finalScore,
-  //       JSON.stringify(prScore),
-  //       JSON.stringify(prCourse)
-  //   ]]
-  // }
-
   var vals = [
     prScore.courseName,
     prScore.startTime,
@@ -744,47 +727,18 @@ async function btnEndRoundHtml() {
     JSON.stringify(prCourse)
   ]
 
-  await appendSheetRow(vals, 'Scorecard Upload')
+  let postScoreStatus = await appendSheetRow(vals, 'Scorecard Upload')
+
+  // Urgent: Need error handling here
+
+  console.log('postScoreStatus', postScoreStatus, postScoreStatus.status, postScoreStatus.statusText)
   
-  // var params = {
-  //   spreadsheetId: spreadsheetId,
-  //   range: "'Scorecard Upload'!A2:J2",
-  //   valueInputOption: 'RAW',
-  //   insertDataOption: 'INSERT_ROWS'
-  // };
+  console.log('round posted')
 
-  // await checkAuth()
-  // await gapi.client.sheets.spreadsheets.values.append(params, resource)
-  //   .then(async function(response) {
-      
-  //     console.log('round posted')
+  await updateOption('currScoreCard', '')                  
+  await updateOption('currCourseInfo', '')   
+  suSht = null                               // causes getRounds to refresh suSht next time its called   
 
-  //     await updateOption('currScoreCard', '')                  
-  //     await updateOption('currCourseInfo', '')   
-  //     suSht = null                               // causes getRounds to refresh suSht next time its called   
-   
-  //   }, 
-    
-  //   function(reason) {
-      
-  //     console.error('error appending scorecard "' + prScore.courseName + '": ' + reason.result.error.message);      
-  //     bootbox.alert('error appending scorecard "' + prScore.courseName + '": ' + reason.result.error.message);
-    
-  //   });
-
-  
-       console.log('round posted')
-
-      await updateOption('currScoreCard', '')                  
-      await updateOption('currCourseInfo', '')   
-      suSht = null                               // causes getRounds to refresh suSht next time its called   
-   
-
-
-//  temporary to debug end round issues
-//  await promiseRun('clearRound')
-  
-  
 
   $('#btnEndRound').prop('disabled', false) 
   
