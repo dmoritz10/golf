@@ -729,7 +729,21 @@ async function btnEndRoundHtml() {
 
   let postScoreStatus = await appendSheetRow(vals, 'Scorecard Upload')
 
-  // Urgent: Need error handling here
+  $('#btnEndRound').prop('disabled', false)
+
+  if (postScoreStatus.status != 200) {
+
+    var msg = "Error posting scorecard<br><br>" +
+                'Status: ' + postScoreStatus.status + '<br>' +  
+                'Message: ' + postScoreStatus.statusText;
+
+    var confirmOK = await confirm(msg)
+
+    goHome()
+
+    return
+
+  }
 
   console.log('postScoreStatus', postScoreStatus, postScoreStatus.status, postScoreStatus.statusText)
   
@@ -739,9 +753,6 @@ async function btnEndRoundHtml() {
   await updateOption('currCourseInfo', '')   
   suSht = null                               // causes getRounds to refresh suSht next time its called   
 
-
-  $('#btnEndRound').prop('disabled', false) 
-  
   toast('Round saved.  Calculating new Handicap.')
 
   var rounds = await getRounds()
