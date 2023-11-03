@@ -238,7 +238,7 @@ async function btnSubmitTeetimeHtml() {
       'summary': $( "#ttmSelectCourse option:selected" ).text(),
       // 'description': prsdGolfers.map(a => a.name).join(' | '),
 
-      'location': prsdGolfers.map(a => a.name).join(' | '),
+      'location': $( "#ttmSelectCourse option:selected" ).text(),
 
       "colorId": "11",
       'start': {
