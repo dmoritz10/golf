@@ -6,8 +6,6 @@ async function btnPlayRoundHtml() {
     return null
   }
 
-  console.log('btnPlayRoundHtml')
-    
   transitionPlayRoundTab()
 
   $('#rsGoTo')[0].setAttribute("onclick", `gotoTab('Scorecard')`);
