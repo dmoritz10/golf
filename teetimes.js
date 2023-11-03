@@ -230,11 +230,16 @@ async function btnSubmitTeetimeHtml() {
   var dt = new Date($('#ttmDate').val() + 'T' + $('#ttmTime').val() + ':00');
   dt.setSeconds( dt.getSeconds() + secs );
   var endDateTime = dt.toLocaleISOString().substring(0,19)
+
+  console.log('course', course)
     
   var event = {
   
       'summary': $( "#ttmSelectCourse option:selected" ).text(),
       // 'description': prsdGolfers.map(a => a.name).join(' | '),
+
+      'location': prsdGolfers.map(a => a.name).join(' | '),
+
       "colorId": "11",
       'start': {
         'dateTime': $('#ttmDate').val() + 'T' + $('#ttmTime').val() + ':00',
