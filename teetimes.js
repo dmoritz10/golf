@@ -238,7 +238,10 @@ async function btnSubmitTeetimeHtml() {
       'summary': $( "#ttmSelectCourse option:selected" ).text(),
       // 'description': prsdGolfers.map(a => a.name).join(' | '),
 
-      'location': $( "#ttmSelectCourse option:selected" ).text(),
+      'location': $( "#ttmSelectCourse option:selected" ).text() + ', ' +
+                  course[arrShts['My Courses'].colHdrs.indexOf('City')] + ', ' +
+                  course[arrShts['My Courses'].colHdrs.indexOf('State')] + ' ' + 
+                  course[arrShts['My Courses'].colHdrs.indexOf('Zip')] ,
 
       "colorId": "11",
       'start': {
