@@ -1214,9 +1214,9 @@ function parseWeather(wRptHtml, bearingToHole, distToPin, distToTee) {
   var windDirectionCardinal = calcWindDirectionCardinal(w.winddir)
   var bearingToHoleCardinal = calcWindDirectionCardinal(bearingToHole)
 
-  var windDirectionRelativeToBearingToHole = - bearingToHole + w.winddir + 180
+  var windDirectionRelativeToBearingToHole = w.winddir - bearingToHole + 180
 
-  console.log('windDir', bearingToHole, w.winddir, windDirectionRelativeToBearingToHole)
+  console.log('windDir', w.winddir, bearingToHole, windDirectionRelativeToBearingToHole)
   
   var clubRec = calcAdjDist(effectiveWindSpeed, distToPin, distToTee, w)
   
