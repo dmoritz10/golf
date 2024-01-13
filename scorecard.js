@@ -1037,7 +1037,7 @@ async function showPosition(position, pinLocn, strTimer) {
   var windRelToHole = rtn.windDirectionRelativeToBearingToHole
   
   var disp = w.imperial.windSpeed + ' ' + rtn.windDirection + ' ' 
-              + `<i class="material-icons" style="transform:rotate(${windRelToHole}deg)">arrow_upward </i>`
+              + `<i class="material-icons" style="transform:translate(0%, 20%) rotate(${windRelToHole}deg)">arrow_upward </i>`
               + ' | ' + rtn.effectiveWindSpeed + '  ' + rtn.bearingToHole + ' | ' 
 //           + (distToPin -cr.club1Distance + cr.club1Dist.distance)
            + distToPin
