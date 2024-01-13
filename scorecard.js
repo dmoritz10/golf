@@ -1025,6 +1025,11 @@ async function showPosition(position, pinLocn, strTimer) {
   distToPin = distToPin*1 
   
   var rtn = parseWeather(weatherRpt, bearingToHole, distToPin, distToTee, altitude)
+
+  if (!rtn) {
+    $('#prClubRec').html('')
+    return
+  }
   
   var cr = rtn.clubRec
   var w = rtn.currWeather
@@ -1209,7 +1214,7 @@ function parseWeather(wRptHtml, bearingToHole, distToPin, distToTee) {
   var windDirectionCardinal = calcWindDirectionCardinal(w.winddir)
   var bearingToHoleCardinal = calcWindDirectionCardinal(bearingToHole)
 
-  var windDirectionRelativeToBearingToHole = - bearingToHole + w.winddir
+  var windDirectionRelativeToBearingToHole = - bearingToHole + w.winddir + 180
 
   console.log('windDir', bearingToHole, w.winddir, windDirectionRelativeToBearingToHole)
   
