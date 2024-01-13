@@ -1028,10 +1028,11 @@ async function showPosition(position, pinLocn, strTimer) {
   
   var cr = rtn.clubRec
   var w = rtn.currWeather
+  var windRelToHole = rtn.windDirectionRelativeToBearingToHole
   
   var disp = w.imperial.windSpeed + ' ' + rtn.windDirection + ' | ' 
            + rtn.effectiveWindSpeed + '  ' + rtn.bearingToHole + ' | ' 
-           + '<span><i class="material-icons">arrow_forward_ios</i></span>'
+           + `<i class="material-icons" style="transform:rotate(${windRelToHole})">arrow_upward </i>`
 //           + (distToPin -cr.club1Distance + cr.club1Dist.distance)
            + distToPin
 
@@ -1207,6 +1208,8 @@ function parseWeather(wRptHtml, bearingToHole, distToPin, distToTee) {
   const calcWindDirectionCardinal = (winddir) => (winddir ? ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW","N"][(Math.round((winddir)/ 22.5,0))] : '')
   var windDirectionCardinal = calcWindDirectionCardinal(w.winddir)
   var bearingToHoleCardinal = calcWindDirectionCardinal(bearingToHole)
+
+  var windDirectionRelativeToBearingToHole = bearingToHole - w.winddir
   
   var clubRec = calcAdjDist(effectiveWindSpeed, distToPin, distToTee, w)
   
@@ -1216,6 +1219,7 @@ function parseWeather(wRptHtml, bearingToHole, distToPin, distToTee) {
     bearingToHole:      bearingToHoleCardinal,
     effectiveWindSpeed: effectiveWindSpeed,
     windDirection:      windDirectionCardinal,
+    windDirectionRelativeToBearingToHole: windDirectionRelativeToBearingToHole,
     clubRec:            clubRec
    
   }
