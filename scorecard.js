@@ -1031,7 +1031,7 @@ async function showPosition(position, pinLocn, strTimer) {
   
   var disp = w.imperial.windSpeed + ' ' + rtn.windDirection + ' | ' 
            + rtn.effectiveWindSpeed + '  ' + rtn.bearingToHole + ' | ' 
-           + <i class="material-icons">arrow_forward_ios</i>
+           + '<span><i class="material-icons">arrow_forward_ios</i></span>'
 //           + (distToPin -cr.club1Distance + cr.club1Dist.distance)
            + distToPin
 
