@@ -95,7 +95,7 @@ async function runApp() {
 
 async function initialUI() {
   timerStart = new Date()
-  timerStart('initialUI')
+  console.time('initialUI')
 
     arrShts = await openShts(
       [
@@ -104,7 +104,8 @@ async function initialUI() {
       ])
     
 
-  console.log('initialUI', arrShts)
+      console.timeEnd('initialUI')
+
 
   arrOptions    = toObject(arrShts.Settings.vals)
   optionsIdx    = toObjectIdx(arrShts.Settings.vals)
