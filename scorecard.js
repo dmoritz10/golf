@@ -941,7 +941,7 @@ return
         showPosition(position, e.data.pinLocn);
       }, 
       function (err) { 
-        bootbox.alert('geoposition error - ' +  err)
+        // bootbox.alert('geoposition error - ' +  err)
         // on error
         var position = {};position.coords = {}
         position.coords.latitude = 33.4630007572838
@@ -1027,6 +1027,7 @@ async function showPosition(position, pinLocn, strTimer) {
   var rtn = parseWeather(weatherRpt, bearingToHole, distToPin, distToTee, altitude)
 
   if (!rtn) {
+    console.log('parseWeather', "Can't parse weather.")
     $('#prClubRec').html('')
     return
   }
