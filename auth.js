@@ -95,6 +95,7 @@ async function runApp() {
 
 async function initialUI() {
   timerStart = new Date()
+  timerStart('initialUI')
 
     arrShts = await openShts(
       [
@@ -109,5 +110,7 @@ async function initialUI() {
   optionsIdx    = toObjectIdx(arrShts.Settings.vals)
 
   loadCoursesPlayedDropDown('hpSelectCourse')
+
+  timerStop('initialUI')
 
 };
