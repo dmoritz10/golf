@@ -1036,9 +1036,9 @@ async function showPosition(position, pinLocn, strTimer) {
   var w = rtn.currWeather
   var windRelToHole = rtn.windDirectionRelativeToBearingToHole
   
-  var disp = w.imperial.windSpeed + ' ' + rtn.windDirection + ' | ' 
-           + rtn.effectiveWindSpeed + '  ' + rtn.bearingToHole + ' | ' 
-           + `<i class="material-icons" style="transform:rotate(${windRelToHole}deg)">arrow_upward </i>`
+  var disp = w.imperial.windSpeed + ' ' + rtn.windDirection + ' ' 
+              + `<i class="material-icons" style="transform:rotate(${windRelToHole}deg)">arrow_upward </i>`
+              + ' | ' + rtn.effectiveWindSpeed + '  ' + rtn.bearingToHole + ' | ' 
 //           + (distToPin -cr.club1Distance + cr.club1Dist.distance)
            + distToPin
 
