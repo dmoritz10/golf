@@ -110,6 +110,6 @@ async function initialUI() {
   arrOptions    = toObject(arrShts.Settings.vals)
   optionsIdx    = toObjectIdx(arrShts.Settings.vals)
 
-  loadCoursesPlayedDropDown('hpSelectCourse')
+  // loadCoursesPlayedDropDown('hpSelectCourse')
 
 };
