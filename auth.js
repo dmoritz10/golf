@@ -106,7 +106,6 @@ async function initialUI() {
 
       console.timeEnd('initialUI')
 
-
   arrOptions    = toObject(arrShts.Settings.vals)
   optionsIdx    = toObjectIdx(arrShts.Settings.vals)
 
