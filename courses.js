@@ -809,7 +809,7 @@ async function btnSCMFetchSxsHtml(e) {
 
   var sxsCourseId = $('#scmSxsUrl').val()
 
-  await xhr('https://cors.bridged.cc/' + sxsCourseId)
+  await xhr('https://cors.bridged.cc/https://courses.swingu.com/courses/' + sxsCourseId)
     
     .then( response => {
       
