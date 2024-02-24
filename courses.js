@@ -837,7 +837,7 @@ function updateSCMForm(sxsRtn) {
   var b = sxsRtn.split('data-page=')[1].substring(1)
 var c = b.replace(/&quot;/g, '"')
   console.log('c', c)
-  var d = c.slice(-29)
+  var d = c.slice(0, -29)
 
   console.log('d', d)
 
