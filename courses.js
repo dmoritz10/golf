@@ -830,19 +830,26 @@ async function btnSCMFetchSxsHtml(e) {
 
 }
 
+function parseSxsRtn(sxsRtn) {
+
+  var b = sxsRtn.split('data-page=')[1].substring(1)
+  var c = b.replace(/&quot;/g, '"')
+  console.log('c', c)
+  var d = c.slice(0, -20)
+
+  console.log('d', d)
+
+  return JSON.parse(d)
+
+}
+
 function updateSCMForm(sxsRtn) {
 
   // var d = sxsRtn.split('bootstrapData(').pop().split('}}});')[0] + '}}}'
 
-  var b = sxsRtn.split('data-page=')[1].substring(1)
-var c = b.replace(/&quot;/g, '"')
-  console.log('c', c)
-  var d = c.slice(0, -27)
+  var sxs = parseSxsRtn(sxsRtn)
 
-  console.log('d', d)
-
-  var sxs = JSON.parse(d).model.data
-
+  
   // console.log(sxs)
 
   conditionalUpdate($('#scmName'), sxs.name)
