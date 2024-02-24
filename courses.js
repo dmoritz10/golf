@@ -834,7 +834,7 @@ function updateSCMForm(sxsRtn) {
 
   // var d = sxsRtn.split('bootstrapData(').pop().split('}}});')[0] + '}}}'
 
-  var c = sxsRtn.split('data-page=')[1].substring(2)
+  var c = sxsRtn.split('data-page=')[1].substring(2).replace("&quot;", '"')
 
   console.log('c', c)
   var d = c.substr(-28)
