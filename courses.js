@@ -835,7 +835,7 @@ function parseSxsRtn(sxsRtn) {
   var b = sxsRtn.split('data-page=')[1].substring(1)
   var c = b.replace(/&quot;/g, '"')
   console.log('c', c)
-  var d = c.slice(0, -20)
+  var d = c.slice(0, -24)
 
   console.log('d', d)
 
