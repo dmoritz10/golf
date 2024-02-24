@@ -832,10 +832,7 @@ async function btnSCMFetchSxsHtml(e) {
 
 function parseSxsRtn(sxsRtn) {
 
-  var b = sxsRtn.split('data-page=')[1]
-  var c = b.replace(/&quot;/g, '"')
-  console.log('c', c)
-  var d = c.slice(1, -24)
+  var d = sxsRtn.split('data-page=')[1].replace(/&quot;/g, '"').slice(1, -24)
 
   console.log('d', d)
 
@@ -848,6 +845,8 @@ function updateSCMForm(sxsRtn) {
   // var d = sxsRtn.split('bootstrapData(').pop().split('}}});')[0] + '}}}'
 
   var sxs = parseSxsRtn(sxsRtn)
+
+  console.log('sxs', sxs)
 
   
   // console.log(sxs)
