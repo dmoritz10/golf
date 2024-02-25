@@ -828,8 +828,12 @@ async function fetchCourseInfo(sxsCourseId) {
     .then( sxsRtn => {
 
       console.log('hi there', sxsRtn)
+
+      var r = parseSxsRtn(sxsRtn)
+
+      console.log('r', r)
       
-      return parseSxsRtn(sxsRtn)
+      return r
       
     })
     
