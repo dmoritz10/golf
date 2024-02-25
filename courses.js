@@ -827,12 +827,20 @@ async function fetchCourseInfo(sxsCourseId) {
     
     .then( sxsRtn => {
 
-      console.log('response', sxsRtn)
+      console.log('hi there', sxsRtn)
       
       return parseSxsRtn(sxsRtn)
       
     })
     
+    .catch( error => {
+      console.log(error.status); // xhr.status
+      console.log(error.statusText); // xhr.statusText
+
+      return 'hi dan'
+
+    });
+
 console.log('rtn', rtn)
 
   return rtn
