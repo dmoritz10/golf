@@ -823,7 +823,7 @@ async function btnSCMFetchSxsHtml(e) {
 
 async function fetchCourseInfo(sxsCourseId) {
 
-  await xhr('https://cors.bridged.cc/https://courses.swingu.com/courses/' + sxsCourseId)
+  return await xhr('https://cors.bridged.cc/https://courses.swingu.com/courses/' + sxsCourseId)
     
   .then( sxsRtn => {
 
