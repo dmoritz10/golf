@@ -402,7 +402,7 @@ async function getHoleDetail(sxsCourseId, tee, gender) {
 
 function assembleHoleDetail(sxsCourseInfo, tee, gender) {
 
-  var course = sysCourseInfo.course
+  var course = sxsCourseInfo.course
   var courseHoles = course.course_hole
 
   var intGender = gender.toUpperCase() == 'M' ? 1 : 2
