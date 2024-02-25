@@ -827,9 +827,9 @@ async function fetchCourseInfo(sxsCourseId) {
     
     .then( sxsRtn => {
 
-      console.log('hi there', sxsRtn)
+      console.log('hi there', sxsRtn.data)
 
-      var r = parseSxsRtn(sxsRtn)
+      var r = parseSxsRtn(sxsRtn.data)
 
       console.log('r', r)
       
