@@ -825,22 +825,14 @@ async function fetchCourseInfo(sxsCourseId) {
 
   var rtn = await xhr('https://cors.bridged.cc/https://courses.swingu.com/courses/' + sxsCourseId)
     
-  .then( sxsRtn => {
+    .then( sxsRtn => {
 
-    console.log('response', sxsRtn)
+      console.log('response', sxsRtn)
+      
+      return parseSxsRtn(sxsRtn)
+      
+    })
     
-    return parseSxsRtn(sxsRtn)
-    
-  })
-  
-  .catch( error => {
-    console.log(error.status); // xhr.status
-    console.log(error.statusText); // xhr.statusText
-
-    return null
-
-  });
-
 console.log('rtn', rtn)
 
   return rtn
