@@ -405,6 +405,7 @@ function assembleHoleDetail(sxsCourseInfo, tee, gender) {
   console.log('sxsCourseInfo', sxsCourseInfo)
 
   var course = sxsCourseInfo.course
+  console.log('course', course)
   var courseHoles = course.course_hole
 
   var intGender = gender.toUpperCase() == 'M' ? 1 : 2
