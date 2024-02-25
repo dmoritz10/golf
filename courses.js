@@ -826,6 +826,8 @@ async function fetchCourseInfo(sxsCourseId) {
   await xhr('https://cors.bridged.cc/https://courses.swingu.com/courses/' + sxsCourseId)
     
   .then( sxsRtn => {
+
+    console.log('response', sxsRtn)
     
     return parseSxsRtn(sxsRtn)
     
