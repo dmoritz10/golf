@@ -314,6 +314,8 @@ function adjustScrolls() {
 
 function setScoreDescriptions(par) {
 
+  console.log('setScoreDescriptions', par)
+
   switch (par) {
   
     case 3:
@@ -379,6 +381,8 @@ function setScoreDescriptions(par) {
   }
       
   $('.scoreDesc').each(function(index, element) {
+
+    console.log('scoreDesc', index, element, scoreDescriptors)
     
     $(this).html(scoreDescriptors[index])
 
