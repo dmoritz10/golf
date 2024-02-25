@@ -319,6 +319,7 @@ function setScoreDescriptions(par) {
   switch (par) {
   
     case 3:
+      console.log('case3')
       var scoreDescriptors = [
         'eagle',
         'birdie',
@@ -339,6 +340,7 @@ function setScoreDescriptions(par) {
       break;
     
     case 4:
+      console.log('case4')
       var scoreDescriptors = [
         'double',
         'eagle',
@@ -359,6 +361,7 @@ function setScoreDescriptions(par) {
       break;
     
     case 5:
+      console.log('case5')
       var scoreDescriptors = [
         'triple',
         'double',
@@ -379,6 +382,9 @@ function setScoreDescriptions(par) {
       
       break;
   }
+
+  console.log('scoreDescpre', scoreDescriptors)
+
       
   $('.scoreDesc').each(function(index, element) {
 
