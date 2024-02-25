@@ -809,24 +809,35 @@ async function btnSCMFetchSxsHtml(e) {
 
   var sxsCourseId = $('#scmSxsUrl').val()
 
+  var sxsCourseInfo = await fetchCourseInfo(sxsCourseId)
+
+  console.log('sxsCourseInfo',sxsCourseInfo )
+
+  updateSCMForm(sxsCourseInfo)
+
+  $("#course-modal").animate({ opacity: 1.0, }, "slow");
+
+  $('#btnSCMSubmitCourse').prop('disabled', false)
+
+}
+
+async function fetchCourseInfo(sxsCourseId) {
+
   await xhr('https://cors.bridged.cc/https://courses.swingu.com/courses/' + sxsCourseId)
     
-    .then( response => {
-      
-      console.log(response.xhr);  // full response
+  .then( sxsRtn => {
+    
+    return parseSxsRtn(sxsRtn)
+    
+  })
+  
+  .catch( error => {
+    console.log(error.status); // xhr.status
+    console.log(error.statusText); // xhr.statusText
 
-      updateSCMForm(response.data)
+    return null
 
-      $("#course-modal").animate({ opacity: 1.0, }, "slow");
-
-      $('#btnSCMSubmitCourse').prop('disabled', false)
-
-	  })
-
-	  .catch( error => {
-      console.log(error.status); // xhr.status
-      console.log(error.statusText); // xhr.statusText
-	  });
+  });
 
 }
 
@@ -836,13 +847,14 @@ function parseSxsRtn(sxsRtn) {
 
   console.log('d', d)
 
+  console.log('parseSxsRtn',JSON.parse(d) )
+
+
   return JSON.parse(d)
 
 }
 
 function updateSCMForm(sxsRtn) {
-
-  // var d = sxsRtn.split('bootstrapData(').pop().split('}}});')[0] + '}}}'
 
   var sxs = parseSxsRtn(sxsRtn)
 
