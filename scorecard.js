@@ -404,7 +404,7 @@ function assembleHoleDetail(sxsCourseInfo, tee, gender) {
 
   console.log('sxsCourseInfo', sxsCourseInfo)
 
-  var course = sxsCourseInfo.course
+  var course = sxsCourseInfo.props.course
   console.log('course', course)
   var courseHoles = course.course_hole
 
