@@ -395,7 +395,7 @@ async function getHoleDetail(sxsCourseId, tee, gender) {
 
   let courseInfo = await fetchCourseInfo(sxsCourseId)
 
-  if (courseInfo) return assembleHoleDetail(response.data, tee, gender) 
+  if (courseInfo) return assembleHoleDetail(courseInfo, tee, gender) 
   else return  null
 
 }
