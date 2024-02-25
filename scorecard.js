@@ -458,6 +458,8 @@ function assembleHoleDetail(sxsCourseInfo, tee, gender) {
       }
     }
   })
+
+  console.log('return holeDetail', holeDetail)
   
   return holeDetail
   
