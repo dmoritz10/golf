@@ -827,12 +827,7 @@ async function fetchCourseInfo(sxsCourseId) {
     
     .then( sxsRtn => {
 
-      console.log('hi there', sxsRtn.data)
-
       var r = parseSxsRtn(sxsRtn.data)
-
-      console.log('r', r)
-      
       return r
       
     })
@@ -841,36 +836,28 @@ async function fetchCourseInfo(sxsCourseId) {
       console.log(error.status); // xhr.status
       console.log(error.statusText); // xhr.statusText
 
-      return 'hi dan'
+      return null
 
     });
-
-console.log('rtn', rtn)
 
   return rtn
 
 }
 
 function parseSxsRtn(sxsRtn) {
-console.log('parseSxsRtn', sxsRtn)
-  var b = sxsRtn.split('data-page=')[1]
-  console.log('b', b)
-  var d = b.replace(/&quot;/g, '"').slice(1, -24)
-
-  console.log('d', d)
-
-  console.log('parseSxsRtn',JSON.parse(d) )
-
-
+  var d = sxsRtn.split('data-page=')[1].replace(/&quot;/g, '"').slice(1, -24)
   return JSON.parse(d)
-
 }
 
 function updateSCMForm(sxsRtn) {
 
-  var sxs = parseSxsRtn(sxsRtn)
+  var sxs = sxsRtn
+  
+  // var sxs = parseSxsRtn(sxsRtn)
 
   console.log('sxs', sxs)
+
+  // this all needs to be adapted to swingU
 
   
   // console.log(sxs)

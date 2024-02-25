@@ -393,76 +393,66 @@ function setScoreDescriptions(par) {
 
 async function getHoleDetail(sxsCourseId, tee, gender) {
 
-  return await xhr('https://cors.bridged.cc/' + sxsCourseId)
-    
-    .then( response => {
-      
-      // console.log(response.xhr);  // full response
-      // console.log(response.data)
+  let courseInfo = await fetchCourseInfo(sxsCourseId)
 
-      return assembleHoleDetail(response.data, tee, gender) 
-
-	  })
-
-	  .catch( error => {
-      console.log(error.status); // xhr.status
-      console.log(error.statusText); // xhr.statusText
-	  });
+  if (courseInfo) return assembleHoleDetail(response.data, tee, gender) 
+  else return  null
 
 }
 
 function assembleHoleDetail(sxsCourseInfo, tee, gender) {
 
-  console.log('hi dan')
+  var course = sysCourseInfo.course
+  var courseHoles = course.course_hole
 
-  var d = sxsCourseInfo.split('bootstrapData(').pop().split('}}});')[0] + '}}}'
-  
-  var p = JSON.parse(d)
-  
-  var holes = p.model.data.holes
-  
-  var data = p.model.data
+  var intGender = gender.toUpperCase() == 'M' ? 1 : 2
 
+  console.log('init', course, courseHoles, intGender, tee)
+  
   if (prCourse.courseInfo) {
   
     prCourse.courseInfo.courseCoords = {
     
-      lat: data.lat,
-      lng: data.lng
+      lat: course.fLat,
+      lng: course.fLng
       
     }
   } 
+
   var holeDetail = []
   
-  holes.forEach(hole => {
+  courseHoles.forEach(hole => {
+
+    console.log('hole', hole)
+
+    var tees = hole.active_course_hole_tee_box
   
-   for (let teeBox of hole.teeBoxes) {
-   
-      var teeColor = teeBox.teeColorType.toLowerCase()
-      var teeGender = teeBox.teeType == "women" ? "f" : "m"
-      
-      // if (teeColor == tee && teeGender == gender) {
-      if (teeColor == tee.toLowerCase() ) {
-        
+    for (let teeBox of tees) {
+
+      console.log('teeBox', teeBox)
+
+      if (teeBox.teeName.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender) {
+
+        console.log('select teebox', teeBox.teeName, teeBox.iGender)
+
         var dtl = {
         
-          hole: hole.hole,
+          hole: hole.holeNum,
           yardage: teeBox.yards ? teeBox.yards : '-',
-          hcp: teeBox.hcp ? teeBox.hcp : '-',
-          par: teeBox.par ? teeBox.par : '-',
-          greenLocation: {lat: hole.greenLat, lng: hole.greenLng},
-          greenFront:    {lat: hole.frontLat, lng: hole.frontLng},
-          greenBack:     {lat: hole.backLat,  lng: hole.backLng},
-          teeLocation:   {lat: teeBox.lat,  lng: teeBox.lng}  
-          
+          hcp: teeBox.handicap ? teeBox.handicap : '-',
+          par: hoteeBoxle.par ? teeBox.par : '-',
+          greenLocation: {lat: hole.fGreenLat, lng: hole.fGreenLng},
+          greenFront:    {lat: hole.fFrontLat, lng: hole.fFrontLng},
+          greenBack:     {lat: hole.fBackLat,  lng: hole.fBackLng},
+          teeLocation:   {lat: teeBox.fLat,  lng: teeBox.fLng}  
           
         }
       
         holeDetail.push(dtl)
         
         break;
-    
-      } 
+
+      }
     }
   })
   
