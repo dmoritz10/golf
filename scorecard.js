@@ -434,9 +434,9 @@ function assembleHoleDetail(sxsCourseInfo, tee, gender) {
 
       console.log('teeBox', teeBox)
 
-      if (teeBox.teeName.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender) {
+      if (teeBox.course_tee_type.sTeeName.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender) {
 
-        console.log('select teebox', teeBox.teeName, teeBox.iGender)
+        console.log('select teebox', teeBox.course_tee_type.sTeeName, teeBox.iGender)
 
         var dtl = {
         
