@@ -440,10 +440,10 @@ function assembleHoleDetail(sxsCourseInfo, tee, gender) {
 
         var dtl = {
         
-          hole: hole.holeNum,
-          yardage: teeBox.yards ? teeBox.yards : '-',
-          hcp: teeBox.handicap ? teeBox.handicap : '-',
-          par: teeBox.par ? teeBox.par : '-',
+          hole: hole.iHole,
+          yardage: teeBox.iYards ? teeBox.iYards : '-',
+          hcp: teeBox.iHcp ? teeBox.iHcp : '-',
+          par: teeBox.iPar ? teeBox.iPar : '-',
           greenLocation: {lat: hole.fGreenLat, lng: hole.fGreenLng},
           greenFront:    {lat: hole.fFrontLat, lng: hole.fFrontLng},
           greenBack:     {lat: hole.fBackLat,  lng: hole.fBackLng},
