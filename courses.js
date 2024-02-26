@@ -393,6 +393,8 @@ async function holeDetail() {
     return
   }
 
+  console.log('ci', ci)
+
   var btnHtml = '<button class="btn btn-outline btn-primary btn-circle">'
   var scoreHtml = '<h5 class="pt-2 font-weight-bold">'
   var totHtml = '<h5 class="pt-2 font-weight-bold text-success">'
