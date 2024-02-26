@@ -337,7 +337,7 @@ function setScoreDescriptions(par) {
         '12 over'
       ]
     
-    else if (par==3)
+    else if (par==4)
       var scoreDescriptors = [
         'double',
         'eagle',
