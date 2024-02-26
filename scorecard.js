@@ -318,10 +318,7 @@ function setScoreDescriptions(par) {
 
   if (par==4) console.log('par = 4')
 
-  switch (par) {
-  
-    case 3:
-      console.log('case3')
+  if (par==3)
       var scoreDescriptors = [
         'eagle',
         'birdie',
@@ -339,10 +336,8 @@ function setScoreDescriptions(par) {
         '11 over',
         '12 over'
       ]
-      break;
     
-    case 4:
-      console.log('case4')
+    else if (par==3)
       var scoreDescriptors = [
         'double',
         'eagle',
@@ -360,10 +355,8 @@ function setScoreDescriptions(par) {
         '10 over',
         '11 over'
       ]
-      break;
-    
-    case 5:
-      console.log('case5')
+  
+  else if (par==5)
       var scoreDescriptors = [
         'triple',
         'double',
@@ -382,9 +375,6 @@ function setScoreDescriptions(par) {
         '10 over'
       ]
       
-      break;
-  }
-
   console.log('scoreDescpre', scoreDescriptors)
 
       
