@@ -850,14 +850,7 @@ function updateSCMForm(sxsRtn) {
 
   var sxs = sxsRtn.props.course
   
-  // var sxs = parseSxsRtn(sxsRtn)
-
   console.log('sxs', sxs)
-
-  // this all needs to be adapted to swingU
-
-  
-  // console.log(sxs)
 
   conditionalUpdate($('#scmName'), sxs.sName)
   conditionalUpdate($('#scmPhone'), sxs.sPhone)
@@ -867,7 +860,6 @@ function updateSCMForm(sxsRtn) {
   conditionalUpdate($('#scmZip'), sxs.sZipCode)
   conditionalUpdate($('#scmCountry'), abbrCountry(sxs.sCountry))
   
-  $('#scmHoleDetail').val(buildHoleDtlObj(sxs))
 
   var tiCols = {
 
@@ -885,40 +877,40 @@ function updateSCMForm(sxsRtn) {
   }
 
   var teeInfo = []
-  var teeBoxes = sxs.stats
+  var teeBoxes = sxs.course_stat
 
   teeBoxes.forEach(val => {
 
     var ti = []
 
     ti[tiCols.default_tee] = true
-    ti[tiCols.tee_name] = camel2title(val.teeColorType)
-    ti[tiCols.gender] = val.teeType.toLowerCase() == 'women' ? 'F' : 'M'
+    ti[tiCols.tee_name] = camel2title(val.course_tee_type.sTeeName)
+    ti[tiCols.gender] = val.iGender == 2 ? 'F' : 'M'
 
     var mlt = ti[tiCols.gender] == 'M' ? 5.381 : 4.24
 
     if (val.frontNineRating) {
-      var f9r = val.frontNineRating.toFixed(1)
+      var f9r = val.fFrontNineRating.toFixed(1)
     } else {
-      var f9r = (val.rating / 2).toFixed(1)
+      var f9r = (val.fRating / 2).toFixed(1)
     }
-    if (val.frontNineSlope) {
-      var f9s = val.frontNineSlope
+    if (val.fBackNineRating) {
+      var f9s = val.fBackNineRating
     } else {
-      var f9s = val.slope
+      var f9s = val.iSlope
     }
 
-    var b9r = (val.rating - f9r).toFixed(1)
-    var b9s = val.slope * 2 - f9s
+    var b9r = (val.fRating - f9r).toFixed(1)
+    var b9s = val.iSlope * 2 - f9s
 
 
-    ti[tiCols.par] = val.par
-    ti[tiCols.course_rating] = val.rating
-    ti[tiCols.slope_rating] = val.slope
-    ti[tiCols.bogey_rating] = Math.round(((val.slope * 1 / mlt) + val.rating * 1) * 10) / 10
+    ti[tiCols.par] = val.iPar
+    ti[tiCols.course_rating] = val.fRating
+    ti[tiCols.slope_rating] = val.iSlope
+    ti[tiCols.bogey_rating] = Math.round(((val.iSlope * 1 / mlt) + val.fRating * 1) * 10) / 10
     ti[tiCols.front] = f9r + ' / ' + f9s
     ti[tiCols.back] = b9r + ' / ' + b9s
-    ti[tiCols.yardage] = val.yards
+    ti[tiCols.yardage] = val.iYardage
 
     teeInfo.push(ti)
 
@@ -927,57 +919,6 @@ function updateSCMForm(sxsRtn) {
   teeInfo.sort((a, b) => (b[tiCols.gender].localeCompare(a[tiCols.gender]) || b[tiCols.course_rating] - a[tiCols.course_rating]));
 
   loadTeeBoxes(JSON.stringify(teeInfo))
-
-}
-
-function buildHoleDtlObj(sxs) {
-
-  sxs.stats.forEach(tee => {
-
-    delete tee.courseStatId
-    delete tee.courseId
-    delete tee.teeTypeId
-    delete tee.teeColorTypeId
-    delete tee.teeHexColor
-
-  })
-
-  sxs.holes.forEach(hole => {
-
-    delete hole.courseHoleId
-    delete hole.courseId
-    delete hole.pinLat
-    delete hole.pinLng
-    delete hole.changeLocations
-    delete hole.pinExpires
-
-    hole.teeBoxes.forEach(teeBox => {
-
-      delete teeBox.courseHoleTeeBoxId
-      delete teeBox.courseHoleId
-      delete teeBox.teeTypeId
-      delete teeBox.teeColorTypeId
-      delete teeBox.meters
-      delete teeBox.hcp2
-      delete teeBox.teeHexColor
-      delete teeBox.lng
-      delete teeBox.lat
-
-    })
-
-  })
-
-  var rtn = {}
-
-  rtn.location = {}
-  rtn.location.lat = sxs.lat
-  rtn.location.lng = sxs.lng
-  rtn.stats = sxs.stats
-  rtn.holes = sxs.holes
-
-  console.log(rtn)
-
-  return JSON.stringify(rtn)
 
 }
 
