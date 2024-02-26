@@ -316,7 +316,7 @@ function setScoreDescriptions(par) {
 
   console.log('setScoreDescriptions', par)
 
-  switch (par*1) {
+  switch (par+'') {
   
     case 3:
       console.log('case3')
