@@ -388,6 +388,11 @@ async function holeDetail() {
 
   var ci = await getHoleDetail(sxsCourseId, tee, gender)
 
+  if (!ci) {
+    console.log('Hole Detail not found')
+    return
+  }
+
   var btnHtml = '<button class="btn btn-outline btn-primary btn-circle">'
   var scoreHtml = '<h5 class="pt-2 font-weight-bold">'
   var totHtml = '<h5 class="pt-2 font-weight-bold text-success">'

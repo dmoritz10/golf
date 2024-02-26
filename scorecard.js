@@ -11,7 +11,7 @@ async function btnStartRoundHtml() {
 
   prCourse.holeDetail = await getHoleDetail(prCourse.courseInfo['SxS Course Id'], tee, gender)
   
-  if (prCourse.holeDetail.length == 0) {
+  if (!prCourse.holeDetail) {
   
     bootbox.alert ('Hole detail cannot be found')
   
@@ -167,9 +167,6 @@ function btnChangeHoleHtml(e) {
 
 function loadHoleDetail(offset) {
 
-  console.log('loadHoleDetail', arguments)
-
-
   if (typeof offset === 'object') {
   
     var hole = offset.goto - 1
@@ -230,9 +227,6 @@ function setScoreIfPlayed() {
   
   if (holeScore) {
 
-    console.log('holeScore')
-    console.log(holeScore)
-
     setScoreComp('Score', holeScore.score)
     setScoreComp('Putts', holeScore.putts)
     setScoreComp('Pnlty', holeScore.pnlty)
@@ -248,9 +242,6 @@ function setScoreIfPlayed() {
     
   } else {
 
-    console.log('not holeScore zaaazz')
-    console.log(holeScore)
-  
     $('.puttsDesc')[2].scrollIntoView();
     $('.pnltyDesc')[0].scrollIntoView();
     $('.driveDesc')[1].scrollIntoView();
@@ -262,7 +253,6 @@ function setScoreIfPlayed() {
     $('.driveDesc').not('.hid').removeClass('selScored')
     $('.sandDesc') .not('.hid').removeClass('selScored')
  
-
   }
   
   document.getElementById("divScore").scrollTop -= 12;
@@ -283,8 +273,6 @@ function setScoreComp(scoreComp, compVal) {
 
     if ($(this)[0].textContent == compVal) {
 
-      console.log($(this))
-      
       var selector = '.' + scoreComp.toLowerCase() + 'Desc'
       
       $(selector)[index].scrollIntoView();
@@ -313,10 +301,6 @@ function adjustScrolls() {
 }
 
 function setScoreDescriptions(par) {
-
-  console.log('setScoreDescriptions', par)
-
-  if (par==4) console.log('par = 4')
 
   if (par==3)
       var scoreDescriptors = [
@@ -375,13 +359,8 @@ function setScoreDescriptions(par) {
         '10 over'
       ]
       
-  console.log('scoreDescpre', scoreDescriptors)
-
-      
   $('.scoreDesc').each(function(index, element) {
 
-    console.log('scoreDesc', index, element, scoreDescriptors)
-    
     $(this).html(scoreDescriptors[index])
 
     if (scoreDescriptors[index] == 'par') {
@@ -397,23 +376,21 @@ async function getHoleDetail(sxsCourseId, tee, gender) {
 
   let courseInfo = await fetchCourseInfo(sxsCourseId)
 
-  if (courseInfo) return assembleHoleDetail(courseInfo, tee, gender) 
-  else return  null
+  if (courseInfo) 
+    return assembleHoleDetail(courseInfo, tee, gender) 
+  else 
+    return  null
 
 }
 
 function assembleHoleDetail(sxsCourseInfo, tee, gender) {
 
-  console.log('sxsCourseInfo', sxsCourseInfo)
-
   var course = sxsCourseInfo.props.course
-  console.log('course', course)
+
   var courseHoles = course.course_hole
 
-  var intGender = gender.toUpperCase() == 'M' ? 1 : 2
+  var intGender = gender.toUpperCase() == 'F' ? 2 : 1
 
-  console.log('init', course, courseHoles, intGender, tee)
-  
   if (prCourse.courseInfo) {
   
     prCourse.courseInfo.courseCoords = {
@@ -428,17 +405,11 @@ function assembleHoleDetail(sxsCourseInfo, tee, gender) {
   
   courseHoles.forEach(hole => {
 
-    console.log('hole', hole)
-
     var tees = hole.active_course_hole_tee_box
   
     for (let teeBox of tees) {
 
-      console.log('teeBox', teeBox)
-
       if (teeBox.course_tee_type.sTeeName.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender) {
-
-        console.log('select teebox', teeBox.course_tee_type.sTeeName, teeBox.iGender)
 
         var dtl = {
         
@@ -461,8 +432,6 @@ function assembleHoleDetail(sxsCourseInfo, tee, gender) {
     }
   })
 
-  console.log('return holeDetail', holeDetail)
-  
   return holeDetail
   
 }
