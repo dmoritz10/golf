@@ -316,7 +316,9 @@ function setScoreDescriptions(par) {
 
   console.log('setScoreDescriptions', par)
 
-  switch (par+'') {
+  if (par==4) console.log('par = 4')
+
+  switch (par) {
   
     case 3:
       console.log('case3')
