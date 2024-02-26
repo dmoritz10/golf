@@ -505,7 +505,6 @@ async function editCourse(course) {
   $('#scmZip').val(course['Zip'])
   $('#scmCountry').val(course['Country'])
   $('#scmSxsUrl').val(course['SxS Course Id'])
-  $('#scmHoleDetail').val(course['SxS Hole Detail'])
 
   //    $('#btnDeleteCourse').removeClass('d-none')
 
@@ -592,7 +591,6 @@ async function btnSCMSubmitCourseHtml() {
     course[cols.indexOf("Country")] = $('#scmCountry').val()
     course[cols.indexOf("SxS Course Id")] = $('#scmSxsUrl').val()
     course[cols.indexOf("Tee Info")] = scmPrepTeeInfo(cols, course)
-    course[cols.indexOf("SxS Hole Detail")] = $('#scmHoleDetail').val()
 
   } else {
     var courseKey = calcCourseKey($('#scmName').val())
@@ -615,7 +613,6 @@ async function btnSCMSubmitCourseHtml() {
     course[cols.indexOf("Country")] = $('#scmCountry').val()
     course[cols.indexOf("SxS Course Id")] = $('#scmSxsUrl').val()
     course[cols.indexOf("Tee Info")] = scmPrepTeeInfo(cols, course)
-    course[cols.indexOf("SxS Hole Detail")] = $('#scmHoleDetail').val()
 
   }
  
@@ -627,13 +624,6 @@ async function btnSCMSubmitCourseHtml() {
   console.log('idxs', endRowIndex, endColumnIndex)
 
   await updateCourse(course, idx, endRowIndex, endColumnIndex)
-
-
-  // To update only the SxS Hole Detail column
-
-  // c[cols.indexOf("SxS Hole Detail")] = $('#scmHoleDetail').val()
-  // arrShts['My Courses'].vals[idx] = c
-  // await updateCourse(c, idx)
 
   await initialUI()
 
@@ -858,7 +848,7 @@ function parseSxsRtn(sxsRtn) {
 
 function updateSCMForm(sxsRtn) {
 
-  var sxs = sxsRtn
+  var sxs = sxsRtn.props.course
   
   // var sxs = parseSxsRtn(sxsRtn)
 
@@ -869,13 +859,14 @@ function updateSCMForm(sxsRtn) {
   
   // console.log(sxs)
 
-  conditionalUpdate($('#scmName'), sxs.name)
-  conditionalUpdate($('#scmPhone'), sxs.phone)
-  conditionalUpdate($('#scmWebsite'), sxs.website ? fixUrl(sxs.website) : '')
-  conditionalUpdate($('#scmCity'), sxs.city)
-  conditionalUpdate($('#scmState'), abbrState(sxs.stateOrProvince))
-  conditionalUpdate($('#scmZip'), sxs.zipCode)
-  conditionalUpdate($('#scmCountry'), abbrCountry(sxs.country))
+  conditionalUpdate($('#scmName'), sxs.sName)
+  conditionalUpdate($('#scmPhone'), sxs.sPhone)
+  conditionalUpdate($('#scmWebsite'), sxs.sWebsite ? fixUrl(sxs.sWebsite) : '')
+  conditionalUpdate($('#scmCity'), sxs.sCity)
+  conditionalUpdate($('#scmState'), abbrState(sxs.sStateOrProvince))
+  conditionalUpdate($('#scmZip'), sxs.sZipCode)
+  conditionalUpdate($('#scmCountry'), abbrCountry(sxs.sCountry))
+  
   $('#scmHoleDetail').val(buildHoleDtlObj(sxs))
 
   var tiCols = {

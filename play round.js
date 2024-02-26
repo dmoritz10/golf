@@ -142,7 +142,6 @@ async function loadCourseInfo(e) {
 
       var cols = arrShts['My Courses'].colHdrs
       courseInfo = makeObj(arrShts['My Courses'].vals[selectedCourseIdx], cols)
-      delete courseInfo['SxS Hole Detail']
       
       var selectedTees = document.getElementById("hpSelectTees"); 
       
