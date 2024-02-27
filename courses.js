@@ -380,20 +380,18 @@ async function btnSCSaveSxSCourseInfoHtml() {
       'SxS Course Id',
       'Course Name',
       'SxS Course Name', 
-      'SxS Hole Detail'
+      'SxS Course Detail'
     ]]
 
     await appendSheetRow(hdrs, 'SwingU Courses')
   
-    // for (var j = 0; j < courses.length; j++) {
-    for (var j = 3; j < 6; j++) {
+    for (var j = 0; j < courses.length; j++) {
+    // for (var j = 3; j < 6; j++) {
   
       var sxsId = courses[j][sxsCourseIdCol]
       var name  = courses[j][nameCol]
       
       var courseInfo = await fetchCourseInfo(sxsId)
-
-      console.log('courseInfo',courseInfo)
 
       var ele = [
         sxsId,
