@@ -393,6 +393,11 @@ async function btnSCSaveSxSCourseInfoHtml() {
       
       var courseInfo = await fetchCourseInfo(sxsId)
 
+      if (!courseInfo) {
+        console.log('Course not found on SwingU - ' + sxsId + ' - ' + name)
+        continue
+      }
+
       var ele = [
         sxsId,
         name,
