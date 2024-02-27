@@ -376,20 +376,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
     var sxsCourseIdCol  = myCourses.colHdrs.indexOf('SxS Course Id')
     console.log('courses', courses, nameCol, sxsCourseIdCol)
     
-    var sht = await openShts(
-          [
-          { title: 'SwingU Courses', type: "all"
-          }
-          ])
-
-    console.log('sht', sht)
-  
-    var sxsCoursesSht = sht['SwingU Courses'].sht
-  
-  
-    return
-  
-    clearSheet(sxsCoursesSht.id)
+    clearSheet(getSheetId('SwingU Courses'))
   
     var scArr = [
       'SxS Course Id',
@@ -398,16 +385,28 @@ async function btnSCSaveSxSCourseInfoHtml() {
       'SxS Hole Detail'
     ]
   
+    // for (var j = 0; j < courses.length; j++) {
+    for (var j = 4; j < 6; j++) {
   
-    for (var j = 0; j < courses.length; j++) {
-  
-      var coursesObj = makeObj(courses[j], cols)
-  
+      var sxsId = courses[j][sxsCourseIdCol]
+      var name  = courses[j][nameCol]
       
-      let courseInfo = await fetchCourseInfo(coursesObj['SxS Course Id'])
+      let courseInfo = await fetchCourseInfo(sxsId)
+
+      console.log('courseInfo',courseInfo)
+
+      scArr.push([
+        sxsId,
+        name,
+        courseInfo.props.course.name.sName,
+        courseinfo.props.course
+      ])
   
     }
   
+    console.log('scArr', scArr)
+
+    updateSheet('SwingU Courses', scArr)
   
   }
 
