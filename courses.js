@@ -376,16 +376,16 @@ async function btnSCSaveSxSCourseInfoHtml() {
     
     // await clearSheet(await getSheetId('SwingU Courses'))
   
-    var hdrs = [[
-      'SxS Course Id',
-      'Course Name',
-      'SxS Course Name', 
-      'SxS Course Detail'
-    ]]
+    // var hdrs = [[
+    //   'SxS Course Id',
+    //   'Course Name',
+    //   'SxS Course Name', 
+    //   'SxS Course Detail'
+    // ]]
 
-    await appendSheetRow(hdrs, 'SwingU Courses')
+    // await appendSheetRow(hdrs, 'SwingU Courses')
   
-    for (var j = 62; j < courses.length; j++) {
+    for (var j = 65; j < 67; j++) {
     // for (var j = 3; j < 6; j++) {
   
       var sxsId = courses[j][sxsCourseIdCol]
@@ -394,16 +394,23 @@ async function btnSCSaveSxSCourseInfoHtml() {
       var courseInfo = await fetchCourseInfo(sxsId)
 
       if (!courseInfo) {
-        console.log('Course not found on SwingU - ' + sxsId + ' - ' + name)
-        continue
-      }
 
-      var ele = [
-        sxsId,
-        name,
-        courseInfo.props.course.sName,
-        ...JSON.stringify(courseInfo.props.course).match(/.{1,50000}/g)
-      ]
+        var ele = [
+          sxsId,
+          name,
+          'Course not found on SwingU',
+          ''
+        ]
+
+      } else {
+
+        var ele = [
+          sxsId,
+          name,
+          courseInfo.props.course.sName,
+          ...JSON.stringify(courseInfo.props.course).match(/.{1,50000}/g)
+        ]
+    }
 
       await appendSheetRow(ele, 'SwingU Courses')
   
