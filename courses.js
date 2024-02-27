@@ -372,8 +372,8 @@ async function btnSCSaveSxSCourseInfoHtml() {
     var myCourses       = arrShts['My Courses']
     console.log('myCourses', myCourses)
     var courses         = myCourses.vals
-    var nameCol         = myCourses.cols.indexOf('Course Name')
-    var sxsCourseIdCol  = myCourses.cols.indexOf('SxS Course Id')
+    var nameCol         = myCourses.colHdrs.indexOf('Course Name')
+    var sxsCourseIdCol  = myCourses.colHdrs.indexOf('SxS Course Id')
     console.log('courses', courses, nameCol, sxsCourseIdCol)
     
     var sht = await openShts(
