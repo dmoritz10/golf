@@ -373,6 +373,8 @@ async function btnSCSaveSxSCourseInfoHtml() {
     var courses         = myCourses.vals
     var nameCol         = myCourses.colHdrs.indexOf('Course Name')
     var sxsCourseIdCol  = myCourses.colHdrs.indexOf('SxS Course Id')
+
+    var asofDate        = new Date().toISOString()..slice(1, -5)
     
     // await clearSheet(await getSheetId('SwingU Courses'))
   
@@ -397,6 +399,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
 
         var ele = [
           sxsId,
+          asofDate,
           name,
           'Course not found on SwingU',
           ''
@@ -406,6 +409,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
 
         var ele = [
           sxsId,
+          asofDate,
           name,
           courseInfo.props.course.sName,
           ...JSON.stringify(courseInfo.props.course).match(/.{1,50000}/g)
