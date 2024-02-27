@@ -378,12 +378,14 @@ async function btnSCSaveSxSCourseInfoHtml() {
     
     clearSheet(await getSheetId('SwingU Courses'))
   
-    var scArr = [[
+    var hdrs = [[
       'SxS Course Id',
       'Course Name',
       'SxS Course Name', 
       'SxS Hole Detail'
     ]]
+
+    appendSheetRow(hdrs, 'SwingU Courses')
   
     // for (var j = 0; j < courses.length; j++) {
     for (var j = 3; j < 6; j++) {
@@ -395,12 +397,14 @@ async function btnSCSaveSxSCourseInfoHtml() {
 
       console.log('courseInfo',courseInfo)
 
-      scArr.push([
+      var ele = [
         sxsId,
         name,
         courseInfo.props.course.sName,
-        JSON.stringify(courseInfo.props.course)
-      ])
+        JSON.stringify(courseInfo.props.course).match(/.{1,50000}/g)
+      ]
+
+      appendSheetRow(ele, 'SwingU Courses')
   
     }
   
