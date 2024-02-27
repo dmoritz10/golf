@@ -387,7 +387,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
 
     // await appendSheetRow(hdrs, 'SwingU Courses')
   
-    for (var j = 65; j < 67; j++) {
+    for (var j = 0; j < courses.length; j++) {
     // for (var j = 3; j < 6; j++) {
   
       var sxsId = courses[j][sxsCourseIdCol]
