@@ -924,7 +924,7 @@ function updateSCMForm(sxsRtn) {
   }
 
   var teeInfo = []
-  var teeBoxes = sxs.course_hole
+  var teeBoxes = sxs.course_stat
 
   teeBoxes.forEach(val => {
 
