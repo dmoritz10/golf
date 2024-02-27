@@ -944,7 +944,7 @@ function updateSCMForm(sxsRtn) {
     var mlt = ti[tiCols.gender] == 'M' ? 5.381 : 4.24
 
     if (val.fFrontNineRating) {
-      var f9r = val.fFrontNineRating.toFixed(1)
+      var f9r = val.fFrontNineRating*1.toFixed(1)
     } else {
       var f9r = (val.fRating / 2).toFixed(1)
     }
