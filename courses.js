@@ -378,12 +378,12 @@ async function btnSCSaveSxSCourseInfoHtml() {
     
     clearSheet(await getSheetId('SwingU Courses'))
   
-    var scArr = [
+    var scArr = [[
       'SxS Course Id',
       'Course Name',
       'SxS Course Name', 
       'SxS Hole Detail'
-    ]
+    ]]
   
     // for (var j = 0; j < courses.length; j++) {
     for (var j = 4; j < 6; j++) {
