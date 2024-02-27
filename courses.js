@@ -406,9 +406,9 @@ async function btnSCSaveSxSCourseInfoHtml() {
   
     console.log('scArr', scArr)
 
-    console.log('course', JSON.stringefy(courseInfo.props.course).length)
-    console.log('course_hole', JSON.stringefy(courseInfo.props.course.course_hole).length)
-    console.log('course_stat', JSON.stringefy(courseInfo.props.course.course_stat).length)
+    console.log('course', JSON.stringify(courseInfo.props.course).length)
+    console.log('course_hole', JSON.stringify(courseInfo.props.course.course_hole).length)
+    console.log('course_stat', JSON.stringify(courseInfo.props.course.course_stat).length)
 
     updateSheet('SwingU Courses', scArr)
   
