@@ -376,7 +376,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
     var sxsCourseIdCol  = myCourses.colHdrs.indexOf('SxS Course Id')
     console.log('courses', courses, nameCol, sxsCourseIdCol)
     
-    clearSheet(getSheetId('SwingU Courses'))
+    clearSheet(await getSheetId('SwingU Courses'))
   
     var scArr = [
       'SxS Course Id',
@@ -398,7 +398,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
       scArr.push([
         sxsId,
         name,
-        courseInfo.props.course.name.sName,
+        courseInfo.props.course.sName,
         courseinfo.props.course
       ])
   
