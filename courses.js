@@ -401,7 +401,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
         sxsId,
         name,
         courseInfo.props.course.sName,
-        JSON.stringify(courseInfo.props.course).match(/.{1,50000}/g)
+        ...JSON.stringify(courseInfo.props.course).match(/.{1,50000}/g)
       ]
 
       appendSheetRow(ele, 'SwingU Courses')
