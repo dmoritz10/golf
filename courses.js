@@ -370,13 +370,11 @@ async function btnSCSelectHtml(e) {
 async function btnSCSaveSxSCourseInfoHtml() {
 
     var myCourses       = arrShts['My Courses']
-    console.log('myCourses', myCourses)
     var courses         = myCourses.vals
     var nameCol         = myCourses.colHdrs.indexOf('Course Name')
     var sxsCourseIdCol  = myCourses.colHdrs.indexOf('SxS Course Id')
-    console.log('courses', courses, nameCol, sxsCourseIdCol)
     
-    clearSheet(await getSheetId('SwingU Courses'))
+    await clearSheet(await getSheetId('SwingU Courses'))
   
     var hdrs = [[
       'SxS Course Id',
