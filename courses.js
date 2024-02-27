@@ -399,7 +399,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
         sxsId,
         name,
         courseInfo.props.course.sName,
-        courseInfo.props.course
+        JSON.stringify(courseInfo.props.course)
       ])
   
     }
