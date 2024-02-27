@@ -367,6 +367,49 @@ async function btnSCSelectHtml(e) {
 
 }
 
+async function btnSCSaveSxSCourseInfoHtml() {
+
+    var myCourses       = arrShts['My Courses']
+    var courses         = myCourses.vals
+    var nameCol         = cols.indexOf('Course Name')
+    var sxsCourseIdCol  = cols.indexOf('SxS Course Id')
+    console.log('courses', courses, nameCol, sxsCourseIdCol)
+    
+    var sht = await openShts(
+          [
+          { title: 'SwingU Courses', type: "all"
+          }
+          ])
+
+    console.log('sht', sht)
+  
+    var sxsCoursesSht = sht['SwingU Courses'].sht
+  
+  
+    return
+  
+    clearSheet(sxsCoursesSht.id)
+  
+    var scArr = [
+      'SxS Course Id',
+      'Course Name',
+      'SxS Course Name', 
+      'SxS Hole Detail'
+    ]
+  
+  
+    for (var j = 0; j < courses.length; j++) {
+  
+      var coursesObj = makeObj(courses[j], cols)
+  
+      
+      let courseInfo = await fetchCourseInfo(coursesObj['SxS Course Id'])
+  
+    }
+  
+  
+  }
+
 async function btnHPHoleDetailHtml() {
 
   $("#btnHPHoleDetail").popover('hide');            // have to wait to fetch hole detail from server
@@ -1041,6 +1084,8 @@ function abbrCountry(country) {
   return country
 
 }
+
+
 /*
 async function btnDeleteCourseHtml() {
 

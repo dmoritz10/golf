@@ -262,6 +262,9 @@ jQuery(function ($) {
             // Courses
             $('#btnShowCourses')          .click(btnShowCoursesHtml);
             $('#btnSCSelect')             .click(btnSCSelectHtml);
+            $('#btnSCSbtnSCSaveSxSCourseInfoelect')   .click(btnSCSaveSxSCourseInfoHtml);
+
+            
             // $('#btnHPHoleDetail')         .button().click(btnHPHoleDetailHtml);
             $('#btnSCMFetchSxs')          .click(btnSCMFetchSxsHtml);
             $('#btnSCMSubmitCourse')      .click(btnSCMSubmitCourseHtml);
