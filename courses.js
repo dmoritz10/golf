@@ -385,7 +385,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
       'SxS Hole Detail'
     ]]
 
-    appendSheetRow(hdrs, 'SwingU Courses')
+    await appendSheetRow(hdrs, 'SwingU Courses')
   
     // for (var j = 0; j < courses.length; j++) {
     for (var j = 3; j < 6; j++) {
@@ -404,17 +404,9 @@ async function btnSCSaveSxSCourseInfoHtml() {
         ...JSON.stringify(courseInfo.props.course).match(/.{1,50000}/g)
       ]
 
-      appendSheetRow(ele, 'SwingU Courses')
+      await appendSheetRow(ele, 'SwingU Courses')
   
     }
-  
-    console.log('scArr', scArr)
-
-    console.log('course', JSON.stringify(courseInfo.props.course).length)
-    console.log('course_hole', JSON.stringify(courseInfo.props.course.course_hole).length)
-    console.log('course_stat', JSON.stringify(courseInfo.props.course.course_stat).length)
-
-    updateSheet('SwingU Courses', scArr)
   
   }
 
