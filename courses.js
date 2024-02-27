@@ -374,7 +374,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
     var nameCol         = myCourses.colHdrs.indexOf('Course Name')
     var sxsCourseIdCol  = myCourses.colHdrs.indexOf('SxS Course Id')
 
-    var asofDate        = new Date().toISOString()..slice(1, -5)
+    var asofDate        = new Date().toISOString().slice(0, -5)
     
     // await clearSheet(await getSheetId('SwingU Courses'))
   
