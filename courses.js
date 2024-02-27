@@ -388,7 +388,6 @@ async function btnSCSaveSxSCourseInfoHtml() {
     // await appendSheetRow(hdrs, 'SwingU Courses')
   
     for (var j = 0; j < courses.length; j++) {
-    // for (var j = 3; j < 6; j++) {
   
       var sxsId = courses[j][sxsCourseIdCol]
       var name  = courses[j][nameCol]
@@ -949,8 +948,8 @@ function updateSCMForm(sxsRtn) {
     } else {
       var f9r = (val.fRating / 2).toFixed(1)
     }
-    if (val.fBackNineRating) {
-      var f9s = val.fBackNineRating
+    if (val.iFrontNineSlope) {
+      var f9s = val.iFrontNineSlope
     } else {
       var f9s = val.iSlope
     }
