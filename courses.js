@@ -386,7 +386,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
     ]]
   
     // for (var j = 0; j < courses.length; j++) {
-    for (var j = 4; j < 6; j++) {
+    for (var j = 3; j < 6; j++) {
   
       var sxsId = courses[j][sxsCourseIdCol]
       var name  = courses[j][nameCol]
