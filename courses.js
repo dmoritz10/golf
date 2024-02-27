@@ -391,7 +391,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
       var sxsId = courses[j][sxsCourseIdCol]
       var name  = courses[j][nameCol]
       
-      let courseInfo = await fetchCourseInfo(sxsId)
+      var courseInfo = await fetchCourseInfo(sxsId)
 
       console.log('courseInfo',courseInfo)
 
