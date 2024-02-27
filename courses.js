@@ -920,7 +920,7 @@ function updateSCMForm(sxsRtn) {
   }
 
   var teeInfo = []
-  var teeBoxes = sxs.course_stat
+  var teeBoxes = sxs.course_hole
 
   teeBoxes.forEach(val => {
 
