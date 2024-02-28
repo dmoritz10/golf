@@ -373,19 +373,16 @@ async function btnSCSaveSxSCourseInfoHtml() {
 
     let title = "Save SwingU Course Info"
 
-    let message = `
-    Warning !  This routine will lookup every course in 'My Courses' in the 
-    SwingU database and save it in a separate sheet called 'SwingU Courses'.
-    \n
-    It will take over 10 minutes to complete.  You can preform other functions in the Golf Companion
-    while its running, but if you exit Golf Companion, the routine will stop.
-    \n
-    If you'd like to append to an existing entries on 'SwingU Courses', click 'Yes'
-    If you'd like to clear 'SwingU Courses', click 'No'
-    `
-
-    let msg = message + ''
-
+    let message = 
+    "Warning !  This routine will lookup every course in 'My Courses' in the " +
+    "SwingU database and save it in a separate sheet called 'SwingU Courses'. " +
+    "<br>" +
+    "It will take over 10 minutes to complete.  You can preform other functions in the Golf Companion " +
+    "while its running, but if you exit Golf Companion, the routine will stop. " +
+    "\n" +
+    "If you'd like to append to an existing entries on 'SwingU Courses', click 'Yes' " +
+    "If you'd like to clear 'SwingU Courses', click 'No"
+    
     var reply = await yesNoCancel(title, msg)
 
     console.log('reply', reply)
