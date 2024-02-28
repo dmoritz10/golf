@@ -376,10 +376,10 @@ async function btnSCSaveSxSCourseInfoHtml() {
     let message = 
     "Warning !  This routine will lookup every course in 'My Courses' in the " +
     "SwingU database and save it in a separate sheet called 'SwingU Courses'. " +
-    "<br>" +
+    "<br><br>" +
     "It will take over 10 minutes to complete.  You can preform other functions in the Golf Companion " +
     "while its running, but if you exit Golf Companion, the routine will stop. " +
-    "<br>" +
+    "<br><br>" +
     "If you'd like to append to an existing entries on 'SwingU Courses', click 'Yes'<br> " +
     "If you'd like to first clear 'SwingU Courses', click 'No"
     
