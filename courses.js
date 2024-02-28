@@ -379,15 +379,28 @@ async function btnSCSaveSxSCourseInfoHtml() {
     "<br>" +
     "It will take over 10 minutes to complete.  You can preform other functions in the Golf Companion " +
     "while its running, but if you exit Golf Companion, the routine will stop. " +
-    "\n" +
-    "If you'd like to append to an existing entries on 'SwingU Courses', click 'Yes' " +
-    "If you'd like to clear 'SwingU Courses', click 'No"
+    "<br>" +
+    "If you'd like to append to an existing entries on 'SwingU Courses', click 'Yes'<br> " +
+    "If you'd like to first clear 'SwingU Courses', click 'No"
     
     var reply = await yesNoCancel(title, message)
 
-    console.log('reply', reply)
-
     if (reply == 'Cancel') return
+
+    if (reply == 'No') {
+
+      await clearSheet(await getSheetId('SwingU Courses'))
+  
+      var hdrs = [[
+        'SxS Course Id',
+        'Asof Date',
+        'Course Name',
+        'SxS Course Name', 
+        'SxS Course Detail'
+      ]]
+
+      await appendSheetRow(hdrs, 'SwingU Courses')
+    }
 
     toast("Save SwingU Courses is underway")
 
@@ -400,16 +413,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
     var asofDate        = new Date().toLocaleString()
     
     
-    // await clearSheet(await getSheetId('SwingU Courses'))
-  
-    // var hdrs = [[
-    //   'SxS Course Id',
-    //   'Course Name',
-    //   'SxS Course Name', 
-    //   'SxS Course Detail'
-    // ]]
-
-    // await appendSheetRow(hdrs, 'SwingU Courses')
+    
   
     for (var j = 0; j < courses.length; j++) {
   
