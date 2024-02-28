@@ -369,7 +369,7 @@ async function btnSCSelectHtml(e) {
 
 async function btnSCSaveSxSCourseInfoHtml() {
 
-  alert('hi dan')
+    $("#btnSCMoreVert").click()
 
     var confirmOK = await confirm(`Warning !  This routine will lookup every course in 'My Courses' in the SwingU database and save it in a separate sheet called 'SwingU Courses'.
       \n
