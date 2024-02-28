@@ -383,7 +383,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
     "If you'd like to append to an existing entries on 'SwingU Courses', click 'Yes' " +
     "If you'd like to clear 'SwingU Courses', click 'No"
     
-    var reply = await yesNoCancel(title, msg)
+    var reply = await yesNoCancel(title, message)
 
     console.log('reply', reply)
 
