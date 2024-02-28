@@ -372,10 +372,10 @@ async function btnSCSaveSxSCourseInfoHtml() {
   alert('hi dan')
 
     var confirmOK = await confirm(`Warning !  This routine will lookup every course in 'My Courses' in the SwingU database and save it in a separate sheet called 'SwingU Courses'.
-    
+      \n
       It will take over 10 minutes to complete.  You can preform other function is the Golf Companion
       while its running, but if you exit Golf Companion, the routine will stop.
-      
+      \n
       The routine appends one row per course to the sheet.  If you don't want to keep old versions,
       simply delete them from the sheet before running this routine`)
 
@@ -383,14 +383,14 @@ async function btnSCSaveSxSCourseInfoHtml() {
 
     toast("Save SwingU Courses is underway")
 
-    return
-
     var myCourses       = arrShts['My Courses']
     var courses         = myCourses.vals
     var nameCol         = myCourses.colHdrs.indexOf('Course Name')
     var sxsCourseIdCol  = myCourses.colHdrs.indexOf('SxS Course Id')
 
-    var asofDate        = new Date().toISOString().slice(0, -8)
+    // var asofDate        = new Date().toISOString().slice(0, -8)
+    var asofDate        = new Date().toLocaleString()
+    
     
     // await clearSheet(await getSheetId('SwingU Courses'))
   
