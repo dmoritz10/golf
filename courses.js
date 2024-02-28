@@ -371,7 +371,7 @@ async function btnSCSaveSxSCourseInfoHtml() {
 
     $("#btnSCMoreVert").click()
 
-    var confirmOK = await confirm(`Warning !  This routine will lookup every course in 'My Courses' in the 
+    var confirmOK = await yesNoCancel(`Warning !  This routine will lookup every course in 'My Courses' in the 
       SwingU database and save it in a separate sheet called 'SwingU Courses'.
       \n
       It will take over 10 minutes to complete.  You can preform other functions in the Golf Companion
