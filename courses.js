@@ -369,6 +369,8 @@ async function btnSCSelectHtml(e) {
 
 async function btnSCSaveSxSCourseInfoHtml() {
 
+  alert('hi dan')
+
     var confirmOK = await confirm(`Warning !  This routine will lookup every course in 'My Courses' in the SwingU database and save it in a separate sheet called 'SwingU Courses'.
     
       It will take over 10 minutes to complete.  You can preform other function is the Golf Companion
@@ -380,6 +382,8 @@ async function btnSCSaveSxSCourseInfoHtml() {
     if (!confirmOK) return
 
     toast("Save SwingU Courses is underway")
+
+    return
 
     var myCourses       = arrShts['My Courses']
     var courses         = myCourses.vals
