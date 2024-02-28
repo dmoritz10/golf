@@ -371,16 +371,22 @@ async function btnSCSaveSxSCourseInfoHtml() {
 
     $("#btnSCMoreVert").click()
 
-    var confirmOK = await yesNoCancel(`Warning !  This routine will lookup every course in 'My Courses' in the 
-      SwingU database and save it in a separate sheet called 'SwingU Courses'.
-      \n
-      It will take over 10 minutes to complete.  You can preform other functions in the Golf Companion
-      while its running, but if you exit Golf Companion, the routine will stop.
-      \n
-      The routine appends one row per course to the sheet.  If you don't want to keep old versions,
-      simply delete them from the sheet before running this routine`)
+    let title = "Save SwingU Course Info"
 
-    if (!confirmOK) return
+    let message = `Warning !  This routine will lookup every course in 'My Courses' in the 
+    SwingU database and save it in a separate sheet called 'SwingU Courses'.
+    \n
+    It will take over 10 minutes to complete.  You can preform other functions in the Golf Companion
+    while its running, but if you exit Golf Companion, the routine will stop.
+    \n
+    The routine appends one row per course to the sheet.  If you don't want to keep old versions,
+    simply delete them from the sheet before running this routine`
+
+    var reply = await yesNoCancel(title, message)
+
+    console.log('reply', reply)
+
+    if (reply == 'Cancel') return
 
     toast("Save SwingU Courses is underway")
 
