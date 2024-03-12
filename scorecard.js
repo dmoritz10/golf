@@ -994,7 +994,7 @@ async function showPosition(position, pinLocn, strTimer) {
 
   if (!rtn) {
     console.log('parseWeather', "Can't parse weather.")
-    $('#prClubRec').html('')
+    $('#prClubRec').html('&nbsp')
     return
   }
   
@@ -1002,7 +1002,8 @@ async function showPosition(position, pinLocn, strTimer) {
   var w = rtn.currWeather
   var windRelToHole = rtn.windDirectionRelativeToBearingToHole
   
-  var disp = w.imperial.windSpeed + ' ' + rtn.windDirection + ' ' 
+  // var disp = w.imperial.windSpeed + ' ' + rtn.windDirection + ' ' 
+  var disp = w.imperial.windSpeed + ' ' 
               + `<i class="material-icons" style="transform:translate(0%, 20%) rotate(${windRelToHole}deg)">arrow_upward </i>`
               + ' | ' + rtn.effectiveWindSpeed + '  ' + rtn.bearingToHole + ' | ' 
 //           + (distToPin -cr.club1Distance + cr.club1Dist.distance)
