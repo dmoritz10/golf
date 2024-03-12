@@ -415,7 +415,7 @@ function assembleHoleDetail(sxsCourseInfo, tee, gender) {
         
           hole: hole.iHole,
           yardage: teeBox.iYards ? teeBox.iYards : '-',
-          hcp: teeBox.iHcp ? teeBox.iHcp : '-',
+          hcp: teeBox.iHcp*1 ? teeBox.iHcp*1 : '-',
           par: teeBox.iPar ? teeBox.iPar : '-',
           greenLocation: {lat: hole.fGreenLat, lng: hole.fGreenLng},
           greenFront:    {lat: hole.fFrontLat, lng: hole.fFrontLng},
