@@ -89,8 +89,10 @@ jQuery(function ($) {
 
 		bindEvents: function () {
 
-      chrome.storage.local.set({
-        "disableMemorySaver": "true"
+      console.log('chrome', chrome)
+
+      chrome.runtime.onSuspend.addListener(function() {
+        // Prevent the app from being suspended.
       });
 
             $('.score a').on('shown.bs.tab', function (event) {
