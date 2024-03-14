@@ -89,6 +89,10 @@ jQuery(function ($) {
 
 		bindEvents: function () {
 
+      chrome.storage.local.set({
+        "disableMemorySaver": "true"
+      });
+
             $('.score a').on('shown.bs.tab', function (event) {
 
                 var selId = $(event.target)[0].parentElement.parentElement.id
