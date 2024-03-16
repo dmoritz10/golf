@@ -94,6 +94,7 @@ jQuery(function ($) {
 
       function keepActive(){
         localStorage.setItem("keepActive", new Date().toLocaleString());
+        console.log(new Date().toLocaleString())
         setTimeout(keepActive, 5000);
       }
     
