@@ -90,10 +90,9 @@ jQuery(function ($) {
 		bindEvents: function () {
 
       console.log('chrome', chrome)
+      console.log('localStorage', localStorage)
 
-      chrome.app.set({
-        "key": "value"
-      });
+      localStorage.setItem("myCat", "Tom");
 
             $('.score a').on('shown.bs.tab', function (event) {
 
