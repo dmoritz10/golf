@@ -92,7 +92,12 @@ jQuery(function ($) {
       console.log('chrome', chrome)
       console.log('localStorage', localStorage)
 
-      chrome.app.runtime.onSuspend.addListener(function() {alert('hi dan')});
+      function keepActive(){
+        localStorage.setItem("keepActive", new Date().toLocaleString());
+        setTimeout(keepActive, 5000);
+      }
+    
+      keepActive();
 
             $('.score a').on('shown.bs.tab', function (event) {
 
