@@ -92,7 +92,7 @@ jQuery(function ($) {
       console.log('chrome', chrome)
       console.log('localStorage', localStorage)
 
-      chrome.runtime.onSuspend.addListener(function() {alert('hi dan')});
+      chrome.app.runtime.onSuspend.addListener(function() {alert('hi dan')});
 
             $('.score a').on('shown.bs.tab', function (event) {
 
