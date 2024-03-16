@@ -91,9 +91,9 @@ jQuery(function ($) {
 
       console.log('chrome', chrome)
 
-      // chrome.runtime.onSuspend.addListener(function() {
-      //   // Prevent the app from being suspended.
-      // });
+      chrome.app.set({
+        "key": "value"
+      });
 
             $('.score a').on('shown.bs.tab', function (event) {
 
