@@ -89,6 +89,8 @@ jQuery(function ($) {
 
 		bindEvents: function () {
 
+      if (document.wasDiscarded) {alert('was discarded')
+
       // console.log('chrome', chrome)
       // console.log('localStorage', localStorage)
 
