@@ -89,16 +89,16 @@ jQuery(function ($) {
 
 		bindEvents: function () {
 
-      console.log('chrome', chrome)
-      console.log('localStorage', localStorage)
+      // console.log('chrome', chrome)
+      // console.log('localStorage', localStorage)
 
-      function keepActive(){
-        localStorage.setItem("keepActive", new Date().toLocaleString());
-        console.log(new Date().toLocaleString())
-        setTimeout(keepActive, 5000);
-      }
+      // function keepActive(){
+      //   localStorage.setItem("keepActive", new Date().toLocaleString());
+      //   console.log(new Date().toLocaleString())
+      //   setTimeout(keepActive, 5000);
+      // }
     
-      keepActive();
+      // keepActive();
 
             $('.score a').on('shown.bs.tab', function (event) {
 
