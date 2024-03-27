@@ -147,11 +147,12 @@ async function loadCourseInfo(e) {
       
       var teeInfo = JSON.parse(courseInfo['Tee Info'])
 
-      useDefaultTee = false
-      
-      teePlayed = useDefaultTee ? courseInfo['Tee Name'] 
-                                : selectedTees.options[selectedTees.selectedIndex].value;
+      // teePlayed = useDefaultTee ? courseInfo['Tee Name'] 
+      //                           : selectedTees.options[selectedTees.selectedIndex].value;
                                    
+      teePlayed = selectedTees.selectedIndex ? selectedTees.options[selectedTees.selectedIndex].value 
+                                : '';
+      
       var st = document.getElementById('hpSelectTees')
       $('option', st).remove();
       
