@@ -385,6 +385,8 @@ async function btnUweatherCompHtml() {
 
   var bearing = await getBearing()
 
+  console.log('getBearing', bearing)
+
   var uweatherComp = await getUWeather(nearByUweatherStations, bearing.bearingToHole)
 
   if (uweatherComp === null) return
