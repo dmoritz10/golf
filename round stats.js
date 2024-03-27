@@ -27,12 +27,9 @@ function btnRoundStatsHtml() {
   $('#rsPutts')   .attr('data-content', calcPuttSummary());
   $('#rsFairways').attr('data-content', calcDriveSummary());
   
-  console.log(calcScoreSummary())
-  
   $('#rsTees').attr('data-content', calcCourseSummary());
 
   var scoreAnal = []
-  
   
   var grossScore = calcGrossScore()
   scoreAnal.push(grossScore)
@@ -299,8 +296,6 @@ function calcHcpAdj(base, holeDetail) {
   arrHcp.forEach((val, idx, arr) => {arrAdj.push([idx, val, 0])})
   arrAdj.sort(function(a,b) { return a[1] > b[1] ? 1 : -1; });  
 
-  console.log('arr', holeDetail, arrHcp, arrAdj)
-  
   var idx = 0
   while (base > 0) {
   

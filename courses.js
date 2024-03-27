@@ -851,8 +851,6 @@ async function updateCourse(arrCourse, idx, endRowIndex, endColumnIndex) {
 
   })
 
-  console.log('arrCourse', arrCourse, idx == null)
-
   if (idx)  
     await updateSheetRow(arrCourse, idx * 1 + 2, "My Courses")
   else  {
@@ -974,12 +972,12 @@ function updateSCMForm(sxsRtn) {
 
     var mlt = ti[tiCols.gender] == 'M' ? 5.381 : 4.24
 
-    if (val.fFrontNineRating) {
+    if (val.fFrontNineRating > 0) {
       var f9r = (val.fFrontNineRating*1).toFixed(1)
     } else {
       var f9r = (val.fRating / 2).toFixed(1)
     }
-    if (val.iFrontNineSlope) {
+    if (val.iFrontNineSlope > 0) {
       var f9s = val.iFrontNineSlope
     } else {
       var f9s = val.iSlope
