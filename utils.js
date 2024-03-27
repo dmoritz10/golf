@@ -413,13 +413,15 @@ async function getBearing() {
 
     const calcWindDirectionCardinal = (winddir) => (winddir ? ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW","N"][(Math.round((winddir)/ 22.5,0))] : '')
 
+    console.log('geoLoc', geoLoc)
+    console.log('prCourse.holeDetail', prScore.currHole - 1, prCourse.holeDetail)
       var bearingToHole = calcBearingToHole(
                           geoLoc.coords.latitude, 
                           geoLoc.coords.longitude, 
                           prCourse.holeDetail[prScore.currHole - 1].greenLocation.lat,
                           prCourse.holeDetail[prScore.currHole - 1].greenLocation.lng )
       
-
+console.log('getbearing internal', bearingToHole, calcWindDirectionCardinal(bearingToHole))
       return {
         winddirCardinal: calcWindDirectionCardinal(bearingToHole),
         bearingToHole: bearingToHole
@@ -427,6 +429,8 @@ async function getBearing() {
     })
 
   .catch (rej => {
+
+    console.log('rej', rej)
       return null
   })
 
