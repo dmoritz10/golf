@@ -389,11 +389,15 @@ async function getHoleDetail(sxsCourseId, tee, gender) {
 
 function assembleHoleDetail(sxsCourseInfo, tee, gender) {
 
+  console.log('assembleHoleDetail', sxsCourseInfo, tee, gender)
+
   var course = sxsCourseInfo.props.course
 
   var courseHoles = course.course_hole
 
   var intGender = gender.toUpperCase() == 'F' ? 2 : 1
+
+  console.log('prCourse.courseInfo', intGender, prCourse.courseInfo)
 
   if (prCourse.courseInfo) {
   
@@ -409,9 +413,13 @@ function assembleHoleDetail(sxsCourseInfo, tee, gender) {
   
   courseHoles.forEach(hole => {
 
+
     var tees = hole.active_course_hole_tee_box
+    console.log('forEach hole', hole, tees)
   
     for (let teeBox of tees) {
+
+      console.log('if ', teeBox.course_tee_type.sTeeName.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender)
 
       if (teeBox.course_tee_type.sTeeName.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender) {
 
