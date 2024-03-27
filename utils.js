@@ -493,7 +493,7 @@ async function getUWeather(stationIds, bearingToHole) {
   arr.push(['aPressure', ...(w.map(({ elev }) => pressure(elev)))])
   arr.push(['windSpeed', ...(w.map(({ windSpeed }) => windSpeed))])
   arr.push(['winddir', ...(w.map(({ winddir }) => winddir))])
-  arr.push(['windHole', ...(w.map(({ windRelToHole }) => windRelToHole))])
+  arr.push(['windHole', ...(w.map(({ windRelToHole }) => `<i class="material-icons" style="transform:translate(0%, 20%) rotate(${windRelToHole}deg)">arrow_upward </i>`))])
   arr.push(['set', ...(w.map(({ stationID }) => setBtn(stationID)))])
   arr.push(['current', '<small>' + '<input  class="col-12 px-0 text-right" type="text" id="manualStationId" value=\'' + currentStation + '\'>',
     '<button class="btn btn-outline-primary btn-sm py-0 my-0" onclick="setStationId(\'' + currentStation + '\')">Set</button>', ''])
@@ -690,7 +690,6 @@ function parseUweather(wRptHtml, bearingToHole) {
     coords: { lat: w.lat, lon: w.lon },
     obs: obs,
     windRelToHole: w.winddir - bearingToHole + 180
-
 
   }
 
