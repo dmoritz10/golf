@@ -385,6 +385,8 @@ async function getHoleDetail(sxsCourseId, tee, gender) {
 
 function assembleHoleDetail(sxsCourseInfo, tee, gender) {
 
+  console.log('sxsCourseInfo',sxsCourseInfo )
+
   var course = sxsCourseInfo.props.course
 
   var courseHoles = course.course_hole
