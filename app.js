@@ -89,19 +89,6 @@ jQuery(function ($) {
 
 		bindEvents: function () {
 
-      if (document.wasDiscarded) {alert('was discarded')}
-
-      // console.log('chrome', chrome)
-      // console.log('localStorage', localStorage)
-
-      // function keepActive(){
-      //   localStorage.setItem("keepActive", new Date().toLocaleString());
-      //   console.log(new Date().toLocaleString())
-      //   setTimeout(keepActive, 5000);
-      // }
-    
-      // keepActive();
-
             $('.score a').on('shown.bs.tab', function (event) {
 
                 var selId = $(event.target)[0].parentElement.parentElement.id
