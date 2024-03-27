@@ -374,7 +374,11 @@ function setScoreDescriptions(par) {
 
 async function getHoleDetail(sxsCourseId, tee, gender) {
 
+  console.log('getHoleDetail', sxsCourseId, tee, gender)
+
   let courseInfo = await fetchCourseInfo(sxsCourseId)
+
+  console.log('courseInfo', courseInfo)
 
   if (courseInfo) 
     return assembleHoleDetail(courseInfo, tee, gender) 
