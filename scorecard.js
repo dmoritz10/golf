@@ -419,9 +419,9 @@ function assembleHoleDetail(sxsCourseInfo, tee, gender) {
   
     for (let teeBox of tees) {
 
-      console.log('if ', teeBox.course_tee_type.sTeeName.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender)
+      console.log('if ', teeBox.tee_color_type.sTeeColor.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender)
 
-      if (teeBox.course_tee_type.sTeeName.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender) {
+      if (teeBox.tee_color_type.sTeeColor.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender) {
 
         var dtl = {
         
