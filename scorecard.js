@@ -8,17 +8,6 @@ async function btnStartRoundHtml() {
   var gender = prCourse.courseInfo["Gender"].toLowerCase()
   var tee = teePlayed
 
-  console.log('tee', tee)
-
-  if (!tee) {
-  
-    bootbox.alert ('Please select a tee box')
-  
-    return
-  
-  }
-
-
   prCourse.holeDetail = await getHoleDetail(prCourse.courseInfo['SxS Course Id'], tee, gender)
   
   if (!prCourse.holeDetail) {
