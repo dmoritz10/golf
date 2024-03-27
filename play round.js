@@ -150,7 +150,9 @@ async function loadCourseInfo(e) {
       // teePlayed = useDefaultTee ? courseInfo['Tee Name'] 
       //                           : selectedTees.options[selectedTees.selectedIndex].value;
                                    
-      teePlayed = selectedTees.selectedIndex ? selectedTees.options[selectedTees.selectedIndex].value 
+console.log('idx', selectedTees.selectedIndex, selectedTees.options[selectedTees.selectedIndex])
+
+      teePlayed = selectedTees.options[selectedTees.selectedIndex] ? selectedTees.options[selectedTees.selectedIndex].value 
                                 : '';
       
       var st = document.getElementById('hpSelectTees')
