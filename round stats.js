@@ -299,7 +299,7 @@ function calcHcpAdj(base, holeDetail) {
   arrHcp.forEach((val, idx, arr) => {arrAdj.push([idx, val, 0])})
   arrAdj.sort(function(a,b) { return a[1] > b[1] ? 1 : -1; });  
 
-  console.log('arr', arrHcp, arrAdj)
+  console.log('arr', holeDetail, arrHcp, arrAdj)
   
   var idx = 0
   while (base > 0) {
