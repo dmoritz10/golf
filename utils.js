@@ -689,7 +689,7 @@ function parseUweather(wRptHtml, bearingToHole) {
     pressure: w.imperial.pressure,
     coords: { lat: w.lat, lon: w.lon },
     obs: obs,
-    windRelToHole: winddir - bearingToHole + 180
+    windRelToHole: w.winddir - bearingToHole + 180
 
 
   }
