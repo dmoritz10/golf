@@ -383,13 +383,13 @@ async function btnUweatherCompHtml() {
 
   }
 
-  var uweatherComp = await getUWeather(nearByUweatherStations)
+  var bearing = await getBearing()
+
+  var uweatherComp = await getUWeather(nearByUweatherStations, bearing.bearingToHole)
 
   if (uweatherComp === null) return
 
-  var bearing = await getBearing()
-
-  var title = "UWeather Station Comparison" + (bearing ? "<br><small>Bearing " + bearing + "</small>" : "")
+  var title = "UWeather Station Comparison" + (bearing.winddirCardinal ? "<br><small>Bearing " + bearing.winddirCardinal + "</small>" : "")
 
   var wPrompt = bootbox.alert({
 
@@ -404,20 +404,26 @@ async function btnUweatherCompHtml() {
 
 }
 
-async function getBearing(){
+async function getBearing() {
 
   return await getPosition()
   .then ( geoLoc => {
 
     const calcWindDirectionCardinal = (winddir) => (winddir ? ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW","N"][(Math.round((winddir)/ 22.5,0))] : '')
 
-      return calcWindDirectionCardinal(calcBearingToHole(
-        geoLoc.coords.latitude, 
-        geoLoc.coords.longitude, 
-        prCourse.holeDetail[prScore.currHole - 1].greenLocation.lat,
-        prCourse.holeDetail[prScore.currHole - 1].greenLocation.lng ))
+      var bearingToHole = calcBearingToHole(
+                          geoLoc.coords.latitude, 
+                          geoLoc.coords.longitude, 
+                          prCourse.holeDetail[prScore.currHole - 1].greenLocation.lat,
+                          prCourse.holeDetail[prScore.currHole - 1].greenLocation.lng )
       
-  })
+
+      return {
+        winddirCardinal: calcWindDirectionCardinal(bearingToHole),
+        bearingToHole: bearingToHole
+      }
+    })
+
   .catch (rej => {
       return null
   })
@@ -431,24 +437,24 @@ function getPosition() {
   });
 }
 
-async function getUWeather(stationIds) {
+async function getUWeather(stationIds, bearingToHole) {
 
   var removeDup = stationIds.indexOf(prCourse.courseInfo["Uweather StationId"])
 
   if (removeDup > -1) stationIds.splice(removeDup, 1)
 
   const wRtn = await Promise.all([
-    getWeatherByStationId(prCourse.courseInfo["Uweather StationId"]),
-    getWeatherByStationId(stationIds[0]),
-    getWeatherByStationId(stationIds[1]),
-    getWeatherByStationId(stationIds[2]),
-    getWeatherByStationId(stationIds[3]),
-    getWeatherByStationId(stationIds[4]),
-    getWeatherByStationId(stationIds[5]),
-    getWeatherByStationId(stationIds[6]),
-    getWeatherByStationId(stationIds[7]),
-    getWeatherByStationId(stationIds[8]),
-    getWeatherByStationId(stationIds[9])
+    getWeatherByStationId(prCourse.courseInfo["Uweather StationId"], bearingToHole),
+    getWeatherByStationId(stationIds[0], bearingToHole),
+    getWeatherByStationId(stationIds[1], bearingToHole),
+    getWeatherByStationId(stationIds[2], bearingToHole),
+    getWeatherByStationId(stationIds[3], bearingToHole),
+    getWeatherByStationId(stationIds[4], bearingToHole),
+    getWeatherByStationId(stationIds[5], bearingToHole),
+    getWeatherByStationId(stationIds[6], bearingToHole),
+    getWeatherByStationId(stationIds[7], bearingToHole),
+    getWeatherByStationId(stationIds[8], bearingToHole),
+    getWeatherByStationId(stationIds[9], bearingToHole)
   ]);
 
 
@@ -481,6 +487,7 @@ async function getUWeather(stationIds) {
   arr.push(['aPressure', ...(w.map(({ elev }) => pressure(elev)))])
   arr.push(['windSpeed', ...(w.map(({ windSpeed }) => windSpeed))])
   arr.push(['winddir', ...(w.map(({ winddir }) => winddir))])
+  arr.push(['windHole', ...(w.map(({ windRelToHole }) => windRelToHole))])
   arr.push(['set', ...(w.map(({ stationID }) => setBtn(stationID)))])
   arr.push(['current', '<small>' + '<input  class="col-12 px-0 text-right" type="text" id="manualStationId" value=\'' + currentStation + '\'>',
     '<button class="btn btn-outline-primary btn-sm py-0 my-0" onclick="setStationId(\'' + currentStation + '\')">Set</button>', ''])
@@ -502,7 +509,7 @@ async function getUWeather(stationIds) {
 
 }
 
-async function getWeatherByStationId(stationId) {
+async function getWeatherByStationId(stationId, bearingToHole) {
 
   console.log('getWeatherByStationId')
   var weatherUrl = setWeatherHref({
@@ -532,7 +539,7 @@ async function getWeatherByStationId(stationId) {
       console.log(error.statusText); // xhr.statusText
 	  });
 
-  var rtn = parseUweather(w)
+  var rtn = parseUweather(w, bearingToHole)
 
   return rtn
 
@@ -633,7 +640,7 @@ function findCourseIdx(courseName) {
 
 }
 
-function parseUweather(wRptHtml) {
+function parseUweather(wRptHtml, bearingToHole) {
 
   //console.log(wRptHtml)
 
@@ -675,7 +682,9 @@ function parseUweather(wRptHtml) {
     windSpeed: windSpeed + ' | ' + windGust,
     pressure: w.imperial.pressure,
     coords: { lat: w.lat, lon: w.lon },
-    obs: obs
+    obs: obs,
+    windRelToHole: winddir - bearingToHole + 180
+
 
   }
 
