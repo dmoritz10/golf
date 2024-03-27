@@ -374,11 +374,7 @@ function setScoreDescriptions(par) {
 
 async function getHoleDetail(sxsCourseId, tee, gender) {
 
-  console.log('getHoleDetail', sxsCourseId, tee, gender)
-
   let courseInfo = await fetchCourseInfo(sxsCourseId)
-
-  console.log('courseInfo', courseInfo)
 
   if (courseInfo) 
     return assembleHoleDetail(courseInfo, tee, gender) 
@@ -389,15 +385,11 @@ async function getHoleDetail(sxsCourseId, tee, gender) {
 
 function assembleHoleDetail(sxsCourseInfo, tee, gender) {
 
-  console.log('assembleHoleDetail', sxsCourseInfo, tee, gender)
-
   var course = sxsCourseInfo.props.course
 
   var courseHoles = course.course_hole
 
   var intGender = gender.toUpperCase() == 'F' ? 2 : 1
-
-  console.log('prCourse.courseInfo', intGender, prCourse.courseInfo)
 
   if (prCourse.courseInfo) {
   
@@ -413,13 +405,9 @@ function assembleHoleDetail(sxsCourseInfo, tee, gender) {
   
   courseHoles.forEach(hole => {
 
-
     var tees = hole.active_course_hole_tee_box
-    console.log('forEach hole', hole, tees)
   
     for (let teeBox of tees) {
-
-      console.log('if ', teeBox.tee_color_type.sTeeColor.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender)
 
       if (teeBox.tee_color_type.sTeeColor.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender) {
 
