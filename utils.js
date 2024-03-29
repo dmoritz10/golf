@@ -431,7 +431,10 @@ console.log('getbearing internal', bearingToHole, calcWindDirectionCardinal(bear
   .catch (rej => {
 
     console.log('rej', rej)
-      return null
+    return {
+      winddirCardinal: 'unknown',
+      bearingToHole: 180
+    }
   })
 
 }
