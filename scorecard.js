@@ -410,7 +410,7 @@ function assembleHoleDetail(sxsCourseInfo, tee, gender) {
   
     for (let teeBox of tees) {
 
-      if (teeBox.tee_color_type.sTeeColor.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender) {
+      if (teeBox.tee_color_type.sTeeColor.toLowerCase() == tee.toLowerCase() & intGender == teeBox.iGender ? teeBox.iGender : 1) {
 
         var dtl = {
         
