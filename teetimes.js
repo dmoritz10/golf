@@ -235,6 +235,7 @@ async function btnSubmitTeetimeHtml() {
     
   var event = {
   
+      'summary': course[arrShts['My Courses'].colHdrs.indexOf('Course Name')],
       'summary': $( "#ttmSelectCourse option:selected" ).text(),
       // 'description': prsdGolfers.map(a => a.name).join(' | '),
 
