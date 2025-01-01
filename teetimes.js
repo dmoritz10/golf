@@ -235,11 +235,10 @@ async function btnSubmitTeetimeHtml() {
     
   var event = {
   
-      'summary': course[arrShts['My Courses'].colHdrs.indexOf('Course Name')],
       'summary': $( "#ttmSelectCourse option:selected" ).text(),
       // 'description': prsdGolfers.map(a => a.name).join(' | '),
 
-      'location': $( "#ttmSelectCourse option:selected" ).text() + ', ' +
+      'location': course[arrShts['My Courses'].colHdrs.indexOf('Course Name')]    + ', ' +
                   course[arrShts['My Courses'].colHdrs.indexOf('City')] + ', ' +
                   course[arrShts['My Courses'].colHdrs.indexOf('State')] + ' ' + 
                   course[arrShts['My Courses'].colHdrs.indexOf('Zip')] ,
