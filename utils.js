@@ -1,46 +1,46 @@
 
 
-function dupIds () {
-    var ids = { };
-    var found = false;
-    $('[id]').each(function(key,val) {
+function dupIds() {
+  var ids = {};
+  var found = false;
+  $('[id]').each(function (key, val) {
 
 
     if (this.id && ids[this.id]) {
       found = true;
-      console.warn('Duplicate ID #'+this.id);
-      }
-    ids[this.id] =+ 1;
-    });
-    if (!found) console.log('No duplicate IDs found');
+      console.warn('Duplicate ID #' + this.id);
+    }
+    ids[this.id] = + 1;
+  });
+  if (!found) console.log('No duplicate IDs found');
 }
 
 function loadCoursesPlayedDropDown(selectCourse) {
 
-    removeOldTeetimes()
-    
-    var teetimes = readOption('teetimes', null)
+  removeOldTeetimes()
 
-    var nextCourseName = teetimes ? teetimes[0].courseName : null
+  var teetimes = readOption('teetimes', null)
 
-    courses =  arrShts['My Courses'].vals
+  var nextCourseName = teetimes ? teetimes[0].courseName : null
 
-    var s = document.getElementById(selectCourse)
-    $('option', s).remove();
-    var courseIdx
+  courses = arrShts['My Courses'].vals
 
-    for (var j = 0; j < courses.length; ++j) {
-    
-      var courseName = courses[j][0].toString()
-      var shortName = shortCourseName(courseName)
+  var s = document.getElementById(selectCourse)
+  $('option', s).remove();
+  var courseIdx
 
-      if (shortName == nextCourseName) courseIdx = j
+  for (var j = 0; j < courses.length; ++j) {
 
-      $('<option />').val(courses[j][2]).text(shortName).appendTo(s)
-            
-    }
+    var courseName = courses[j][0].toString()
+    var shortName = shortCourseName(courseName)
 
-    if (courseIdx) s.selectedIndex = courseIdx; 
+    if (shortName == nextCourseName) courseIdx = j
+
+    $('<option />').val(courses[j][2]).text(shortName).appendTo(s)
+
+  }
+
+  if (courseIdx) s.selectedIndex = courseIdx;
 
 }
 
@@ -50,12 +50,12 @@ function searchTeeTimes() {
 
   var teetimes = JSON.parse(arrOptions.teetimes)
 
-  var td = new Date().setHours(0,0,0,0)
-  
+  var td = new Date().setHours(0, 0, 0, 0)
+
   teetimes.forEach((val) => {
-  
+
     if (new Date(val.date) == td) { return val }
-  
+
   })
 
   return null
@@ -69,17 +69,17 @@ function removeOldTeetimes() {
   if (!teetimes) return
 
   var td = new Date()
-  td.setHours(0,0,0,0);  // midnight of today
+  td.setHours(0, 0, 0, 0);  // midnight of today
 
   var arrTeetimes = []
-    
-  teetimes.forEach ((val) => { if (parseDateISOString(val.date) >= td)  {arrTeetimes.push(val)} })
+
+  teetimes.forEach((val) => { if (parseDateISOString(val.date) >= td) { arrTeetimes.push(val) } })
 
   if (teetimes.length == arrTeetimes.length) return
-    
-    arrOptions.teetimes = arrTeetimes.length > 0 ? JSON.stringify(arrTeetimes) : ''
 
-    updateTeetimesOption()
+  arrOptions.teetimes = arrTeetimes.length > 0 ? JSON.stringify(arrTeetimes) : ''
+
+  updateTeetimesOption()
 
 }
 
@@ -90,105 +90,105 @@ function calcTS(targetHandCapDiff) {
   var courseRatingFront9 = $('#hpFront_9_Rating').html()
   var courseRatingBack9 = $('#hpBack_9_Rating').html()
 
-  var targetScore = ((targetHandCapDiff * slopeRating /  113) + courseRating * 1.0)
+  var targetScore = ((targetHandCapDiff * slopeRating / 113) + courseRating * 1.0)
   var courseRatingFront = courseRatingFront9.split(' / ')[0]
   var slopeRatingFront = courseRatingFront9.split(' / ')[1]
-  var targetScoreFront = Math.round(((targetHandCapDiff * slopeRatingFront /  113) + courseRatingFront * 2.0) / 2)
+  var targetScoreFront = Math.round(((targetHandCapDiff * slopeRatingFront / 113) + courseRatingFront * 2.0) / 2)
   var targetScoreBack = Math.round(targetScore) - targetScoreFront
 
   return Math.round(targetScore) + ' ... ' + targetScoreFront + ' / ' + targetScoreBack
 }
 
 function shortCourseName(longName) {
-  var wrk = longName.replace(/golf/gi,'')
+  var wrk = longName.replace(/golf/gi, '')
   wrk = wrk.replace(/course/gi, "")
   wrk = wrk.replace(/country/gi, "")
   wrk = wrk.replace(/club/gi, "")
   wrk = wrk.replace(/&/gi, "")
   wrk = wrk.replace(/ \)/g, ")")
-  wrk = wrk.replace( /  +/g, ' ' )
+  wrk = wrk.replace(/  +/g, ' ')
   wrk = wrk.replace(/^\s+|\s+$/g, "")
   return wrk
 }
 
-function stdDev(arr){
+function stdDev(arr) {
   // Creating the mean with Array.reduce
-  let mean = arr.reduce((acc, curr)=>{
+  let mean = arr.reduce((acc, curr) => {
     return acc + curr
   }, 0) / arr.length;
-   
+
   // Assigning (value - mean) ^ 2 to every array item
-  arr = arr.map((k)=>{
+  arr = arr.map((k) => {
     return (k - mean) ** 2
   })
-   
+
   // Calculating the sum of updated array
- let sum = arr.reduce((acc, curr)=> acc + curr, 0);
-  
- // Calculating the variance
- let variance = sum / arr.length
-  
- // Returning the Standered deviation
- return {
-    mean: Math.round(mean * 10) / 10, 
+  let sum = arr.reduce((acc, curr) => acc + curr, 0);
+
+  // Calculating the variance
+  let variance = sum / arr.length
+
+  // Returning the Standered deviation
+  return {
+    mean: Math.round(mean * 10) / 10,
     stdDev: Math.round(Math.sqrt(sum / arr.length) * 10) / 10
   }
-  
+
 }
 
 function setupSumFunctions() {
 
-    $.fairwaysHit = function (arr) {
+  $.fairwaysHit = function (arr) {
 
-      var fairways = 0;
-      var fairwaysHit = 0;
+    var fairways = 0;
+    var fairwaysHit = 0;
 
-      $.each(arr, function (i, v) {
+    $.each(arr, function (i, v) {
 
-        if (v) {
+      if (v) {
 
-          if (v['drive'] == 'Str8' && parseInt(v['par']) > 3) {
-            fairwaysHit++
-          }
-
-          if (parseInt(v['par']) > 3) {
-            fairways++
-          }
+        if (v['drive'] == 'Str8' && parseInt(v['par']) > 3) {
+          fairwaysHit++
         }
-      });
 
-      return fairwaysHit + ' / ' + fairways
+        if (parseInt(v['par']) > 3) {
+          fairways++
+        }
+      }
+    });
 
-    }
+    return fairwaysHit + ' / ' + fairways
 
-    $.sum = function(arr, ele) {
+  }
 
-      var r = 0;
-      $.each(arr, function(i, v) {
-            if(v) r += +v[ele]; 
-      });
-      return r;
-    }
+  $.sum = function (arr, ele) {
+
+    var r = 0;
+    $.each(arr, function (i, v) {
+      if (v) r += +v[ele];
+    });
+    return r;
+  }
 
 }
 
 function setWeatherHref(e) {
 
   const isURL = (str) => {
-  var pattern = new RegExp(/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/gi); // fragment locator
-  return pattern.test(str);
-    }
+    var pattern = new RegExp(/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/gi); // fragment locator
+    return pattern.test(str);
+  }
 
-console.log(e.stationId)
-console.log(isURL(e.stationId))
+  console.log(e.stationId)
+  console.log(isURL(e.stationId))
 
   if (e.stationId && isURL(e.stationId)) {
-  
+
     var weatherUrl = e.type !== 'weather' ? e.stationId.replace(/weather/g, e.type) : e.stationId
-  
+
   } else {
-  
-    var weatherCity = e.city ? e.city.replace(/ /g,'-').toLowerCase() : ''
+
+    var weatherCity = e.city ? e.city.replace(/ /g, '-').toLowerCase() : ''
     var weatherState = e.state ? e.state.toLowerCase() : ''
     var weatherCountry = e.country ? e.country.toLowerCase() : ''
     var weatherType = e.type ? e.type : ''
@@ -196,19 +196,19 @@ console.log(isURL(e.stationId))
 
 
     var weatherUrl = weatherUrlMask
-    .replace('*state*',weatherState)
-    .replace('*city*',weatherCity)
-    .replace('*country*',weatherCountry)
-    .replace('*type*',weatherType)
-    .replace('*stationId*',weatherStationId)
-  //        .replace('https:/', 'https://')
-  //        .toLowerCase()
-        
+      .replace('*state*', weatherState)
+      .replace('*city*', weatherCity)
+      .replace('*country*', weatherCountry)
+      .replace('*type*', weatherType)
+      .replace('*stationId*', weatherStationId)
+    //        .replace('https:/', 'https://')
+    //        .toLowerCase()
+
   }
 
   if (e.date) weatherUrl += "/date/" + e.date
 
-  var weatherUrl = weatherUrl.replace(/\/+/g,'/').replace('https:/', 'https://')
+  var weatherUrl = weatherUrl.replace(/\/+/g, '/').replace('https:/', 'https://')
 
   if (e.element !== null) {
 
@@ -216,58 +216,58 @@ console.log(isURL(e.stationId))
       .prop('href', weatherUrl)
 
   }
-//  else  {
-    // console.log(weatherUrl)
-   
-    return weatherUrl
-   
-//  }
-                        
+  //  else  {
+  // console.log(weatherUrl)
+
+  return weatherUrl
+
+  //  }
+
 }
 
 function setPhoneHref(d) {
 
-      if (d.phone) {
+  if (d.phone) {
 
     d.element.prop('disabled', false).prop('href', 'tel:' + d.phone)
 
   } else {
 
     d.element.removeAttr('href');
-      
-      }
+
+  }
 
 }
 
 function setPhoneHref(d) {
 
-      if (d.phone) {
+  if (d.phone) {
 
     d.element.prop('disabled', false).prop('href', 'tel:' + d.phone)
 
   } else {
 
     d.element.removeAttr('href');
-      
-      }
+
+  }
 
 }
 
 async function setSmsHref(d) {
 
   if (d.cellNbrs) {
-      
+
     var course = findCourse(d.courseName)
     var coursesObj = makeObj(course, arrShts['My Courses'].colHdrs)
 
     var weatherUrl = setWeatherHref({
-      stationId:coursesObj['Uweather StationId'],
-      city:coursesObj['City'],
-      state:coursesObj['State'],
-      country:'US',
-      type:'hourly',
-      date:d.date,
-      element:null
+      stationId: coursesObj['Uweather StationId'],
+      city: coursesObj['City'],
+      state: coursesObj['State'],
+      country: 'US',
+      type: 'hourly',
+      date: d.date,
+      element: null
     })
 
     var w = await getWeather(weatherUrl)
@@ -275,20 +275,20 @@ async function setSmsHref(d) {
     var txtWeather = parseWeatherText(w)
 
     console.log(weatherUrl)
-    
+
     console.log(txtWeather)
 
-    var dt = formatsmsDateTime (d.date, d.time)
+    var dt = formatsmsDateTime(d.date, d.time)
 
     var txtBody = d.courseName + '%0a' + dt.date + '%0a' + dt.time
 
     d.element.prop('disabled', false)
-    d.element.prop('href', 'sms:' + d.cellNbrs + "?body=" + txtBody  + "%0a%0a" + txtWeather )
-          
+    d.element.prop('href', 'sms:' + d.cellNbrs + "?body=" + txtBody + "%0a%0a" + txtWeather)
+
   } else {
 
     d.element.removeAttr('href');
-      
+
   }
 
 }
@@ -302,7 +302,7 @@ function setWebSiteHref(d) {
   } else {
 
     d.element.removeAttr('href');
-      
+
   }
 
 }
@@ -316,7 +316,7 @@ function setSwingUHref(d) {
   } else {
 
     d.element.removeAttr('href');
-      
+
   }
 
 }
@@ -330,13 +330,13 @@ function setAddTeeTimeClick(d) {
     date: '',
     time: '',
     golfers: ''
-          
+
   }
 
   var x = JSON.stringify(objVal)
 
   d.element.setAttribute("onclick", "editTeetime(" + x + ");gotoTab('Teetimes')");
-      
+
 }
 
 function parseWeatherText(wRptHtml) {
@@ -345,8 +345,8 @@ function parseWeatherText(wRptHtml) {
   var str = wRptHtml.lastIndexOf(">", end) + 1
 
   var wText = wRptHtml.substring(str, end)
-  
-  if (str < 0 || end < 0) console.log("Can't parse uweather report")  
+
+  if (str < 0 || end < 0) console.log("Can't parse uweather report")
 
   return wText
 
@@ -409,40 +409,40 @@ async function btnUweatherCompHtml() {
 async function getBearing() {
 
   return await getPosition()
-  .then ( geoLoc => {
+    .then(geoLoc => {
 
-    const calcWindDirectionCardinal = (winddir) => (winddir ? ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW","N"][(Math.round((winddir)/ 22.5,0))] : '')
+      const calcWindDirectionCardinal = (winddir) => (winddir ? ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW", "N"][(Math.round((winddir) / 22.5, 0))] : '')
 
-    console.log('geoLoc', geoLoc)
-    console.log('prCourse.holeDetail', prScore.currHole - 1, prCourse.holeDetail)
+      console.log('geoLoc', geoLoc)
+      console.log('prCourse.holeDetail', prScore.currHole - 1, prCourse.holeDetail)
       var bearingToHole = calcBearingToHole(
-                          geoLoc.coords.latitude, 
-                          geoLoc.coords.longitude, 
-                          prCourse.holeDetail[prScore.currHole - 1].greenLocation.lat,
-                          prCourse.holeDetail[prScore.currHole - 1].greenLocation.lng )
-      
-console.log('getbearing internal', bearingToHole, calcWindDirectionCardinal(bearingToHole))
+        geoLoc.coords.latitude,
+        geoLoc.coords.longitude,
+        prCourse.holeDetail[prScore.currHole - 1].greenLocation.lat,
+        prCourse.holeDetail[prScore.currHole - 1].greenLocation.lng)
+
+      console.log('getbearing internal', bearingToHole, calcWindDirectionCardinal(bearingToHole))
       return {
         winddirCardinal: calcWindDirectionCardinal(bearingToHole),
         bearingToHole: bearingToHole
       }
     })
 
-  .catch (rej => {
+    .catch(rej => {
 
-    console.log('rej', rej)
-    return {
-      winddirCardinal: 'unknown',
-      bearingToHole: 180
-    }
-  })
+      console.log('rej', rej)
+      return {
+        winddirCardinal: 'unknown',
+        bearingToHole: 180
+      }
+    })
 
 }
 
 function getPosition() {
   // Simple wrapper
   return new Promise((res, rej) => {
-      navigator.geolocation.getCurrentPosition(res, rej, geolocationOptions);
+    navigator.geolocation.getCurrentPosition(res, rej, geolocationOptions);
   });
 }
 
@@ -532,21 +532,21 @@ async function getWeatherByStationId(stationId, bearingToHole) {
 
   })
 
-  var w =  await xhr('https://cors.bridged.cc/' + weatherUrl)
-    
-    .then( response => {
-      
+  var w = await xhr('https://cors.bridged.cc/' + weatherUrl)
+
+    .then(response => {
+
       // console.log(response.xhr);  // full response
       // console.log(response.data)
 
       return response.data
 
-	  })
+    })
 
-	  .catch( error => {
+    .catch(error => {
       console.log(error.status); // xhr.status
       console.log(error.statusText); // xhr.statusText
-	  });
+    });
 
   var rtn = parseUweather(w, bearingToHole)
 
@@ -559,21 +559,21 @@ async function getNearByUweatherStations() {
 
   var weatherUrl = 'https://www.wunderground.com/weather/' + prCourse.courseInfo.courseCoords.lat + ',' + prCourse.courseInfo.courseCoords.lng
 
-  var w =  await xhr('https://cors.bridged.cc/' + weatherUrl)
-    
-  .then( response => {
-    
-    // console.log(response.xhr);  // full response
-    // console.log(response.data)
+  var w = await xhr('https://cors.bridged.cc/' + weatherUrl)
 
-    return response.data
+    .then(response => {
 
-  })
+      // console.log(response.xhr);  // full response
+      // console.log(response.data)
 
-  .catch( error => {
-    console.log(error.status); // xhr.status
-    console.log(error.statusText); // xhr.statusText
-  });
+      return response.data
+
+    })
+
+    .catch(error => {
+      console.log(error.status); // xhr.status
+      console.log(error.statusText); // xhr.statusText
+    });
 
   var rtn = parseNearByUweatherStations(w)
 
@@ -606,7 +606,6 @@ function parseNearByUweatherStations(wRptHtml) {
 async function setStationId(stationId) {
 
   /*
-  
   0. Calculate Weather Url
   1. update prCourse.courseInfo['Uweather StationId']
   2. update Courses (arrShts and sheet)
@@ -624,7 +623,7 @@ async function setStationId(stationId) {
   arrShts['My Courses'].vals[idxRow][idxCol] = stationId
 
   await updateCourse(arrShts['My Courses'].vals[idxRow], idxRow)
-  updateOption('currCourseInfo', JSON.stringify(prCourse))                  
+  updateOption('currCourseInfo', JSON.stringify(prCourse))
 
   var x = setWeatherHref({
 
