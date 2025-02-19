@@ -1,3 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+html {
+  font-size: 16px;
+  /* font-family:; */
+  color: #000;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  /* overflow-y: scroll;
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; Internet Explorer 10+ */
+}
+
+/* body {
+  overscroll-behavior-y: contain;
+}
+
+body::-webkit-scrollbar {
+  // WebKit
+  width: 0px;
+  height: 0px;
+  background: transparent; // Chrome/Safari/Webkit
+}
+
+.disable-scrollbars::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent; // Chrome/Safari/Webkit 
+}
+
+.disable-scrollbars {
+  height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: none; // Firefox 
+  -ms-overflow-style: none; // Internet Explorer 10+ 
+} */
+
 .btn-blue {
   color: #fff;
   background-color: #007bff;
@@ -132,50 +176,6 @@ fade {
   transform: translate(-50%, -50%);
   z-index: 9999;
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: 0;
-}
-
-html {
-  font-size: 16px;
-  /* font-family:; */
-  color: #000;
-}
-
-body {
-  width: 100%;
-  min-height: 100vh;
-  /* overflow-y: scroll;
-  scrollbar-width: none; // Firefox
-  -ms-overflow-style: none; Internet Explorer 10+ */
-}
-
-/* body {
-  overscroll-behavior-y: contain;
-}
-
-body::-webkit-scrollbar {
-  // WebKit
-  width: 0px;
-  height: 0px;
-  background: transparent; // Chrome/Safari/Webkit
-}
-
-.disable-scrollbars::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
-  background: transparent; // Chrome/Safari/Webkit 
-}
-
-.disable-scrollbars {
-  height: 100vh;
-  overflow-y: scroll;
-  scrollbar-width: none; // Firefox 
-  -ms-overflow-style: none; // Internet Explorer 10+ 
-} */
 
 .popover-body {
   color: blue;
