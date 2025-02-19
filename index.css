@@ -148,34 +148,34 @@ html {
 body {
   width: 100%;
   min-height: 100vh;
-  overflow-y: scroll;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  /* overflow-y: scroll;
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; Internet Explorer 10+ */
 }
 
-body {
+/* body {
   overscroll-behavior-y: contain;
 }
 
 body::-webkit-scrollbar {
-  /* WebKit */
+  // WebKit
   width: 0px;
   height: 0px;
-  background: transparent; /* Chrome/Safari/Webkit */
+  background: transparent; // Chrome/Safari/Webkit
 }
 
 .disable-scrollbars::-webkit-scrollbar {
   width: 0px;
   height: 0px;
-  background: transparent; /* Chrome/Safari/Webkit */
+  background: transparent; // Chrome/Safari/Webkit 
 }
 
 .disable-scrollbars {
   height: 100vh;
   overflow-y: scroll;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
+  scrollbar-width: none; // Firefox 
+  -ms-overflow-style: none; // Internet Explorer 10+ 
+} */
 
 .popover-body {
   color: blue;
