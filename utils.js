@@ -605,6 +605,7 @@ function parseNearByUweatherStations(wRptHtml) {
 
 async function setStationId(stationId) {
 
+  
   /*
   0. Calculate Weather Url
   1. update prCourse.courseInfo['Uweather StationId']

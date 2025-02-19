@@ -1,11 +1,13 @@
-
-
-const API_KEY = 'AIzaSyBG5YxMTiBdvxD5-xxVp0LA1M8IXz8Xtbo'
-const CLI_ID = '764306262696-esbdj8daoee741d44fdhrh5fehjtjjm5.apps.googleusercontent.com'
-const SCOPES = 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly'
-const DISCOVERY = ['https://sheets.googleapis.com/$discovery/rest?version=v4',
-  'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest',
-  'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'];
+const API_KEY = "AIzaSyBG5YxMTiBdvxD5-xxVp0LA1M8IXz8Xtbo";
+const CLI_ID =
+  "764306262696-esbdj8daoee741d44fdhrh5fehjtjjm5.apps.googleusercontent.com";
+const SCOPES =
+  "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly";
+const DISCOVERY = [
+  "https://sheets.googleapis.com/$discovery/rest?version=v4",
+  "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
+  "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest",
+];
 
 /**
  * The google libraries are loaded, and ready for action!
@@ -14,7 +16,7 @@ function proceedAsLoaded() {
   if (Goth.recognize()) {
     Goth.onetap();
   } else {
-    gotoTab('Auth')
+    gotoTab("Auth");
     forceSignin();
   }
 }
@@ -23,24 +25,28 @@ function proceedAsLoaded() {
  * They have to correctly get through the button click / sign up flow to proceed.
  */
 function forceSignin() {
-  Goth.button('signin', { type: 'standard', size: 'large', text: 'signup_with' });
+  Goth.button("signin", {
+    type: "standard",
+    size: "large",
+    text: "signup_with",
+  });
 }
 
 function signoutEvent() {
-  document.getElementById('signin').style.display = 'block';
-  gotoTab('Auth')
+  document.getElementById("signin").style.display = "block";
+  gotoTab("Auth");
   forceSignin();
 }
 
 function revokeEvent() {
-  document.getElementById('signin').style.display = 'block';
-  Goth.revoke()
-  gotoTab('Auth')
+  document.getElementById("signin").style.display = "block";
+  Goth.revoke();
+  gotoTab("Auth");
   forceSignin();
 }
 
 function proceedAsSignedIn() {
-  document.getElementById('signin').style.display = 'none';
+  document.getElementById("signin").style.display = "none";
   runApp();
 }
 
@@ -49,18 +55,18 @@ function proceedAsSignedIn() {
  */
 function gothWatch(event) {
   switch (event) {
-    case 'signin':
+    case "signin":
       proceedAsSignedIn();
       break;
-    case 'revoke':
-    case 'signout':
+    case "revoke":
+    case "signout":
       signoutEvent();
       break;
-    case 'loaded':
+    case "loaded":
       proceedAsLoaded();
       break;
-    case 'onetap_suppressed':
-      forceSignin();  // If a user bypasses onetap flows, we land them with a button.
+    case "onetap_suppressed":
+      forceSignin(); // If a user bypasses onetap flows, we land them with a button.
       break;
     default:
       console.log("Well, this is a surprise!");
@@ -77,37 +83,34 @@ function authorize() {
 }
 
 async function runApp() {
-
-  user = Goth.user()
+  user = Goth.user();
 
   var rtn = await getSSId("Golfers Companion");
 
-  if (rtn.fileId) { spreadsheetId = rtn.fileId }
-  else {
-    await confirm('getSSId error: ' + rtn.msg);
-    window.close()
+  if (rtn.fileId) {
+    spreadsheetId = rtn.fileId;
+  } else {
+    await confirm("getSSId error: " + rtn.msg);
+    window.close();
   }
   await initialUI();
 
-  goHome()
-
+  goHome();
 }
 
 async function initialUI() {
-  timerStart = new Date()
-  console.time('initialUI')
+  timerStart = new Date();
+  console.time("initialUI");
 
-  arrShts = await openShts(
-    [
-      { title: 'Settings', type: "all" },
-      { title: 'My Courses', type: "all" },
-    ])
+  arrShts = await openShts([
+    { title: "Settings", type: "all" },
+    { title: "My Courses", type: "all" },
+  ]);
 
-  console.timeEnd('initialUI')
+  console.timeEnd("initialUI");
 
-  arrOptions = toObject(arrShts.Settings.vals)
-  optionsIdx = toObjectIdx(arrShts.Settings.vals)
+  arrOptions = toObject(arrShts.Settings.vals);
+  optionsIdx = toObjectIdx(arrShts.Settings.vals);
 
-  loadCoursesPlayedDropDown('hpSelectCourse')
-
-};
+  loadCoursesPlayedDropDown("hpSelectCourse");
+}
