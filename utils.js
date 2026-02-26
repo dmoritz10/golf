@@ -563,8 +563,8 @@ async function getNearByUweatherStations() {
 
     .then(response => {
 
-      // console.log(response.xhr);  // full response
-      // console.log(response.data)
+      // console.log('xhr', response.xhr);  // full response
+      // console.log('data', response.data)
 
       return response.data
 
@@ -574,7 +574,7 @@ async function getNearByUweatherStations() {
       console.log(error.status); // xhr.status
       console.log(error.statusText); // xhr.statusText
     });
-
+  console.log('parseNearByUweatherStations',w )
   var rtn = parseNearByUweatherStations(w)
 
   return rtn
@@ -582,6 +582,8 @@ async function getNearByUweatherStations() {
 }
 
 function parseNearByUweatherStations(wRptHtml) {
+
+
 
   var str = wRptHtml.indexOf('{&q;value&q;:{&q;location&q;:{&q;stationName&q;:')
   var end = wRptHtml.indexOf(',&q;expiresAt&q;:', str)
