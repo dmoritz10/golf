@@ -34,12 +34,14 @@ function calcTargetScoreDan(mostRecent20HcpDiff, targetHandicap, courseRating, s
           sum = sum + mostRecent19[i] * 1.0
           lowScores.push(mostRecent19[i])
       }
-      //  handicap = (sum * 0.96  / cnt)
-      //  (handicap - .1) = ((sum + thd) * .96) / (cnt + 1)
-      //  ((sum + thd) * .96) = (handicap - .1) * (cnt + 1)
-      //  thd = (((handicap - .1) * (cnt + 1)) / .96 ) - sum)
+      //  handicap = (sum / cnt)
+      //  (handicap - .1) = ((sum + thd)) / (cnt + 1)
+      //  (sum + thd) = (handicap - .1) * (cnt + 1)
+      //  thd = (((handicap - .1) * (cnt + 1))) - sum)
     
     var targetHandicapDiff = (targetHandicap * (cnt + 1)) - sum
+
+    console.log('tar', targetHandicapDiff,targetHandicap,cnt, sum,lowScores )
   
   } else {
     
