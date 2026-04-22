@@ -271,6 +271,8 @@ function calcRoundsTargetScore(targetHandCapDiff, courseRating, slopeRating, cou
   var targetScoreFront = Math.round(((targetHandCapDiff * slopeRatingFront /  113) + courseRatingFront * 2.0) / 2)
   var targetScoreBack = Math.round(targetScore) - targetScoreFront
 
+console.log('targetScore', targetHandCapDiff,slopeRating,courseRating)
+
   return {
   
     score: Math.round(targetScore),
