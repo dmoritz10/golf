@@ -46,6 +46,8 @@ function calcTargetScoreDan(mostRecent20HcpDiff, targetHandicap, courseRating, s
     var targetHandicapDiff = ''
   }
 
+  console.log('targetHandicapDiff', targetHandicapDiff,targetHandicap, cnt, sum )
+
   var tsObj = calcRoundsTargetScore(targetHandicapDiff, courseRating, slopeRating, courseRatingFront9) 
 
   return {
