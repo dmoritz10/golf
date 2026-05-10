@@ -1163,8 +1163,8 @@ async function getWeather(weatherUrl) {
 
 function parseWeather(wRptHtml, bearingToHole, distToPin, distToTee) {
 
-  var str = wRptHtml.indexOf('{&q;value&q;:{&q;observations&q;:[{&q;stationID&q;:&q;')
-  var end = wRptHtml.indexOf(',&q;expiresAt&q;:', str)  
+  var str = wRptHtml.indexOf('{"value":{"observations":[{"stationID":"');
+  var end = wRptHtml.indexOf(',"expiresAt":"', str);
   
 // console.log(str)
 // console.log(end)
